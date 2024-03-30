@@ -2,7 +2,7 @@
 
 /**
  * Created by: Juan Martín Espitia
-*/
+ */
 
 use Illuminate\Database\Migrations\Migration;
 use Illuminate\Database\Schema\Blueprint;
@@ -19,10 +19,9 @@ return new class extends Migration
             $table->id();
             $table->timestamp('created_at')->useCurrent();
             $table->timestamp('updated_at')->nullable();
-            $table->timestamp('limitDate')->nullable(); 
+            $table->timestamp('limitDate')->nullable();
             $table->string('name');
             $table->integer('Baseprice');
-
 
         });
     }

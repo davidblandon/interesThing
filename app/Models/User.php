@@ -2,20 +2,15 @@
 
 /**
  * Created by: Juan Martín Espitia
-*/
+ */
 
 namespace App\Models;
 
 // use Illuminate\Contracts\Auth\MustVerifyEmail;
-use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Foundation\Auth\User as Authenticatable;
-use Illuminate\Notifications\Notifiable;
-
 
 class User extends Authenticatable
 {
-
-
     /**
      * USER ATTRIBUTES
      * $this->attributes['id'] - int - contains the user primary key (id)
@@ -30,7 +25,6 @@ class User extends Authenticatable
      * $this->products - Product[] - contains the associated created products
      * $this->auctions - Auction[] - contains the associated maked auctions
      */
-
     protected $fillable = [
 
         'name',
@@ -38,7 +32,7 @@ class User extends Authenticatable
         'password',
         'phone',
         'admin',
-        'idBank'
+        'idBank',
 
     ];
 
@@ -65,123 +59,138 @@ class User extends Authenticatable
         ];
     }
 
-
-
-
     /**
      * The database relations
      */
-
     public function orders(): HasMany
+
     {
+
         return $this->hasMany(Order::class);
+
     }
 
     public function products(): HasMany
+
     {
+
         return $this->hasMany(Product::class);
+
     }
 
     public function auctions(): HasMany
+
     {
+
         return $this->hasMany(Auction::class);
+
     }
-
-
 
     /**
      * getters and setters
      */
 
     public function getId(): int
+
     {
+
         return $this->attributes['id'];
+
     }
 
     public function getEmail(): string
+
     {
+
         return $this->attributes['email'];
+
     }
 
     public function setEmail(int $email): void
+
     {
+
         $this->attributes['email'] = $email;
+
     }
 
-
     public function setPassword(int $password): void
+
     {
+
         $this->attributes['password'] = $password;
+
     }
 
     public function getPhone(): string
+
     {
+
         return $this->attributes['phone'];
+
     }
 
     public function setPhone(int $phone): void
+
     {
+
         $this->attributes['phone'] = $phone;
+
     }
 
     public function getAdmin(): bool
+
     {
+
         return $this->attributes['admin'];
+
     }
 
     public function setAdmin(int $admin): void
+
     {
+
         $this->attributes['admin'] = $admin;
+
     }
 
     public function getIdBank(): string
+
     {
+
         return $this->attributes['idBank'];
+
     }
 
     public function setIdBank(int $idBank): void
+
     {
+
         $this->attributes['idBank'] = $idBank;
+
     }
 
     public function getCreatedAt(): Carbon
 
     {
 
-    return $this->attributes['created_at'];
+        return $this->attributes['created_at'];
 
     }
-
 
     public function getUpdatedAt(): Carbon
 
     {
 
-    return $this->attributes['updated_at'];
+        return $this->attributes['updated_at'];
 
     }
 
-    public function setUpdatedAt(Carbon $updatedAt) : void
-
+    public function setUpdatedAt(Carbon $updatedAt): void
+    
     {
 
-     $this->attributes['updated_at'] = $updatedAt;
-    
-    } 
+        $this->attributes['updated_at'] = $updatedAt;
 
-
-
-    
-
-
-    
-
-
-    
-
-
-
-
-
-
+    }
 }
