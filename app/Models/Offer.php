@@ -1,5 +1,9 @@
 <?php
 
+/**
+ * Created by: Laura Ortíz
+*/
+
 namespace App\Models;
 
 use Illuminate\Database\Eloquent\Factories\HasFactory;

@@ -1,5 +1,9 @@
 <?php
 
+/**
+ * Created by: Juan Martín Espitia
+*/
+
 namespace App\Models;
 
 // use Illuminate\Contracts\Auth\MustVerifyEmail;
