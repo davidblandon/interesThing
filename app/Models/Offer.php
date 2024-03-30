@@ -61,7 +61,7 @@ class Offer extends Model
 
     {
 
-        $this->attributes['total'] = $total;
+        $this->attributes['price'] = $price;
 
     }
 

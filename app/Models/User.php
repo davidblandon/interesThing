@@ -114,7 +114,7 @@ class User extends Authenticatable
 
     }
 
-    public function setPassword(int $password): void
+    public function setPassword(string $password): void
 
     {
 
