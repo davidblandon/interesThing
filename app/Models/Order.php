@@ -40,6 +40,7 @@ class Order extends Model
     /**
      * getters and setters
      */
+
     public function getId(): int
 
     {
@@ -47,7 +48,7 @@ class Order extends Model
 
     }
 
-    public function getTotal(): string
+    public function getTotal(): int
 
     {
         return $this->attributes['total'];

@@ -21,7 +21,7 @@ class Offer extends Model
      */
     protected $fillable = [
 
-        'total',
+        'price',
     ];
 
     /**
@@ -42,6 +42,7 @@ class Offer extends Model
     /**
      * getters and setters
      */
+
     public function getId(): int
 
     {
@@ -49,14 +50,14 @@ class Offer extends Model
 
     }
 
-    public function getTotal(): string
+    public function getPrice(): int
 
     {
 
-        return $this->attributes['total'];
+        return $this->attributes['price'];
     }
 
-    public function setTotal(int $total): void
+    public function setPrice(int $price): void
 
     {
 

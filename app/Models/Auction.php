@@ -92,14 +92,14 @@ class Auction extends Model
 
     }
 
-    public function getLimitDate(): date
+    public function getLimitDate(): Carbon
     {
 
         return $this->attributes['limitDate'];
 
     }
 
-    public function setLimitDate(date $limitDate): void
+    public function setLimitDate(Carbon $limitDate): void
     {
 
         $this->attributes['limitDate'] = $limitDate;
@@ -113,7 +113,7 @@ class Auction extends Model
 
     }
 
-    public function setBasePrice($basePrice): void
+    public function setBasePrice(int $basePrice): void
     {
 
         $this->attributes['basePrice'] = $basePrice;

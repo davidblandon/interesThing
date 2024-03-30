@@ -74,7 +74,7 @@ class Product extends Model
 
     }
 
-    public function setDescription(int $description): void
+    public function setDescription(string $description): void
 
     {
 
@@ -106,7 +106,7 @@ class Product extends Model
 
     }
 
-    public function setPhoto(int $photo): void
+    public function setPhoto(string $photo): void
 
     {
 
@@ -123,7 +123,7 @@ class Product extends Model
 
     }
 
-    public function setSold(int $sold): void
+    public function setSold(bool $sold): void
 
     {
 
@@ -139,7 +139,7 @@ class Product extends Model
 
     }
 
-    public function setCategory(int $category): void
+    public function setCategory(string $category): void
 
     {
 
@@ -155,7 +155,7 @@ class Product extends Model
 
     }
 
-    public function setAuctioned(int $auctioned): void
+    public function setAuctioned(bool $auctioned): void
 
     {
 
