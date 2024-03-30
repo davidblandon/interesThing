@@ -106,7 +106,7 @@ class User extends Authenticatable
 
     }
 
-    public function setEmail(int $email): void
+    public function setEmail(string $email): void
 
     {
 
@@ -130,7 +130,7 @@ class User extends Authenticatable
 
     }
 
-    public function setPhone(int $phone): void
+    public function setPhone(string $phone): void
 
     {
 
@@ -146,7 +146,7 @@ class User extends Authenticatable
 
     }
 
-    public function setAdmin(int $admin): void
+    public function setAdmin(bool $admin): void
 
     {
 
@@ -162,7 +162,7 @@ class User extends Authenticatable
 
     }
 
-    public function setIdBank(int $idBank): void
+    public function setIdBank(string $idBank): void
 
     {
 
