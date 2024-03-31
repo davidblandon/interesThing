@@ -26,18 +26,27 @@ class UserController extends Controller
 
     public function admin(): View
     {
+      $user = Auth::user();
 
-        $products = Product::all();
+      if ($user->getAdmin()){
 
-        $auctions = Auction::all();
+         $products = Product::all();
 
-        $viewData['title'] = 'Pofile Page - Online Store';
+         $auctions = Auction::all();
+ 
+         $viewData['title'] = 'Pofile Page - Online Store';
+ 
+         $viewData['products'] = $products;
+ 
+         $viewData['auctions'] = $auctions;
+ 
+         return view('admin')->with('viewData', $viewData);
+      }
+      else
+      {
+         return redirect()->route('home.index');
+      }
 
-        $viewData['products'] = $products;
-
-        $viewData['auctions'] = $auctions;
-
-        return view('admin')->with('viewData', $viewData);
 
     }
 
