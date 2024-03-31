@@ -4,122 +4,89 @@
  * Created by: Juan Martín Espitia
  */
 
-
 namespace App\Http\Controllers;
 
-use Illuminate\View\View;
-
-use Illuminate\Http\Request;
-
 use App\Models\Auction;
-
-use App\Models\User;
-
-use App\Models\Offer;
-
-use Illuminate\Support\Facades\Session;
-
-use Illuminate\Support\Facades\Auth;
-
 use Illuminate\Http\RedirectResponse;
-
+use Illuminate\Http\Request;
+use Illuminate\Support\Facades\Auth;
+use Illuminate\Support\Facades\Session;
+use Illuminate\View\View;
 
 class AuctionController extends Controller
 {
+    public function list(): View
+    {
+        $viewData = [];
 
+        $viewData['title'] = 'Auctions - Online Store';
 
+        $viewData['subtitle'] = 'List of Auctions';
 
- public function list(): View
- {
-    $viewData = [];
+        $viewData['auctions'] = Auction::all();
 
-    $viewData["title"] = "Auctions - Online Store";
+        return view('auction.list')->with('viewData', $viewData);
 
-    $viewData["subtitle"] = "List of Auctions";
+    }
 
-    $viewData["auctions"] = Auction::all();
+    public function create(): View
+    {
 
-    return view('auction.list')->with("viewData", $viewData);
-   
+        $viewData = [];
 
- }
+        $viewData['title'] = 'Create auction';
 
+        return view('auction.create')->with('viewData', $viewData);
 
+    }
 
+    public function save(Request $request): RedirectResponse
+    {
 
- public function create(): View
+        $user = Auth::user();
 
- {
+        Auction::validate($request);
 
-    $viewData = []; 
+        Auction::create([
 
-    $viewData["title"] = "Create auction";
+            'name' => $request->product->getName(),
 
-    return view('auction.create')->with("viewData",$viewData);
+            'limitDate' => $request->limitDate,
 
- } 
+            'basePrice' => $request->product->getPrice(),
 
+            'aucter' => $user->getId,
 
+            'product' => $product->getId(),
 
- public function save(Request $request): RedirectResponse
- {
+        ]);
 
-    $user = Auth::user();
+        Session::flash('success', 'DONE! auction created');
 
-    Auction::validate($request);
+        return back();
+    }
 
-    Auction::create([
+    public function show(int $id): View
+    {
 
-        'name' => $request->product->getName(),
+        $viewData = [];
 
-        'limitDate' => $request->limitDate,
+        $auction = Auction::findOrFail($id);
 
-        'basePrice' => $request->product->getPrice(),
+        $viewData['title'] = $auction->getId().' - Online Store';
 
-        'aucter' => $user->getId,
+        $viewData['subtitle'] = $auction->getName().' - Auction information';
+        $viewData['auction'] = $auction;
 
-        'product' => $product->getId()
+        return view('auction.show')->with('viewData', $viewData);
+    }
 
+    public function delete(int $id): RedirectResponse
+    {
+        $auction = Auction::findOrFail($id);
 
-    ]);
+        $auction->delete();
 
-
-
-    Session::flash('success', 'DONE! auction created');
-
-    return back(); 
-}   
-
-
-
-public function show(int $id): View
-
- {
-
-    $viewData = [];
-
-    $auction = Auction::findOrFail($id);
-
-    $viewData["title"] = $auction -> getId()." - Online Store";
-    
-    $viewData["subtitle"] = $auction -> getName()." - Auction information";
-    $viewData["auction"] = $auction;
-
-
-    return view('auction.show')->with("viewData", $viewData);
- }
-
-
- 
-public function delete(int $id): RedirectResponse
-{
-    $auction = Auction::findOrFail($id);
-
-    $auction -> delete();
-
-    return redirect()->route('auction.list')->with('success', 'Auction deleted successfully');
-}
-
-
-
+        return redirect()->route('auction.list')->with('success', 'Auction deleted successfully');
+    }
 }

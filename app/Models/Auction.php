@@ -32,10 +32,9 @@ class Auction extends Model
 
         $request->validate([
 
-
             'limitDate' => 'required',
 
-            'product' => 'required'
+            'product' => 'required',
 
         ]);
 
@@ -45,7 +44,6 @@ class Auction extends Model
      * The database relations
      */
     public function aucter(): BelongsTo
-
     {
 
         return $this->belongsTo(User::class, 'aucter');
@@ -53,7 +51,6 @@ class Auction extends Model
     }
 
     public function product(): BelongsTo
-
     {
 
         return $this->belongsTo(Product::class, 'aucter');
@@ -61,11 +58,10 @@ class Auction extends Model
     }
 
     public function offers(): HasMany
-
     {
 
         return $this->hasMany(Offer::class);
-        
+
     }
 
     /**
@@ -154,7 +150,7 @@ class Auction extends Model
         $offers = $this->offers;
 
         if ($offers->isEmpty()) {
-            return null; 
+            return null;
         }
 
         $sortedOffers = $offers->sortByDesc('price');
@@ -164,4 +160,3 @@ class Auction extends Model
         return $maxOffer;
     }
 }
-

@@ -28,13 +28,11 @@ class Offer extends Model
      * The database relations
      */
     public function user(): BelongsTo
-
     {
         return $this->belongsTo(User::class, 'user');
     }
 
     public function auction(): BelongsTo
-
     {
         return $this->belongsTo(Auction::class, 'auction');
     }
@@ -42,23 +40,19 @@ class Offer extends Model
     /**
      * getters and setters
      */
-
     public function getId(): int
-
     {
         return $this->attributes['id'];
 
     }
 
     public function getPrice(): int
-
     {
 
         return $this->attributes['price'];
     }
 
     public function setPrice(int $price): void
-
     {
 
         $this->attributes['price'] = $price;
@@ -66,7 +60,6 @@ class Offer extends Model
     }
 
     public function getCreatedAt(): Carbon
-
     {
 
         return $this->attributes['created_at'];
@@ -74,7 +67,6 @@ class Offer extends Model
     }
 
     public function getUpdatedAt(): Carbon
-
     {
 
         return $this->attributes['updated_at'];
@@ -82,7 +74,6 @@ class Offer extends Model
     }
 
     public function setUpdatedAt(Carbon $updatedAt): void
-    
     {
 
         $this->attributes['updated_at'] = $updatedAt;

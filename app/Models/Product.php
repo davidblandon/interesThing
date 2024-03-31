@@ -40,7 +40,6 @@ class Product extends Model
      * The database relations
      */
     public function seller(): BelongsTo
-
     {
 
         return $this->belongsTo(User::class, 'seller');
@@ -48,7 +47,6 @@ class Product extends Model
     }
 
     public function order(): BelongsTo
-
     {
 
         return $this->belongsTo(Order::class, 'order');
@@ -59,7 +57,6 @@ class Product extends Model
      * getters and setters
      */
     public function getId(): int
-
     {
 
         return $this->attributes['id'];
@@ -67,7 +64,6 @@ class Product extends Model
     }
 
     public function getDescription(): string
-
     {
 
         return $this->attributes['description'];
@@ -75,7 +71,6 @@ class Product extends Model
     }
 
     public function setDescription(string $description): void
-
     {
 
         $this->attributes['description'] = $description;
@@ -83,7 +78,6 @@ class Product extends Model
     }
 
     public function getPrice(): int
-
     {
 
         return $this->attributes['price'];
@@ -91,15 +85,13 @@ class Product extends Model
     }
 
     public function setPrice(int $price): void
-
     {
 
         $this->attributes['price'] = $price;
-        
+
     }
 
     public function getPhoto(): string
-
     {
 
         return $this->attributes['photo'];
@@ -107,16 +99,13 @@ class Product extends Model
     }
 
     public function setPhoto(string $photo): void
-
     {
 
         $this->attributes['photo'] = $photo;
 
     }
 
-
     public function getSold(): bool
-
     {
 
         return $this->attributes['sold'];
@@ -124,7 +113,6 @@ class Product extends Model
     }
 
     public function setSold(bool $sold): void
-
     {
 
         $this->attributes['sold'] = $sold;
@@ -132,7 +120,6 @@ class Product extends Model
     }
 
     public function getCategory(): string
-
     {
 
         return $this->attributes['category'];
@@ -140,7 +127,6 @@ class Product extends Model
     }
 
     public function setCategory(string $category): void
-
     {
 
         $this->attributes['category'] = $category;
@@ -148,7 +134,6 @@ class Product extends Model
     }
 
     public function getAuctioned(): bool
-
     {
 
         return $this->attributes['auctioned'];
@@ -156,7 +141,6 @@ class Product extends Model
     }
 
     public function setAuctioned(bool $auctioned): void
-
     {
 
         $this->attributes['auctioned'] = $auctioned;
@@ -164,7 +148,6 @@ class Product extends Model
     }
 
     public function getCreatedAt(): Carbon
-
     {
 
         return $this->attributes['created_at'];
@@ -172,7 +155,6 @@ class Product extends Model
     }
 
     public function getUpdatedAt(): Carbon
-
     {
 
         return $this->attributes['updated_at'];
@@ -180,16 +162,16 @@ class Product extends Model
     }
 
     public function setUpdatedAt(Carbon $updatedAt): void
-    
     {
 
         $this->attributes['updated_at'] = $updatedAt;
 
     }
 
-    public function setOrder(Order $orderId){
-        
+    public function setOrder(Order $orderId)
+    {
+
         $this->attributes['order'] = $orderId;
-        
+
     }
 }

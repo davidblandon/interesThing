@@ -6,65 +6,53 @@
 
 namespace App\Http\Controllers;
 
-use Illuminate\Http\RedirectResponse;
-
 use App\Interfaces\Collect;
-
+use Illuminate\Http\RedirectResponse;
 use Illuminate\Http\Request;
-
 use Illuminate\View\View;
 
-use App\Models\Product;
-
-
 class CartController extends Controller
-
 {
+    public function index(Request $request): View
+    {
 
-public function index(Request $request): View
+        $collectInterface = app(Collect::class);
 
-{
+        $cartProducts = $collectInterface->collectProducts($request);
 
-    $collectInterface = app(Collect::class);
+        $viewData = [];
 
-    $cartProducts = $collectInterface->collectProducts($request);
+        $viewData['title'] = 'Cart - Online Store';
 
-    $viewData = [];
+        $viewData['subtitle'] = 'Shopping Cart';
 
-    $viewData['title'] = 'Cart - Online Store';
+        $viewData['products'] = $products;
 
-    $viewData['subtitle'] = 'Shopping Cart';
+        $viewData['cartProducts'] = $cartProducts;
 
-    $viewData['products'] = $products;
+        return view('cart.index')->with('viewData', $viewData);
 
-    $viewData['cartProducts'] = $cartProducts;
+    }
 
-return view('cart.index')->with('viewData', $viewData);
+    public function add(string $id, Request $request): RedirectResponse
+    {
 
-}
+        $cartProductData = $request->session()->get('cart_product_data');
 
-public function add(string $id, Request $request): RedirectResponse
+        $cartProductData[$id] = $id;
 
-{
+        $request->session()->put('cart_product_data', $cartProductData);
 
-$cartProductData = $request->session()->get('cart_product_data');
+        return back();
 
-$cartProductData[$id] = $id;
+    }
 
-$request->session()->put('cart_product_data', $cartProductData);
+    public function removeAll(Request $request): RedirectResponse
+    {
 
-return back();
+        $request->session()->forget('cart_product_data');
 
-}
+        return back();
 
-public function removeAll(Request $request): RedirectResponse
-
-{
-
-$request->session()->forget('cart_product_data');
-
-return back();
-
-}
-
+    }
 }

@@ -1,42 +1,35 @@
 <?php
 
 use App\Interfaces\Collect;
-
-use Illuminate\Http\Request;
-
 use App\Models\Product;
+use Illuminate\Http\Request;
 
 class CollectProducts implements Collect
 {
-
     public function collectProducts(Request $request): array
-
     {
 
-    $products = Product::All();
+        $products = Product::All();
 
-    $cartProducts = [];
+        $cartProducts = [];
 
-    $cartProductData = $request->session()->get('cart_product_data'); 
+        $cartProductData = $request->session()->get('cart_product_data');
 
-    if ($cartProductData) 
-    {
+        if ($cartProductData) {
 
-        foreach ($products as $product) 
-        {
-            $productId = $product->getId();
+            foreach ($products as $product) {
+                $productId = $product->getId();
 
-            if (in_array($productId,array_keys($cartProductData))) 
-            {
+                if (in_array($productId, array_keys($cartProductData))) {
 
-                $cartProducts[$productId] = $product;
+                    $cartProducts[$productId] = $product;
+
+                }
 
             }
 
         }
 
-    }
-
-    return $cartProducts;
+        return $cartProducts;
     }
 }
