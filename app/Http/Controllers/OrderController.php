@@ -22,7 +22,9 @@ class OrderController extends Controller
 
         $viewData['subtitle'] = 'List of Orders';
 
-        $viewData['orders'] = Order::all();
+        $user = Auth::user();
+
+        $viewData['orders'] = $user->orders();
 
         return view('orders.list')->with('viewData', $viewData);
 
