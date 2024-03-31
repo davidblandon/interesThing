@@ -54,6 +54,10 @@ class UserController extends Controller
 
         $viewData['user'] = $user;
 
+        $viewData['products'] = $user->products();
+
+        $viewData['auctions'] = $user->auctions();
+
         return view('user.profile')->with('viewData', $viewData);
     }
 
