@@ -34,7 +34,13 @@ class AuctionController extends Controller
 
         $viewData = [];
 
+        $user = Auth::user();
+
+        $products = $user->products();
+
         $viewData['title'] = 'Create auction';
+
+        $viewData['products'] = $products;
 
         return view('auction.create')->with('viewData', $viewData);
 
@@ -55,13 +61,13 @@ class AuctionController extends Controller
 
             'basePrice' => $request->product->getPrice(),
 
-            'aucter' => $user->getId,
+            'aucter' => $user->getId(),
 
             'product' => $product->getId(),
 
         ]);
 
-        $product->setAuctioned(true);
+        $product->setAuctioned(True);
 
         Session::flash('success', 'DONE! auction created');
 
