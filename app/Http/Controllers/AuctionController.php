@@ -13,7 +13,11 @@ use Illuminate\Http\Request;
 
 use App\Models\Auction;
 
+use App\Models\User;
+
 use Illuminate\Support\Facades\Session;
+
+use Illuminate\Support\Facades\Auth;
 
 use Illuminate\Http\RedirectResponse;
 
@@ -26,6 +30,7 @@ class AuctionController extends Controller
  public function list(): View
  {
     $viewData = [];
+    
     $viewData["title"] = "Auctions - Online Store";
 
     $viewData["subtitle"] = "List of Auctions";
@@ -44,11 +49,12 @@ class AuctionController extends Controller
 
  {
 
- $viewData = []; 
+    $viewData = []; 
 
- $viewData["title"] = "Create auction";
+    $viewData["title"] = "Create auction";
 
- return view('auction.create')->with("viewData",$viewData);
+    return view('auction.create')->with("viewData",$viewData);
+
  } 
 
 
@@ -56,23 +62,28 @@ class AuctionController extends Controller
  public function save(Request $request): RedirectResponse
  {
 
+    $user = Auth::user();
 
     Auction::validate($request);
 
     Auction::create([
 
-        'name' => $request->name,
+        'name' => $request->product->getName(),
 
         'limitDate' => $request->limitDate,
 
-        'pubDate' => $request->pubDate,
+        'basePrice' => $request->product->getPrice(),
 
-        'basePrice' => $request->basePrice,
+        'aucter' => $user->getId,
+
+        'product' => $product->getId()
+
+
     ]);
 
 
 
-    Session::flash('success', 'DONE! it was created');
+    Session::flash('success', 'DONE! auction created');
 
     return back(); 
 }   

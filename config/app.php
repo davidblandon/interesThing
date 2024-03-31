@@ -123,4 +123,25 @@ return [
         'store' => env('APP_MAINTENANCE_STORE', 'database'),
     ],
 
-];
+        /*
+    |--------------------------------------------------------------------------
+    | App Providers
+    |--------------------------------------------------------------------------
+    |
+    | These care the service providers for the utils functions
+    |
+    | Supported drivers: "file", "cache"
+    |
+    */
+
+    'providers' => [
+
+        
+        
+        App\Providers\AppServiceProvider::class,
+        
+        App\Providers\CollectServiceProvider::class,
+
+    ],
+
+    ];

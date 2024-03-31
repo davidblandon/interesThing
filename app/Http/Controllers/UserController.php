@@ -11,9 +11,9 @@ use Illuminate\View\View;
 
 use Illuminate\Http\Request;
 
-use App\Models\Auction;
-
 use Illuminate\Support\Facades\Session;
+
+use App\Models\User;
 
 use Illuminate\Http\RedirectResponse;
 
@@ -28,7 +28,7 @@ class UserController extends Controller
  {
 
    
-   $viewData["title"] = "'Home Page - Online Store";
+   $viewData["title"] = "Home Page - Online Store";
 
     return view('home.index')->with("viewData", $viewData);
    
@@ -43,9 +43,9 @@ class UserController extends Controller
 
     $user = User::findOrFail($id);
 
-    $viewData["title"] = $user -> getId()." - Online Store";
+    $viewData["title"] = "Pofile Page - Online Store";
     
-    $viewData["subtitle"] = $user -> getName()." - User information";
+    $viewData["subtitle"] = $user -> getName()." - information";
 
     $viewData["user"] = $user;
 
@@ -57,7 +57,7 @@ class UserController extends Controller
  
 public function delete(string $id): RedirectResponse
 {
-    $auction = Auction::findOrFail($id);
+    $auction = User::findOrFail($id);
 
     $auction -> delete();
 

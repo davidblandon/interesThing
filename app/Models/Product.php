@@ -186,4 +186,10 @@ class Product extends Model
         $this->attributes['updated_at'] = $updatedAt;
 
     }
+
+    public function setOrder(Order $orderId){
+        
+        $this->attributes['order'] = $orderId;
+        
+    }
 }
