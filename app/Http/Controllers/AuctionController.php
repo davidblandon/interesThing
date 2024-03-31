@@ -61,6 +61,8 @@ class AuctionController extends Controller
 
         ]);
 
+        $product->setAuctioned(true);
+
         Session::flash('success', 'DONE! auction created');
 
         return back();
