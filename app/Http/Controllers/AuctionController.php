@@ -15,6 +15,8 @@ use App\Models\Auction;
 
 use App\Models\User;
 
+use App\Models\Offer;
+
 use Illuminate\Support\Facades\Session;
 
 use Illuminate\Support\Facades\Auth;
@@ -30,7 +32,7 @@ class AuctionController extends Controller
  public function list(): View
  {
     $viewData = [];
-    
+
     $viewData["title"] = "Auctions - Online Store";
 
     $viewData["subtitle"] = "List of Auctions";

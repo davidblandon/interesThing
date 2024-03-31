@@ -20,7 +20,8 @@ class Auction extends Model
      * $this->attributes['updated_at'] - timestamps - contains the auction last update day
      * $this->aucter - User - refers to the user that is asociated with the auction
      * $this->product - Product - refers to the product that is asociated with the auction
-     * $this->offers - offer[] - refers to the offers that have been made for the aucti
+     * $this->offers - Offer[] - refers to the offers that have been made for the auction
+     * $this->maxOffer - Offer - refers to the offer taht is currently wining. The maximum
      */
     public $timestamps = true;
 
@@ -146,4 +147,21 @@ class Auction extends Model
         $this->attributes['updated_at'] = $updatedAt;
 
     }
+
+    public function maxOffer()
+    {
+
+        $offers = $this->offers;
+
+        if ($offers->isEmpty()) {
+            return null; 
+        }
+
+        $sortedOffers = $offers->sortByDesc('price');
+
+        $maxOffer = $sortedOffers->first();
+
+        return $maxOffer;
+    }
 }
+
