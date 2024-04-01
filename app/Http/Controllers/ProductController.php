@@ -5,7 +5,6 @@
  */
 
 namespace App\Http\Controllers;
-
 use App\Models\Product;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Redirect;
@@ -46,6 +45,7 @@ class ProductController extends Controller
         $viewData = [];
         $viewData['title'] = 'Create product';
         $viewData['categories'] = ['Ropa y accesorios', 'Electrónicos', 'Hogar', 'Entretenimiento', 'Joyeria', 'Arte y antiguedad'];
+
         return view('product.create')->with('viewData', $viewData);
     }
 
