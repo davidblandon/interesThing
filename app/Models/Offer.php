@@ -24,6 +24,21 @@ class Offer extends Model
         'price',
     ];
 
+
+            /**
+     * The database validation
+     */
+
+    public function validate(Request $request)
+    {
+ 
+        $request->validate([
+ 
+            'price' => 'required',
+ 
+        ]);
+    }
+
     /**
      * The database relations
      */

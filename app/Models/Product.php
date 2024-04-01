@@ -36,6 +36,26 @@ class Product extends Model
 
     ];
 
+        /**
+     * The database validation
+     */
+
+    public function validate(Request $request)
+    {
+
+        $request->validate([
+
+            'name' => 'required',
+
+            'description' => 'required',
+
+            'price' => 'required',
+            
+            'category' => 'required',
+
+        ]);
+    }
+
     /**
      * The database relations
      */

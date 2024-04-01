@@ -25,6 +25,10 @@ class Auction extends Model
      */
     public $timestamps = true;
 
+
+    /**
+     * The database validation
+     */
     protected $fillable = ['name', 'limitDate', 'basePrice'];
 
     public function validate(Request $request)
