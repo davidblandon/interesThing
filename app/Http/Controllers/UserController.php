@@ -26,27 +26,22 @@ class UserController extends Controller
 
     public function admin(): View
     {
-      $user = Auth::user();
+        $user = Auth::user();
 
-      if ($user->getAdmin()){
+        if ($user->getAdmin()) {
 
-         $products = Product::all();
+            $products = Product::all();
+            $auctions = Auction::all();
+            $viewData['title'] = 'Pofile Page - Online Store';
+            $viewData['products'] = $products;
+            $viewData['auctions'] = $auctions;
 
-         $auctions = Auction::all();
- 
-         $viewData['title'] = 'Pofile Page - Online Store';
- 
-         $viewData['products'] = $products;
- 
-         $viewData['auctions'] = $auctions;
- 
-         return view('admin')->with('viewData', $viewData);
-      }
-      else
-      {
-         return redirect()->route('home.index');
-      }
-
+            return view('admin')->with('viewData', $viewData);
+        } 
+        else 
+        {
+            return redirect()->route('home.index');
+        }
 
     }
 
@@ -54,17 +49,11 @@ class UserController extends Controller
     {
 
         $viewData = [];
-
         $user = Auth::user();
-
         $viewData['title'] = 'Pofile Page - Online Store';
-
         $viewData['subtitle'] = $user->getName().' - information';
-
         $viewData['user'] = $user;
-
         $viewData['products'] = $user->products();
-
         $viewData['auctions'] = $user->auctions();
 
         return view('user.profile')->with('viewData', $viewData);
@@ -73,7 +62,6 @@ class UserController extends Controller
     public function delete(string $id): RedirectResponse
     {
         $auction = User::findOrFail($id);
-
         $auction->delete();
 
         return redirect()->route('auction.list')->with('success', 'Auction deleted successfully');

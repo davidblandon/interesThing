@@ -24,7 +24,6 @@ class Order extends Model
         'total',
     ];
 
-
     /**
      * The database relations
      */

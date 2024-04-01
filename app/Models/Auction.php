@@ -25,7 +25,6 @@ class Auction extends Model
      */
     public $timestamps = true;
 
-
     /**
      * The database validation
      */
@@ -33,7 +32,6 @@ class Auction extends Model
 
     public function validate(Request $request)
     {
-
         $request->validate([
 
             'limitDate' => 'required',
@@ -41,15 +39,14 @@ class Auction extends Model
             'product' => 'required',
 
         ]);
-
     }
 
     /**
      * The database relations
      */
+
     public function aucter(): BelongsTo
     {
-
         return $this->belongsTo(User::class, 'aucter');
 
     }

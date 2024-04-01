@@ -36,10 +36,9 @@ class Product extends Model
 
     ];
 
-        /**
+    /**
      * The database validation
      */
-
     public function validate(Request $request)
     {
 
@@ -50,7 +49,7 @@ class Product extends Model
             'description' => 'required',
 
             'price' => 'required',
-            
+
             'category' => 'required',
 
         ]);

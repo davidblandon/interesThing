@@ -18,11 +18,8 @@ class AuctionController extends Controller
     public function list(): View
     {
         $viewData = [];
-
         $viewData['title'] = 'Auctions - Online Store';
-
         $viewData['subtitle'] = 'List of Auctions';
-
         $viewData['auctions'] = Auction::all();
 
         return view('auction.list')->with('viewData', $viewData);
@@ -33,13 +30,9 @@ class AuctionController extends Controller
     {
 
         $viewData = [];
-
         $user = Auth::user();
-
         $products = $user->products();
-
         $viewData['title'] = 'Create auction';
-
         $viewData['products'] = $products;
 
         return view('auction.create')->with('viewData', $viewData);
@@ -50,7 +43,6 @@ class AuctionController extends Controller
     {
 
         $user = Auth::user();
-
         Auction::validate($request);
 
         Auction::create([
@@ -67,8 +59,7 @@ class AuctionController extends Controller
 
         ]);
 
-        $product->setAuctioned(True);
-
+        $product->setAuctioned(true);
         Session::flash('success', 'DONE! auction created');
 
         return back();
@@ -78,11 +69,8 @@ class AuctionController extends Controller
     {
 
         $viewData = [];
-
         $auction = Auction::findOrFail($id);
-
         $viewData['title'] = $auction->getId().' - Online Store';
-
         $viewData['subtitle'] = $auction->getName().' - Auction information';
         $viewData['auction'] = $auction;
 
@@ -92,7 +80,6 @@ class AuctionController extends Controller
     public function delete(int $id): RedirectResponse
     {
         $auction = Auction::findOrFail($id);
-
         $auction->delete();
 
         return redirect()->route('auction.list')->with('success', 'Auction deleted successfully');
