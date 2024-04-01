@@ -11,29 +11,30 @@ use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Redirect;
 use Illuminate\Support\Facades\Session;
 use Illuminate\View\View;
+use Illuminate\Support\Facades\Auth;
 
 class ProductController extends Controller
 {
-    public function show(): View
+    public function list(): View
     {
         $viewData = [];
         $viewData['title'] = 'Products';
         $viewData['products'] = Product::all();
 
-        return view('product.show')->with('viewData', $viewData);
+        return view('product.list')->with('viewData', $viewData);
     }
 
-    public function detail(string $id): View
+    public function show(string $id): View
     {
         $viewData = [];
         $viewData['title'] = 'Products';
         $product = Product::findOrFail($id);
         $viewData['product'] = $product;
 
-        return view('product.detail')->with('viewData', $viewData);
+        return view('product.show')->with('viewData', $viewData);
     }
 
-    public function delete(string $id)
+    public function delete(string $id): RedirectResponse
     {
         Product::findOrFail($id)->delete();
 
@@ -44,25 +45,23 @@ class ProductController extends Controller
     {
         $viewData = [];
         $viewData['title'] = 'Create product';
-
+        $viewData['categories'] = ['Ropa y accesorios', 'Electrónicos', 'Hogar', 'Entretenimiento', 'Joyeria', 'Arte y antiguedad'];
         return view('product.create')->with('viewData', $viewData);
     }
 
-    public function save(Request $request)
+    public function save(Request $request): RedirectResponse
     {
-        $request->validate(Product::rules());
-        $auctioned = $request->has('auctioned') ? 1 : 0;
-        $sold = $request->has('sold') ? 1 : 0;
+        $user = Auth::user();
+        Product::validate($request);
         $photoPath = $request->file('photo')->store('photos', 'public');
 
         Product::create([
             'name' => $request->name,
             'description' => $request->description,
+            'seller' => $user,
             'photo' => $photoPath,
-            'sold' => $sold,
             'price' => $request->price,
             'category' => $request->category,
-            'auctioned' => $auctioned,
         ]);
 
         Session::flash('message', 'The product has been created succefully');
