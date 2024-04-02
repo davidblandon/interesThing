@@ -14,6 +14,7 @@ class User extends Authenticatable
     /**
      * USER ATTRIBUTES
      * $this->attributes['id'] - int - contains the user primary key (id)
+     * $this->attributes['name'] - string - contains the user's name
      * $this->attributes['email'] - string - contains the user's email
      * $this->attributes['password'] - string - contains the user's password account
      * $this->attributes['phone'] - string - contains the user's phone
@@ -63,7 +64,6 @@ class User extends Authenticatable
      * The database relations
      */
     public function orders(): HasMany
-
     {
 
         return $this->hasMany(Order::class);
@@ -71,7 +71,6 @@ class User extends Authenticatable
     }
 
     public function products(): HasMany
-
     {
 
         return $this->hasMany(Product::class);
@@ -79,7 +78,6 @@ class User extends Authenticatable
     }
 
     public function auctions(): HasMany
-
     {
 
         return $this->hasMany(Auction::class);
@@ -89,17 +87,28 @@ class User extends Authenticatable
     /**
      * getters and setters
      */
-
     public function getId(): int
-
     {
 
         return $this->attributes['id'];
 
     }
 
-    public function getEmail(): string
+    public function getName(): string
+    {
 
+        return $this->attributes['name'];
+
+    }
+
+    public function setName(string $name): void
+    {
+
+        $this->attributes['name'] = $name;
+
+    }
+
+    public function getEmail(): string
     {
 
         return $this->attributes['email'];
@@ -107,7 +116,6 @@ class User extends Authenticatable
     }
 
     public function setEmail(string $email): void
-
     {
 
         $this->attributes['email'] = $email;
@@ -115,7 +123,6 @@ class User extends Authenticatable
     }
 
     public function setPassword(string $password): void
-
     {
 
         $this->attributes['password'] = $password;
@@ -123,7 +130,6 @@ class User extends Authenticatable
     }
 
     public function getPhone(): string
-
     {
 
         return $this->attributes['phone'];
@@ -131,7 +137,6 @@ class User extends Authenticatable
     }
 
     public function setPhone(string $phone): void
-
     {
 
         $this->attributes['phone'] = $phone;
@@ -139,7 +144,6 @@ class User extends Authenticatable
     }
 
     public function getAdmin(): bool
-
     {
 
         return $this->attributes['admin'];
@@ -147,7 +151,6 @@ class User extends Authenticatable
     }
 
     public function setAdmin(bool $admin): void
-
     {
 
         $this->attributes['admin'] = $admin;
@@ -155,7 +158,6 @@ class User extends Authenticatable
     }
 
     public function getIdBank(): string
-
     {
 
         return $this->attributes['idBank'];
@@ -163,7 +165,6 @@ class User extends Authenticatable
     }
 
     public function setIdBank(string $idBank): void
-
     {
 
         $this->attributes['idBank'] = $idBank;
@@ -171,7 +172,6 @@ class User extends Authenticatable
     }
 
     public function getCreatedAt(): Carbon
-
     {
 
         return $this->attributes['created_at'];
@@ -179,7 +179,6 @@ class User extends Authenticatable
     }
 
     public function getUpdatedAt(): Carbon
-
     {
 
         return $this->attributes['updated_at'];
@@ -187,7 +186,6 @@ class User extends Authenticatable
     }
 
     public function setUpdatedAt(Carbon $updatedAt): void
-    
     {
 
         $this->attributes['updated_at'] = $updatedAt;

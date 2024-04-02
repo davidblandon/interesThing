@@ -2,6 +2,7 @@
 
 namespace App\Http\Controllers;
 
+use App\Models\Auction;
 use App\Models\Offer;
 use Illuminate\Http\Request;
 use Illuminate\View\View;
@@ -9,25 +10,15 @@ use Illuminate\Support\Facades\Auth;
 
 class offerController extends Controller
 {
-    public function list(): View
+    public function list(string $id): View
     {
+        $auction = findOrFail($id);
         $viewData = [];
         $viewData['title'] = 'Offers';
         $viewData['subtitle'] = 'List of offers';
-        $viewData['Offers'] = Offer::all();
+        $viewData['Offers'] = $auction -> offers();
 
         return view('offer.index')->with('viewData', $viewData);
-    }
-
-    public function show(string $id): View
-    {
-        $viewData = [];
-        $offer = Offer::findOrFail($id);
-        $viewData['title'] = $offer['name'].' - Online Store';
-        $viewData['subtitle'] = $offer['name'].' - Product information';
-        $viewData['offer'] = $offer;
-
-        return view('offer.show')->with('viewData', $viewData);
     }
 
     public function create(): View
@@ -57,12 +48,5 @@ class offerController extends Controller
         return back()->with('Offer saved');
     }
 
-    public function delete(int $id): RedirectResponse
-    {
-        $offer = Offer::findOrFail($id);
-
-        $offer -> delete();
-        return redirect() -> route('offer.list')->with('success', 'offer deleted succesfully');
-    }
 }
 

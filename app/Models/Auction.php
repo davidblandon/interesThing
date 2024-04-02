@@ -20,40 +20,38 @@ class Auction extends Model
      * $this->attributes['updated_at'] - timestamps - contains the auction last update day
      * $this->aucter - User - refers to the user that is asociated with the auction
      * $this->product - Product - refers to the product that is asociated with the auction
-     * $this->offers - offer[] - refers to the offers that have been made for the aucti
+     * $this->offers - Offer[] - refers to the offers that have been made for the auction
+     * $this->maxOffer - Offer - refers to the offer taht is currently wining. The maximum
      */
     public $timestamps = true;
 
+    /**
+     * The database validation
+     */
     protected $fillable = ['name', 'limitDate', 'basePrice'];
 
     public function validate(Request $request)
     {
-
         $request->validate([
-
-            'name' => 'required',
 
             'limitDate' => 'required',
 
-            'basePrice' => 'required',
+            'product' => 'required',
 
         ]);
-
     }
 
     /**
      * The database relations
      */
+
     public function aucter(): BelongsTo
-
     {
-
         return $this->belongsTo(User::class, 'aucter');
 
     }
 
     public function product(): BelongsTo
-
     {
 
         return $this->belongsTo(Product::class, 'aucter');
@@ -61,11 +59,10 @@ class Auction extends Model
     }
 
     public function offers(): HasMany
-
     {
 
         return $this->hasMany(Offer::class);
-        
+
     }
 
     /**
@@ -146,5 +143,21 @@ class Auction extends Model
 
         $this->attributes['updated_at'] = $updatedAt;
 
+    }
+
+    public function maxOffer()
+    {
+
+        $offers = $this->offers;
+
+        if ($offers->isEmpty()) {
+            return null;
+        }
+
+        $sortedOffers = $offers->sortByDesc('price');
+
+        $maxOffer = $sortedOffers->first();
+
+        return $maxOffer;
     }
 }

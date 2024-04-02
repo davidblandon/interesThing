@@ -40,23 +40,19 @@ class Order extends Model
     /**
      * getters and setters
      */
-
     public function getId(): int
-
     {
         return $this->attributes['id'];
 
     }
 
     public function getTotal(): int
-
     {
         return $this->attributes['total'];
 
     }
 
     public function setTotal(int $total): void
-
     {
         $this->attributes['total'] = $total;
 
