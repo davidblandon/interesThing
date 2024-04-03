@@ -44,7 +44,7 @@ class ProductController extends Controller
     {
         $viewData = [];
         $viewData['title'] = 'Create product';
-        $viewData['categories'] = ['Ropa y accesorios', 'Electrónicos', 'Hogar', 'Entretenimiento', 'Joyeria', 'Arte y antiguedad'];
+        $viewData['categories'] = ['Clothing and Accessories', 'Electronics', 'Home', 'Entertainment', 'Jewelry', 'Art and Antiques'];
 
         return view('product.create')->with('viewData', $viewData);
     }

@@ -7,6 +7,7 @@
 namespace App\Models;
 
 use Illuminate\Database\Eloquent\Model;
+use Illuminate\Http\Request;
 
 class Auction extends Model
 {
@@ -138,7 +139,7 @@ class Auction extends Model
 
     }
 
-    public function setUpdatedAt(Carbon $updatedAt): void
+    public function setUpdatedAt($updatedAt): void
     {
 
         $this->attributes['updated_at'] = $updatedAt;

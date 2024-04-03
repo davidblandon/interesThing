@@ -7,6 +7,7 @@
 namespace App\Models;
 
 use Illuminate\Database\Eloquent\Model;
+use Illuminate\Http\Request;
 
 class Product extends Model
 {
@@ -39,7 +40,7 @@ class Product extends Model
     /**
      * The database validation
      */
-    public function validate(Request $request)
+    public static function validate(Request $request)
     {
 
         $request->validate([
@@ -173,6 +174,13 @@ class Product extends Model
 
     }
 
+    public function setCreatedAt($createdAt): void
+    {
+
+        $this->attributes['created_at'] = $createdAt;
+
+    }
+
     public function getUpdatedAt(): Carbon
     {
 
@@ -180,7 +188,7 @@ class Product extends Model
 
     }
 
-    public function setUpdatedAt(Carbon $updatedAt): void
+    public function setUpdatedAt($updatedAt): void
     {
 
         $this->attributes['updated_at'] = $updatedAt;
