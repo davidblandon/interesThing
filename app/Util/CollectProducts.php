@@ -1,12 +1,14 @@
 <?php
 
+namespace App\Util;
 use App\Interfaces\Collect;
 use App\Models\Product;
 use Illuminate\Http\Request;
 
+
 class CollectProducts implements Collect
 {
-    public function collectProducts(Request $request): array
+    public function collect(Request $request): array
     {
 
         $products = Product::All();

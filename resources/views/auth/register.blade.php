@@ -26,6 +26,22 @@
                         </div>
 
                         <div class="row mb-3">
+                            <label for="phone" class="col-md-4 col-form-label text-md-end">{{ 'Phone' }}</label>
+
+                            <div class="col-md-6">
+                                <input id="phone" type="text" class="form-control" name="phone" value="{{ old('phone') }}" required autocomplete="phone" autofocus>
+                            </div>
+                        </div>
+
+                        <div class="row mb-3">
+                            <label for="idBank" class="col-md-4 col-form-label text-md-end">{{ 'idBank' }}</label>
+
+                            <div class="col-md-6">
+                                <input id="idBank" type="text" class="form-control" name="idBank" value="{{ old('idBank') }}" required autocomplete="phone" autofocus>
+                            </div>
+                        </div>
+
+                        <div class="row mb-3">
                             <label for="email" class="col-md-4 col-form-label text-md-end">{{ __('Email Address') }}</label>
 
                             <div class="col-md-6">

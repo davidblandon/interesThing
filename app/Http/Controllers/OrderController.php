@@ -7,6 +7,7 @@
 namespace App\Http\Controllers;
 
 use App\Models\Order;
+use App\Interfaces\Collect;
 use App\Models\Product;
 use App\Models\User;
 use Illuminate\Http\RedirectResponse;

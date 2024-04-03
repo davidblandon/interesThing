@@ -54,7 +54,7 @@ Route::get('/auctions/{id}', 'App\Http\Controllers\AuctionController@show')->nam
 
 Route::delete('/auctions/{id}', 'App\Http\Controllers\AuctionController@delete')->name('auction.delete');
 
-Route::get('/user', 'App\Http\Controllers\UserController@profile')->name('user.profile');
+Route::get('/user/profile', 'App\Http\Controllers\UserController@profile')->name('user.profile');
 
 Route::delete('/user/{id}', 'App\Http\Controllers\UserController@delete')->name('user.delete');
 

@@ -5,9 +5,11 @@
  */
 
 namespace App\Models;
-
 use Illuminate\Database\Eloquent\Model;
+use Illuminate\Database\Eloquent\Relations\BelongsTo;
+use Illuminate\Database\Eloquent\Relations\hasOne;
 use Illuminate\Http\Request;
+
 
 class Product extends Model
 {
@@ -34,6 +36,7 @@ class Product extends Model
         'sold',
         'category',
         'auctioned',
+        'seller'
 
     ];
 
@@ -52,6 +55,8 @@ class Product extends Model
             'price' => 'required',
 
             'category' => 'required',
+
+            'photo' => 'required',
 
         ]);
     }
@@ -73,6 +78,13 @@ class Product extends Model
 
     }
 
+    public function auction(): hasOne
+    {
+
+        return $this->hasOne(Auct::class);
+
+    }
+
     /**
      * getters and setters
      */
@@ -80,6 +92,20 @@ class Product extends Model
     {
 
         return $this->attributes['id'];
+
+    }
+
+    public function getName(): string
+    {
+
+        return $this->attributes['name'];
+
+    }
+
+    public function setName(string $name): void
+    {
+
+        $this->attributes['name'] = $name;
 
     }
 

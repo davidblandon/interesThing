@@ -8,7 +8,7 @@ use Illuminate\Support\ServiceProvider;
 
 class CollectServiceProvider extends ServiceProvider
 {
-    public function getProductsToBuy(): void
+    public function register(): void
     {
 
         $this->app->bind(Collect::class, function () {

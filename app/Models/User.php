@@ -8,6 +8,7 @@ namespace App\Models;
 
 // use Illuminate\Contracts\Auth\MustVerifyEmail;
 use Illuminate\Foundation\Auth\User as Authenticatable;
+use Illuminate\Database\Eloquent\Relations\HasMany;
 
 class User extends Authenticatable
 {
@@ -73,7 +74,7 @@ class User extends Authenticatable
     public function products(): HasMany
     {
 
-        return $this->hasMany(Product::class);
+        return $this->hasMany(Product::class, 'seller');
 
     }
 
@@ -185,7 +186,7 @@ class User extends Authenticatable
 
     }
 
-    public function setUpdatedAt(Carbon $updatedAt): void
+    public function setUpdatedAt($updatedAt): void
     {
 
         $this->attributes['updated_at'] = $updatedAt;

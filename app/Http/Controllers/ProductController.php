@@ -6,11 +6,13 @@
 
 namespace App\Http\Controllers;
 use App\Models\Product;
+use App\Models\User;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Redirect;
 use Illuminate\Support\Facades\Session;
 use Illuminate\View\View;
 use Illuminate\Support\Facades\Auth;
+use Illuminate\Http\RedirectResponse;
 
 class ProductController extends Controller
 {
@@ -18,7 +20,7 @@ class ProductController extends Controller
     {
         $viewData = [];
         $viewData['title'] = 'Products';
-        $viewData['products'] = Product::all();
+        $viewData['products'] = Product::where('auctioned', false)->get();
 
         return view('product.list')->with('viewData', $viewData);
     }
@@ -29,6 +31,7 @@ class ProductController extends Controller
         $viewData['title'] = 'Products';
         $product = Product::findOrFail($id);
         $viewData['product'] = $product;
+        $viewData['seller'] = User::findOrFail($product->seller)->getName();
 
         return view('product.show')->with('viewData', $viewData);
     }
@@ -58,7 +61,7 @@ class ProductController extends Controller
         Product::create([
             'name' => $request->name,
             'description' => $request->description,
-            'seller' => $user,
+            'seller' => $user->getId(),
             'photo' => $photoPath,
             'price' => $request->price,
             'category' => $request->category,

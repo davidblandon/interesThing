@@ -7,6 +7,8 @@
 namespace App\Http\Controllers;
 
 use App\Models\Auction;
+use App\Models\Product;
+use App\Models\User;
 use Illuminate\Http\RedirectResponse;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
@@ -21,7 +23,8 @@ class AuctionController extends Controller
         $viewData['title'] = 'Auctions - Online Store';
         $viewData['subtitle'] = 'List of Auctions';
         $viewData['auctions'] = Auction::all();
-
+        $viewData['products'] = Product::where('auctioned', true)->get();
+        
         return view('auction.list')->with('viewData', $viewData);
 
     }
@@ -31,9 +34,10 @@ class AuctionController extends Controller
 
         $viewData = [];
         $user = Auth::user();
-        $products = $user->products();
+        $products = $user->products;
         $viewData['title'] = 'Create auction';
         $viewData['products'] = $products;
+        
 
         return view('auction.create')->with('viewData', $viewData);
 
@@ -41,28 +45,29 @@ class AuctionController extends Controller
 
     public function save(Request $request): RedirectResponse
     {
-
         $user = Auth::user();
         Auction::validate($request);
 
         Auction::create([
 
-            'name' => $request->product->getName(),
+            'name' => Product::findOrFail($request->product)->getName(),
 
             'limitDate' => $request->limitDate,
 
-            'basePrice' => $request->product->getPrice(),
+            'basePrice' => Product::findOrFail($request->product)->getPrice(),
 
             'aucter' => $user->getId(),
 
-            'product' => $product->getId(),
+            'product' => $request->product,
 
         ]);
 
-        $product->setAuctioned(true);
+        $product = Product::findOrFail($request->product);
+        $product->setAuctioned(True);
+        $product->save();
         Session::flash('success', 'DONE! auction created');
 
-        return back();
+    return back();
     }
 
     public function show(int $id): View
@@ -73,6 +78,9 @@ class AuctionController extends Controller
         $viewData['title'] = $auction->getId().' - Online Store';
         $viewData['subtitle'] = $auction->getName().' - Auction information';
         $viewData['auction'] = $auction;
+        $product = Product::findOrFail($auction->product);
+        $viewData['product'] = $product;
+        $viewData['seller'] = User::findOrFail($product->seller)->getName();
 
         return view('auction.show')->with('viewData', $viewData);
     }

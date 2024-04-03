@@ -28,13 +28,13 @@ class Offer extends Model
     /**
      * The database validation
      */
-    public function validate(Request $request)
+    public static function validate(Request $request)
     {
 
         $request->validate([
 
             'price' => 'required',
-
+    
         ]);
     }
 
@@ -87,7 +87,7 @@ class Offer extends Model
 
     }
 
-    public function setUpdatedAt(Carbon $updatedAt): void
+    public function setUpdatedAt($updatedAt): void
     {
 
         $this->attributes['updated_at'] = $updatedAt;

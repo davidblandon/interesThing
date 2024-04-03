@@ -17,11 +17,10 @@ class CartController extends Controller
     {
 
         $collectInterface = app(Collect::class);
-        $cartProducts = $collectInterface->collectProducts($request);
+        $cartProducts = $collectInterface->collect($request);
         $viewData = [];
         $viewData['title'] = 'Cart - Online Store';
         $viewData['subtitle'] = 'Shopping Cart';
-        $viewData['products'] = $products;
         $viewData['cartProducts'] = $cartProducts;
 
         return view('cart.index')->with('viewData', $viewData);

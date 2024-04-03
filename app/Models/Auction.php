@@ -8,6 +8,10 @@ namespace App\Models;
 
 use Illuminate\Database\Eloquent\Model;
 use Illuminate\Http\Request;
+use Illuminate\Database\Eloquent\Relations\BelongsTo;
+use Illuminate\Database\Eloquent\Relations\HasMany;
+
+
 
 class Auction extends Model
 {
@@ -29,9 +33,9 @@ class Auction extends Model
     /**
      * The database validation
      */
-    protected $fillable = ['name', 'limitDate', 'basePrice'];
+    protected $fillable = ['name', 'limitDate', 'basePrice', 'aucter', 'product'];
 
-    public function validate(Request $request)
+    public static function validate(Request $request)
     {
         $request->validate([
 
@@ -55,14 +59,14 @@ class Auction extends Model
     public function product(): BelongsTo
     {
 
-        return $this->belongsTo(Product::class, 'aucter');
+        return $this->belongsTo(Product::class, 'product');
 
     }
 
     public function offers(): HasMany
     {
 
-        return $this->hasMany(Offer::class);
+        return $this->hasMany(Offer::class, 'auction');
 
     }
 
@@ -125,7 +129,7 @@ class Auction extends Model
 
     }
 
-    public function setCreatedAt(Carbon $createdAt): void
+    public function setCreatedAt($createdAt): void
     {
 
         $this->attributes['created_at'] = $createdAt;

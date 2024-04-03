@@ -35,15 +35,11 @@ class OfferController extends Controller
 
         Offer::validate($request);
 
-        Offer::create($request->only([
-
-            'price' => $request -> price,
-
-            'user' => $user -> getId(),
-
-            'auction' => $request -> auction,
-    
-    ]));
+        Offer::create([
+            'price' => $request->price,
+            'user' => $user->getId(),
+            'auction' => $request->auction,
+        ]);
 
         return back()->with('Offer saved');
     }
