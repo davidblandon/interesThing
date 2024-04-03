@@ -66,9 +66,7 @@ Route::get('/cart/add/{id}', 'App\Http\Controllers\CartController@add')->name('c
 
 Route::get('/cart/removeAll/', 'App\Http\Controllers\CartController@removeAll')->name('cart.removeAll');
 
-Route::get('/orders', 'App\Http\Controllers\OrderController@removeAll')->name('orders.list');
-
-Route::get('/orders/{id}', 'App\Http\Controllers\OrderController@removeAll')->name('orders.show');
+Route::post('/orders/save', 'App\Http\Controllers\OrderController@save')->name('orders.save');
 
 Route::get('/orders/PDF/{id}', 'ProductController@generatePDF')->name('order.pdf');
 

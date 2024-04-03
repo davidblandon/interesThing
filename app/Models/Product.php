@@ -221,7 +221,7 @@ class Product extends Model
 
     }
 
-    public function setOrder(Order $orderId)
+    public function setOrder(int $orderId)
     {
 
         $this->attributes['order'] = $orderId;

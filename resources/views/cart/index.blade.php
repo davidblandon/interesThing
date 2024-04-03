@@ -14,7 +14,10 @@
     </ul>
     </div>
     <div class="card-body">
-    <a href="{{ route('order.save') }}">Buy all the products</a>
+    <form action="{{ route('orders.save') }}" method="post">
+    @csrf
+    <button type="submit">Buy all products</button>
+</form>
     <a href="{{ route('cart.removeAll') }}">Remove all products from cart</a>
   </div>
 </div>

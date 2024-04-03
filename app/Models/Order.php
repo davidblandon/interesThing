@@ -22,6 +22,8 @@ class Order extends Model
     protected $fillable = [
 
         'total',
+
+        'user',
     ];
 
     /**
@@ -58,21 +60,21 @@ class Order extends Model
 
     }
 
-    public function getCreatedAt(): Carbon
+    public function getCreatedAt()
     {
 
         return $this->attributes['created_at'];
 
     }
 
-    public function getUpdatedAt(): Carbon
+    public function getUpdatedAt()
     {
 
         return $this->attributes['updated_at'];
 
     }
 
-    public function setUpdatedAt(Carbon $updatedAt): void
+    public function setUpdatedAt($updatedAt): void
     {
 
         $this->attributes['updated_at'] = $updatedAt;

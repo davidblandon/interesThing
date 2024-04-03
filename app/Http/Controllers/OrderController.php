@@ -15,6 +15,7 @@ use Illuminate\Http\Request;
 use Illuminate\Http\Response;
 use Illuminate\Support\Facades\Auth;
 use Illuminate\View\View;
+use Illuminate\Support\Facades\Session;
 use PDF;
 
 class OrderController extends Controller
@@ -33,10 +34,10 @@ class OrderController extends Controller
     /**
      * This method associates the new created order with its products
      */
-    public function associateProducts(array $products): void
+    public function associateProducts(array $products, Order $order): void
     {
         foreach ($products as $product) {
-            $product->setOrder($this->getId());
+            $product->setOrder($order->getId());
             $product->setSold(true);
         }
 
@@ -46,7 +47,7 @@ class OrderController extends Controller
     {
         $user = Auth::user();
         $collectInterface = app(Collect::class);
-        $cartProducts = $collectInterface->collectProducts($request);
+        $cartProducts = $collectInterface->collect($request);
         $sum = 0;
 
         foreach ($cartProducts as $product) {
@@ -61,7 +62,12 @@ class OrderController extends Controller
 
         ]);
 
-        $order->associateProducts($cartProducts);
+        $this->associateProducts($cartProducts,$order);
+
+        Session::flash('message', 'The order has been created succefully');
+
+
+        return redirect()->route('home.index');
 
     }
 

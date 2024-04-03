@@ -8,6 +8,7 @@ namespace App\Http\Controllers;
 
 use App\Models\Auction;
 use App\Models\Product;
+use App\Models\Order;
 use App\Models\User;
 use Illuminate\Http\RedirectResponse;
 use Illuminate\Support\Facades\Auth;
@@ -47,15 +48,40 @@ class UserController extends Controller
 
     public function profile(): View
     {
-
-        $viewData = [];
         $user = Auth::user();
+        $productsId = $user->products();
+        $auctionsId = $user->auctions();
+        $ordersId = $user->orders();
+        $products = [];
+        $auctions = [];
+        $orders = [];
+
+        foreach($ordersId as $order){
+            $new = Order::findOrFail($order);
+            $products[] = $new;
+
+        }
+
+        foreach($auctionsId as $auction){
+            $new = Auction::findOrFail($auction);
+            $auctions[] = $new;
+
+        }
+
+        foreach($productsId as $product){
+            $new = Product::findOrFail($product);
+            $products[] = $new;
+
+        }
+        
+        $viewData = [];
         $viewData['title'] = 'Pofile Page - Online Store';
         $viewData['subtitle'] = $user->getName().' - information';
         $viewData['user'] = $user;
-        $viewData['products'] = $user->products();
-        $viewData['auctions'] = $user->auctions();
-
+        $viewData['products'] = $products;
+        $viewData['auctions'] = $auctions;
+        $viewData['orders'] = $orders;
+        echo $orders;
         return view('user.profile')->with('viewData', $viewData);
     }
 
