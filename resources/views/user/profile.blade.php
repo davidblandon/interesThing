@@ -26,7 +26,7 @@
                     <li class="list-group-item">Price: {{ $product->getPrice() }}</li>
                 </ul>
                 <div class="card-body">
-                    <a href="{{ route('product.detail', ['id' => $product->getId()]) }}">See details</a>
+                    <a href="{{ route('product.show', ['id' => $product->getId()]) }}">See details</a>
                 </div>
             </div>
             @endforeach
@@ -34,18 +34,20 @@
         <div class="col-md-6">
             <h2>All Auctions</h2>
             @foreach($viewData["auctions"] as $auction)
+            @foreach($viewData["productsAuctioned"] as $product)
             <div class="card mb-3" style="width: 12rem;">
-                <img src="{{ asset('storage/' . $auction->product()->getPhoto()) }}" class="card-img-top" alt="...">
+                <img src="{{ asset('storage/' . $product->getPhoto()) }}" class="card-img-top" alt="...">
                 <div class="card-body">
-                    <h5 class="card-title">{{ $auction->product()->getName() }}</h5>
+                    <h5 class="card-title">{{ $product->getName() }}</h5>
                 </div>
                 <ul class="list-group list-group-flush">
                     <li class="list-group-item">Price: {{ $auction->maxOffer() }}</li>
                 </ul>
                 <div class="card-body">
-                    <a href="{{ route('auction.detail', ['id' => $auction->getId()]) }}">See details</a>
+                    <a href="{{ route('auction.show', ['id' => $auction->getId()]) }}">See details</a>
                 </div>
             </div>
+            @endforeach
             @endforeach
         </div>
         <div class="col-md-6">

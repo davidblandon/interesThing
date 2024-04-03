@@ -40,7 +40,7 @@ class ProductController extends Controller
     {
         Product::findOrFail($id)->delete();
 
-        return Redirect::route('product.show');
+        return Redirect::route('user.admin');
     }
 
     public function create(): View

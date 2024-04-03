@@ -23,6 +23,8 @@ class Offer extends Model
     protected $fillable = [
 
         'price',
+        'auction',
+        'user'
     ];
 
     /**

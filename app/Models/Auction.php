@@ -111,7 +111,7 @@ class Auction extends Model
     public function getBasePrice(): int
     {
 
-        return $this->attributes['basePrice'];
+        return $this->attributes['Baseprice'];
 
     }
 
@@ -152,16 +152,15 @@ class Auction extends Model
 
     public function maxOffer()
     {
-
-        $offers = $this->offers;
-
+        
+        
+        $offers = Offer::where('auction', $this->getId())->get();
         if ($offers->isEmpty()) {
-            return null;
+            return $this->getBasePrice();
         }
-
         $sortedOffers = $offers->sortByDesc('price');
 
-        $maxOffer = $sortedOffers->first();
+        $maxOffer = $sortedOffers->first()->getPrice();
 
         return $maxOffer;
     }

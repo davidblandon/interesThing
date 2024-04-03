@@ -40,7 +40,7 @@ use Illuminate\Support\Facades\Route;
 
 Route::get('/', 'App\Http\Controllers\UserController@index')->name('home.index');
 
-Route::get('/admin', 'App\Http\Controllers\UserController@admin')->name('admin');
+Route::get('/admin', 'App\Http\Controllers\UserController@admin')->name('user.admin');
 
 Route::get('/auctions/create', 'App\Http\Controllers\AuctionController@create')->name('auction.create');
 

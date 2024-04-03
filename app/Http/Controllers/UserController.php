@@ -34,14 +34,14 @@ class UserController extends Controller
             $products = Product::all();
             $auctions = Auction::all();
             $viewData['title'] = 'Pofile Page - Online Store';
-            $viewData['products'] = $products;
-            $viewData['auctions'] = $auctions;
+            $viewData['products'] = Product::all();
+            $viewData['auctions'] = Product::where('auctioned', True)->get();
 
-            return view('admin')->with('viewData', $viewData);
+            return view('user.admin')->with('viewData', $viewData);
         } 
         else 
         {
-            return redirect()->route('home.index');
+            return view('home.index');
         }
 
     }
@@ -78,10 +78,10 @@ class UserController extends Controller
         $viewData['title'] = 'Pofile Page - Online Store';
         $viewData['subtitle'] = $user->getName().' - information';
         $viewData['user'] = $user;
-        $viewData['products'] = $products;
-        $viewData['auctions'] = $auctions;
-        $viewData['orders'] = $orders;
-        echo $orders;
+        $viewData['products'] = Product::where('seller', $user->getId())->get();
+        $viewData['auctions'] = Auction::where('aucter', $user->getId())->get();
+        $viewData['productsAuctioned'] = Product::where('auctioned', true)->where('seller', $user->getId())->get();
+
         return view('user.profile')->with('viewData', $viewData);
     }
 

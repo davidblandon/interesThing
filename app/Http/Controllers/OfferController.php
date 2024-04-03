@@ -7,6 +7,7 @@ use App\Models\Offer;
 use Illuminate\Http\Request;
 use Illuminate\View\View;
 use Illuminate\Support\Facades\Auth;
+use Illuminate\Http\RedirectResponse;
 
 class OfferController extends Controller
 {

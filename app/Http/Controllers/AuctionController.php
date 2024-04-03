@@ -88,9 +88,11 @@ class AuctionController extends Controller
     public function delete(int $id): RedirectResponse
     {
         $auction = Auction::findOrFail($id);
+        $product = Product::findOrFail($auction->product);
+        $product->delete();
         $auction->delete();
 
-        return redirect()->route('auction.list')->with('success', 'Auction deleted successfully');
+        return Redirect::route('user.admin');
     }
 
     public function name(Request $request): View
