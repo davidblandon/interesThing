@@ -49,25 +49,5 @@
             </div>
             @endforeach
             @endforeach
-        </div>
-        <div class="col-md-6">
-            <h2>All Orders</h2>
-            @foreach($viewData["orders"] as $order)
-            <div class="card mb-3" style="width: 12rem;">
-                <img src="{{ asset('storage/' . $order->product()->getPhoto()) }}" class="card-img-top" alt="...">
-                <div class="card-body">
-                    <h5 class="card-title">{{ $order->getId() }}</h5>
-                </div>
-                <ul class="list-group list-group-flush">
-                    <li class="list-group-item">Price: {{ $order->getTotal() }}</li>
-                </ul>
-                <div class="card-body">
-                    <a href="{{ route('order.detail', ['id' => $order->getId()]) }}">See details</a>
-                </div>
-            </div>
-            @endforeach
-        </div>
-    </div>
 </div>
-
 @endsection
