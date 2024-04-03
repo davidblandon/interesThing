@@ -84,4 +84,22 @@ class AuctionController extends Controller
 
         return redirect()->route('auction.list')->with('success', 'Auction deleted successfully');
     }
+
+    public function name(Request $request): View
+    {
+        
+        $viewData = [];
+
+        $request->validate([
+            'name' => 'required'
+        ]);
+
+        $searchTerm = $request->input('name');
+        $auctions = Auction::where('name', 'like', '%' . $searchTerm . '%')->get();
+        $viewData['auctions'] = $auctions;
+
+      return view('auction.name')->with('viewData', $viewData);
+    }
+
+    
 }

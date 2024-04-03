@@ -34,6 +34,7 @@ class LoginController extends Controller
      */
     public function __construct()
     {
+        // Aplica el middleware 'guest' solo al método 'logout'
         $this->middleware('guest')->except('logout');
     }
 }

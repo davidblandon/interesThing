@@ -8,7 +8,7 @@ use Illuminate\Http\Request;
 use Illuminate\View\View;
 use Illuminate\Support\Facades\Auth;
 
-class offerController extends Controller
+class OfferController extends Controller
 {
     public function list(string $id): View
     {

@@ -7,10 +7,14 @@
 namespace App\Http\Controllers;
 
 use App\Models\Order;
+use App\Models\Product;
+use App\Models\User;
 use Illuminate\Http\RedirectResponse;
 use Illuminate\Http\Request;
+use Illuminate\Http\Response;
 use Illuminate\Support\Facades\Auth;
 use Illuminate\View\View;
+use PDF;
 
 class OrderController extends Controller
 {
@@ -71,4 +75,37 @@ class OrderController extends Controller
 
         return view('orders.show')->with('viewData', $viewData);
     }
+
+    public function generatePDF(int $id): Response
+    {
+        
+        $order = Order::findOrFail($id);
+        $user = Auth::user();
+
+        $orderData = [
+            'User' => $user->getName(),
+            'order ID' => $order->getId(),
+
+        ];
+
+        $products = $order->products();
+        $formattedProducts = [];
+
+        foreach ($products as $product) {
+            $formattedProducts[] = [
+                'name' => $product->getName(),
+
+                'price' => '$' .$product->getPrice(),
+            ];
+        }
+
+        $total = $order->getTotal();
+
+        $pdf = PDF::loadView('order', compact('orderData', 'formattedProducts', 'total'));
+
+        return $pdf->download('order.pdf');
+    }
+
+    
+
 }

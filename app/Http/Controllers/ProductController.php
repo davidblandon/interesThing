@@ -66,6 +66,44 @@ class ProductController extends Controller
 
         Session::flash('message', 'The product has been created succefully');
 
-        return back();
+    return back();
     }
+
+
+    public function category(Request $request): View
+    {
+
+        $viewData = [];
+        $category = $request->input('category');
+
+        if ($categoryId) {
+            $products = Product::where('category', $category)->get();
+        } else {
+            $products = null;
+        }
+            
+ 
+        $viewData['products'] = $products;
+        return view('product.category')->with('viewData', $viewData);
+        }
+
+
+    public function name(Request $request): View
+    {
+        
+        $viewData = [];
+
+        $request->validate([
+            'name' => 'required'
+        ]);
+
+        $searchTerm = $request->input('name');
+        $products = Product::where('name', 'like', '%' . $searchTerm . '%')->get();
+        $viewData['products'] = $products;
+
+      return view('product.name')->with('viewData', $viewData);
+    }
+
 }
+
+

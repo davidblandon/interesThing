@@ -16,6 +16,7 @@ use Illuminate\Support\Facades\Route;
 | '/auctions/create' the route for creating new auctions
 | '/auctions/save' the post route, for the insertion on database
 | '/auctions'  is the list of all the auctions
+| '/auctions/name'  is the list of all the auctions searched by a name
 | '/auctions/{id}' is the specific information of an auction
 | '/auctions/{id}' is the post url for deleting the insertions
 | '/user' is the profile page for users
@@ -32,6 +33,8 @@ use Illuminate\Support\Facades\Route;
 | '/products/save' the post route, for the insertion on database
 | '/products'  is the list of all the products
 | '/products/{id}' is the specific information of an auction
+| '/products/name'  is the list of all the prosucts searched by a name
+| '/products/category'  is the list of all the prosucts searched by a category
 | '/products/{id}' is the post url for deleting the insertions
 */
 
@@ -44,6 +47,8 @@ Route::get('/auctions/create', 'App\Http\Controllers\AuctionController@create')-
 Route::post('/auctions/save', 'App\Http\Controllers\AuctionController@save')->name('auction.save');
 
 Route::get('/auctions', 'App\Http\Controllers\AuctionController@list')->name('auction.list');
+
+Route::get('/auctions/name', 'App\Http\Controllers\ProductController@name')->name('auction.name');
 
 Route::get('/auctions/{id}', 'App\Http\Controllers\AuctionController@show')->name('auction.show');
 
@@ -65,6 +70,8 @@ Route::get('/orders', 'App\Http\Controllers\OrderController@removeAll')->name('o
 
 Route::get('/orders/{id}', 'App\Http\Controllers\OrderController@removeAll')->name('orders.show');
 
+Route::get('/orders/PDF/{id}', 'ProductController@generatePDF')->name('order.pdf');
+
 Route::get('/offers/{id}', 'App\Http\Controllers\OfferController@list')->name('offer.list');
 
 Route::get('/offers/create', 'App\Http\Controllers\OfferController@create')->name('offer.create');
@@ -79,4 +86,11 @@ Route::get('/products', 'App\Http\Controllers\ProductController@list')->name('pr
 
 Route::get('/products/{id}', 'App\Http\Controllers\ProductController@show')->name('product.show');
 
+Route::get('/products/name', 'App\Http\Controllers\ProductController@name')->name('product.name');
+
+Route::get('/products/category', 'App\Http\Controllers\ProductController@category')->name('product.category');
+
 Route::delete('/products/{id}', 'App\Http\Controllers\ProductController@delete')->name('product.delete');
+
+
+
