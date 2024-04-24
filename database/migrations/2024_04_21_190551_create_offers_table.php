@@ -1,4 +1,8 @@
+
 <?php
+/**
+ * Created by: Juan Martín Espitia Gonzalez
+ */
 
 use Illuminate\Database\Migrations\Migration;
 use Illuminate\Database\Schema\Blueprint;
@@ -15,9 +19,9 @@ return new class extends Migration
             $table->id();
             $table->integer('price');
             $table->unsignedBigInteger('auctionId')->nullable();
-            $table->foreign('auctionId')->references('id')->on('auctions');  
+            $table->foreign('auctionId')->references('id')->on('auctions');
             $table->unsignedBigInteger('userId')->nullable();
-            $table->foreign('userId')->references('id')->on('users');  
+            $table->foreign('userId')->references('id')->on('users');
             $table->timestamps();
         });
     }

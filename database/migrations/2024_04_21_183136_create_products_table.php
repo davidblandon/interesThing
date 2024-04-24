@@ -1,4 +1,7 @@
 <?php
+/**
+ * Created by: Juan Martín Espitia Gonzalez
+ */
 
 use Illuminate\Database\Migrations\Migration;
 use Illuminate\Database\Schema\Blueprint;
@@ -18,13 +21,13 @@ return new class extends Migration
             $table->integer('price');
             $table->string('photo');
             $table->string('category');
-            $table->boolean('auctioned')->default(false); 
+            $table->boolean('auctioned')->default(false);
             $table->unsignedBigInteger('buyerId')->nullable();
-            $table->foreign('buyerId')->references('id')->on('users');    
+            $table->foreign('buyerId')->references('id')->on('users');
             $table->unsignedBigInteger('sellerId');
             $table->foreign('sellerId')->references('id')->on('users');
             $table->unsignedBigInteger('orderId')->nullable();
-            $table->foreign('orderId')->references('id')->on('orders');        
+            $table->foreign('orderId')->references('id')->on('orders');
             $table->timestamps();
         });
     }

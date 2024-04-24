@@ -1,4 +1,7 @@
 <?php
+/**
+ * Created by: Juan Martín Espitia Gonzalez
+ */
 
 use Illuminate\Database\Migrations\Migration;
 use Illuminate\Database\Schema\Blueprint;
@@ -18,7 +21,7 @@ return new class extends Migration
             $table->timestamps();
             $table->boolean('active')->default(true);
             $table->unsignedBigInteger('productId')->nullable();
-            $table->foreign('productId')->references('id')->on('products');  
+            $table->foreign('productId')->references('id')->on('products');
 
         });
     }
