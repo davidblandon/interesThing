@@ -23,7 +23,7 @@ return new class extends Migration
             $table->string('category');
             $table->boolean('auctioned')->default(false);
             $table->unsignedBigInteger('buyerId')->nullable();
-            $table->foreign('buyerId')->references('id')->on('users');
+            $table->foreign('buyerId')->references('id')->on('users');    
             $table->unsignedBigInteger('sellerId');
             $table->foreign('sellerId')->references('id')->on('users');
             $table->unsignedBigInteger('orderId')->nullable();
