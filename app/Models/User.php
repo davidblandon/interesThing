@@ -22,8 +22,8 @@ class User extends Authenticatable
      * $this->attributes['balance'] - int - contains the User balance
      *  $this->orders - Order[] - contains the associated orders
      *  $this->offers - Offer[] - contains the associated offers
-     *  $this->productsSell - Product[] - contains the associated products that the user has selled or put in sell
-     *  $this->productsBuy - Product[] - contains the associated products that the user has buyed
+     *  $this->productsSelled - Product[] - contains the associated products that the user has selled or put in sell
+     *  $this->productsBuyed - Product[] - contains the associated products that the user has buyed
      */
 
     /**
@@ -79,14 +79,14 @@ class User extends Authenticatable
         return $this->offers;
     }
 
-    public function productsSell(): HasMany
+    public function productsSelled(): HasMany
     {
         return $this->hasMany(Product::class, 'sellerId');
     }
 
-    public function getProductsSell(): Collection
+    public function getProductsSelled(): Collection
     {
-        return $this->productsSell;
+        return $this->productsSelled;
     }
 
     public function productsBuyed(): HasMany
@@ -96,7 +96,7 @@ class User extends Authenticatable
 
     public function getProductsBuyed(): Collection
     {
-        return $this->productsBuy;
+        return $this->productsBuyed;
     }
 
     public function getId(): int
