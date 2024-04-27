@@ -35,6 +35,7 @@ class User extends Authenticatable
         'name',
         'email',
         'phone',
+        'password',
     ];
 
     /**
@@ -58,7 +59,6 @@ class User extends Authenticatable
         'password' => 'hashed',
     ];
 
-    /*
     public function orders(): HasMany
     {
         return $this->hasMany(Order::class);
@@ -78,7 +78,6 @@ class User extends Authenticatable
     {
         return $this->offers;
     }
-    */
 
     public function productsSell(): HasMany
     {

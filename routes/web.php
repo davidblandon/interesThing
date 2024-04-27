@@ -25,3 +25,7 @@ Route::get('/profile/products/onSale', 'App\Http\Controllers\UserController@show
 Route::get('/profile/auctions', 'App\Http\Controllers\UserController@showAuctions')->name('user.auctions');
 Route::get('/profile/offers', 'App\Http\Controllers\UserController@showOffers')->name('user.offers');
 Route::get('/profile/orders', 'App\Http\Controllers\UserController@showOrders')->name('user.orders');
+
+Auth::routes();
+
+Route::get('/', [App\Http\Controllers\HomeController::class, 'index'])->name('home');

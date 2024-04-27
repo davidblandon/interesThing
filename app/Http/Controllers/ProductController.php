@@ -1,5 +1,9 @@
 <?php
 
+/**
+ * Created by: David Blandón Román
+ */
+
 namespace App\Http\Controllers;
 
 use App\Models\Product;

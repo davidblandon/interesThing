@@ -1,5 +1,9 @@
 <?php
 
+/**
+ * Created by: David Blandón Román
+ */
+
 namespace App\Models;
 
 use Illuminate\Database\Eloquent\Model;
