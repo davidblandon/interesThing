@@ -5,9 +5,13 @@
  */
 
 namespace App\Models;
-
+use App\Models\User;
+use App\Models\Order;
+use App\Models\Auction;
+use Illuminate\Database\Eloquent\Relations\HasOne; 
 use Illuminate\Database\Eloquent\Model;
 use Illuminate\Http\Request;
+use Illuminate\Database\Eloquent\Relations\BelongsTo; 
 
 class Product extends Model
 {
@@ -43,9 +47,9 @@ class Product extends Model
         ]);
     }
 
-    public function buyer(): HasOne
+    public function buyer(): BelongsTo
     {
-        return $this->hasOne(User::class);
+        return $this->belongsTo(User::class, "buyerId");
     }
 
     public function getBuyer(): User
@@ -57,12 +61,12 @@ class Product extends Model
     {
         $this->buyer = $buyer;
     }
-
-    public function seller(): HasOne
+   
+    public function seller(): BelongsTo
     {
-        return $this->hasOne(User::class);
+        return $this->belongsTo(User::class, "sellerId");
     }
-
+   
     public function getSeller(): User
     {
         return $this->seller;
@@ -73,9 +77,9 @@ class Product extends Model
         $this->seller = $seller;
     }
 
-    public function order(): HasOne
+    public function order(): BelongsTo
     {
-        return $this->hasOne(Order::class);
+        return $this->belongsTo(Order::class);
     }
 
     public function getOrder(): Order
@@ -86,6 +90,11 @@ class Product extends Model
     public function setOrder(Order $order): void
     {
         $this->order = $order;
+    }
+
+    public function auction(): HasOne
+    {
+        return $this->hasOne(Auction::class); 
     }
 
     public function getId(): int
@@ -143,7 +152,7 @@ class Product extends Model
         return $this->attributes['auctioned'];
     }
 
-    public function setAuctioned($auctioned): void
+    public function setAuctioned(bool $auctioned): void
     {
         $this->attributes['auctioned'] = $auctioned;
     }

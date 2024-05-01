@@ -3,10 +3,12 @@
 namespace App\Models;
 
 // use Illuminate\Contracts\Auth\MustVerifyEmail;
-use app\Models\Product;
+use App\Models\Product;
 use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Foundation\Auth\User as Authenticatable;
 use Illuminate\Notifications\Notifiable;
+use Illuminate\Database\Eloquent\Relations\HasMany; 
+use Illuminate\Database\Eloquent\Collection; 
 use Laravel\Sanctum\HasApiTokens;
 
 class User extends Authenticatable
@@ -69,6 +71,11 @@ class User extends Authenticatable
         return $this->orders;
     }
 
+    public function setOrders(Collection $orders): Collection
+    {
+        $this->orders = $orders; 
+    }
+
     public function offers(): HasMany
     {
         return $this->hasMany(Offer::class);
@@ -77,6 +84,11 @@ class User extends Authenticatable
     public function getOffers(): Collection
     {
         return $this->offers;
+    }
+
+    public function setOffers(Collection $offers): Collection
+    {
+        $this->offers = $offers; 
     }
 
     public function productsSelled(): HasMany
@@ -91,7 +103,7 @@ class User extends Authenticatable
 
     public function productsBuyed(): HasMany
     {
-        return $this->hasMany(Product::clas, 'buyerId');
+        return $this->hasMany(Product::class, 'buyerId');
     }
 
     public function getProductsBuyed(): Collection

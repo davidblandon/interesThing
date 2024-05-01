@@ -10,15 +10,14 @@
  <div class="col-md-8">
  <div class="card-body">
  <h5 class="card-title">
- {{ $viewData["product"]["name"] }}
+ {{ $viewData["auction"]->getProduct()->getName() }}
  </h5>
- <p class="card-text">{{ $viewData["product"]["description"] }}</p>
- <p class="card-text">{{ $viewData["product"]["photo"] }}</p>
- <p class="card-text">{{ $viewData["product"]["category"] }}</p>
- <p class="card-text">{{ $viewData["product"]["price"] }}</p>
- <p class="card-text">{{ $viewData["product"]->getSeller()->getName() }}</p>
+ <p class="card-text">{{ $viewData["auction"]->getLimitDate() }}</p>
+ <p class="card-text">{{ $viewData["auction"]->getBasePrice() }}</p>
  </div>
  </div>
  </div>
 </div>
 @endsection
+
+ <!--<p class="card-text">{{ $viewData["auction"]->getOff }}</p>*/-->

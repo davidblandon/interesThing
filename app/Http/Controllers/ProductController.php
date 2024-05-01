@@ -7,19 +7,22 @@
 namespace App\Http\Controllers;
 
 use App\Models\Product;
+use App\Models\User;
 use Illuminate\Http\Request;
 use Illuminate\View\View;
+use Illuminate\Support\Facades\Auth;
+use Illuminate\Http\RedirectResponse;
 
 class ProductController extends Controller
 {
-    public function index(): View
+    public function available(): View
     {
         $viewData = [];
         $viewData['title'] = 'Products - InteresThing';
         $viewData['subtitle'] = 'List of products';
-        $viewData['products'] = Product::all();
+        $viewData['products'] = Product::where('auctioned', false)->get();
 
-        return view('product.index')->with('viewData', $viewData);
+        return view('product.available')->with('viewData', $viewData);
     }
 
     public function create(): View
@@ -34,15 +37,16 @@ class ProductController extends Controller
     {
         $viewData = [];
         $product = Product::findOrFail($id);
-        $viewData['title'] = $product.getName().' - InteresThing';
-        $viewData['subtitle'] = $product.getName().' - Product information';
+        $viewData['title'] = $product->getName().' - InteresThing';
+        $viewData['subtitle'] = $product->getName().' - Product information';
         $viewData['product'] = $product;
 
         return view('product.show')->with('viewData', $viewData);
     }
 
-    public function save(Request $request): \Illuminate\Http\RedirectResponse
+    public function save(Request $request): RedirectResponse
     {
+        $user = Auth::user();
         Product::validate($request);
         Product::create([
             'name' => $request->name,
@@ -50,6 +54,7 @@ class ProductController extends Controller
             'photo' => $request->photo,
             'price' => $request->price,
             'category' => $request->category,
+            'sellerId' => $user->getId()
         ]);
 
         return back();

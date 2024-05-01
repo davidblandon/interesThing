@@ -13,10 +13,15 @@ use Illuminate\Support\Facades\Route;
 |
 */
 
-Route::get('/products', 'App\Http\Controllers\ProductController@index')->name('product.index');
+Route::get('/products/available', 'App\Http\Controllers\ProductController@available')->name('product.available');
 Route::get('/products/create', 'App\Http\Controllers\ProductController@create')->name('product.create');
 Route::post('/products/save', 'App\Http\Controllers\ProductController@save')->name('product.save');
 Route::get('/products/{id}', 'App\Http\Controllers\ProductController@show')->name('product.show');
+
+Route::get('/auctions/available', 'App\Http\Controllers\AuctionController@available')->name('auction.available');
+Route::get('/auctions/create', 'App\Http\Controllers\AuctionController@create')->name('auction.create');
+Route::post('/auctions/save', 'App\Http\Controllers\AuctionController@save')->name('auction.save');
+Route::get('/auctions/{id}', 'App\Http\Controllers\AuctionController@show')->name('auction.show');
 
 Route::get('/profile', 'App\Http\Controllers\UserController@profile')->name('user.profile');
 Route::get('/profile/products/buyed', 'App\Http\Controllers\UserController@showProductsBuyed')->name('user.products.buyed');
