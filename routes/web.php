@@ -23,6 +23,9 @@ Route::get('/auctions/create', 'App\Http\Controllers\AuctionController@create')-
 Route::post('/auctions/save', 'App\Http\Controllers\AuctionController@save')->name('auction.save');
 Route::get('/auctions/{id}', 'App\Http\Controllers\AuctionController@show')->name('auction.show');
 
+Route::get('/offers/create/{auctionId}', 'App\Http\Controllers\OfferController@create')->name('offer.create');
+Route::post('/offers/save/{auctionId}', 'App\Http\Controllers\OfferController@save')->name('offer.save');
+
 Route::get('/profile', 'App\Http\Controllers\UserController@profile')->name('user.profile');
 Route::get('/profile/products/buyed', 'App\Http\Controllers\UserController@showProductsBuyed')->name('user.products.buyed');
 Route::get('/profile/products/selled', 'App\Http\Controllers\UserController@showProductsSelled')->name('user.products.selled');

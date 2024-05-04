@@ -14,10 +14,13 @@
  </h5>
  <p class="card-text">{{ $viewData["auction"]->getLimitDate() }}</p>
  <p class="card-text">{{ $viewData["auction"]->getBasePrice() }}</p>
+ <p class="card-text">{{ $viewData["auction"]->getOffers() }}</p>
+ <a href="{{ route('offer.create', ['auctionId'=> $viewData["auction"]->getId()]) }}"
+          class="btn bg-primary text-white">Make an offer</a>
  </div>
  </div>
  </div>
 </div>
 @endsection
 
- <!--<p class="card-text">{{ $viewData["auction"]->getOff }}</p>*/-->
+<p class="card-text">{{ $viewData["auction"]->getOff }}</p>

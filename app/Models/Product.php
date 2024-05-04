@@ -79,7 +79,7 @@ class Product extends Model
 
     public function order(): BelongsTo
     {
-        return $this->belongsTo(Order::class);
+        return $this->belongsTo(Order::class, "orderId");
     }
 
     public function getOrder(): Order
@@ -94,7 +94,7 @@ class Product extends Model
 
     public function auction(): HasOne
     {
-        return $this->hasOne(Auction::class); 
+        return $this->hasOne(Auction::class, "auctionId"); 
     }
 
     public function getId(): int

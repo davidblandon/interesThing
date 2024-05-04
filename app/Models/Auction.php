@@ -6,10 +6,12 @@
 
 namespace App\Models;
 use Carbon\Carbon;
-#use App\Models\Offer;
+use App\Models\Offer;
 use Illuminate\Database\Eloquent\Model;
 use Illuminate\Http\Request;
 use Illuminate\Database\Eloquent\Relations\BelongsTo;
+use Illuminate\Database\Eloquent\Relations\HasMany; 
+use Illuminate\Database\Eloquent\Collection; 
 
 class Auction extends Model
 {
@@ -52,7 +54,7 @@ class Auction extends Model
 
     public function offers(): HasMany
     {
-        return $this->hasMany(Offer::class);
+        return $this->hasMany(Offer::class, "auctionId");
     }
 
     public function getOffers(): Collection
