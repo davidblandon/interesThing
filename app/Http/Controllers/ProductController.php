@@ -7,11 +7,10 @@
 namespace App\Http\Controllers;
 
 use App\Models\Product;
-use App\Models\User;
-use Illuminate\Http\Request;
-use Illuminate\View\View;
-use Illuminate\Support\Facades\Auth;
 use Illuminate\Http\RedirectResponse;
+use Illuminate\Http\Request;
+use Illuminate\Support\Facades\Auth;
+use Illuminate\View\View;
 
 class ProductController extends Controller
 {
@@ -54,7 +53,7 @@ class ProductController extends Controller
             'photo' => $request->photo,
             'price' => $request->price,
             'category' => $request->category,
-            'sellerId' => $user->getId()
+            'sellerId' => $user->getId(),
         ]);
 
         return back();

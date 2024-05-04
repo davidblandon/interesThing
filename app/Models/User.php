@@ -1,14 +1,17 @@
 <?php
 
+/**
+ * Created by: Juan Martín Espitia
+ */
+
 namespace App\Models;
 
 // use Illuminate\Contracts\Auth\MustVerifyEmail;
-use App\Models\Product;
+use Illuminate\Database\Eloquent\Collection;
 use Illuminate\Database\Eloquent\Factories\HasFactory;
+use Illuminate\Database\Eloquent\Relations\HasMany;
 use Illuminate\Foundation\Auth\User as Authenticatable;
 use Illuminate\Notifications\Notifiable;
-use Illuminate\Database\Eloquent\Relations\HasMany; 
-use Illuminate\Database\Eloquent\Collection; 
 use Laravel\Sanctum\HasApiTokens;
 
 class User extends Authenticatable
@@ -73,7 +76,7 @@ class User extends Authenticatable
 
     public function setOrders(Collection $orders): Collection
     {
-        $this->orders = $orders; 
+        $this->orders = $orders;
     }
 
     public function offers(): HasMany
@@ -84,11 +87,6 @@ class User extends Authenticatable
     public function getOffers(): Collection
     {
         return $this->offers;
-    }
-
-    public function setOffers(Collection $offers): Collection
-    {
-        $this->offers = $offers; 
     }
 
     public function productsSelled(): HasMany
@@ -116,7 +114,7 @@ class User extends Authenticatable
         return $this->attributes['id'];
     }
 
-    public function setId($id): void
+    public function setId(int $id): void
     {
         $this->attributes['id'] = $id;
     }
@@ -126,7 +124,7 @@ class User extends Authenticatable
         return $this->attributes['name'];
     }
 
-    public function setName($name): void
+    public function setName(string $name): void
     {
         $this->attributes['name'] = $id;
     }
@@ -136,7 +134,7 @@ class User extends Authenticatable
         return $this->attributes['email'];
     }
 
-    public function setEmail($email): void
+    public function setEmail(string $email): void
     {
         $this->attributes['email'] = $email;
     }
@@ -146,7 +144,7 @@ class User extends Authenticatable
         return $this->attributes['phone'];
     }
 
-    public function setPhone($phone): void
+    public function setPhone(string $phone): void
     {
         $this->attributes['phone'] = $phone;
     }
@@ -156,7 +154,7 @@ class User extends Authenticatable
         return $this->attributes['balance'];
     }
 
-    public function setBalance($balance): void
+    public function setBalance(int $balance): void
     {
         $this->attributes['balance'] = $balance;
     }

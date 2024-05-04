@@ -5,13 +5,13 @@
  */
 
 namespace App\Models;
+
 use Carbon\Carbon;
-use App\Models\Offer;
+use Illuminate\Database\Eloquent\Collection;
 use Illuminate\Database\Eloquent\Model;
-use Illuminate\Http\Request;
 use Illuminate\Database\Eloquent\Relations\BelongsTo;
-use Illuminate\Database\Eloquent\Relations\HasMany; 
-use Illuminate\Database\Eloquent\Collection; 
+use Illuminate\Database\Eloquent\Relations\HasMany;
+use Illuminate\Http\Request;
 
 class Auction extends Model
 {
@@ -21,7 +21,7 @@ class Auction extends Model
      * $this->attributes['limitDate'] - date - contains the limit of the auction
      * $this->attributes['basePrice'] - int - contains the base price of the auction
      * $this->attributes['active'] - bool - checks if the auction is active
-     * $this->attributes['product'] - Product - contains the product associeted to the auction
+     * $this->product - Product - contains the product associeted to the auction
      * $this->offers - Offer[] - contains the associated offers
      */
     protected $fillable = ['limitDate', 'basePrice', 'productId'];
@@ -39,7 +39,7 @@ class Auction extends Model
 
     public function product(): BelongsTo
     {
-        return $this->belongsTo(Product::class, "productId");
+        return $this->belongsTo(Product::class, 'productId');
     }
 
     public function getProduct(): Product
@@ -54,7 +54,7 @@ class Auction extends Model
 
     public function offers(): HasMany
     {
-        return $this->hasMany(Offer::class, "auctionId");
+        return $this->hasMany(Offer::class, 'auctionId');
     }
 
     public function getOffers(): Collection
@@ -62,13 +62,17 @@ class Auction extends Model
         return $this->offers;
     }
 
+    public function addOffer(Offer $offer): void
+    {
+        $this->offers->add($offer);
+    }
 
     public function getId(): int
     {
         return $this->attributes['id'];
     }
 
-    public function setId($id): void
+    public function setId(int $id): void
     {
         $this->attributes['id'] = $id;
     }
@@ -76,6 +80,7 @@ class Auction extends Model
     public function getLimitDate(): Carbon
     {
         $carbonDate = Carbon::parse($this->attributes['limitDate']);
+
         return $carbonDate;
 
     }

@@ -1,5 +1,9 @@
 <?php
 
+/**
+ * Created by: Juan MArtín Espitia
+ */
+
 namespace App\Http\Controllers;
 
 use App\Models\Product;
@@ -68,7 +72,6 @@ class ProductController extends Controller
         return view('user.products.toSell')->with('viewData', $viewData);
     }
 
-    /*
     public function showAuctions(): View
     {
         $user = Auth::user();
@@ -76,13 +79,12 @@ class ProductController extends Controller
         $products = $user->getProductsSelled;
         $productIds = [];
 
-        foreach($products as $key => $product){
+        foreach ($products as $key => $product) {
 
-            if ($product->getAuctioned()){
+            if ($product->getAuctioned()) {
                 $productIds[] = $product->getId();
             }
         }
-
 
         $auctions = Auction::whereIn('productId', $productsIds)->get();
         $viewData['title'] = 'Your products yet to sell - InteresThing';
@@ -112,7 +114,4 @@ class ProductController extends Controller
 
         return view('user.orders')->with('viewData', $viewData);
     }
-
-*/
-
 }

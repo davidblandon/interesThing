@@ -5,13 +5,11 @@
  */
 
 namespace App\Models;
-use App\Models\User;
-use App\Models\Order;
-use App\Models\Auction;
-use Illuminate\Database\Eloquent\Relations\HasOne; 
+
 use Illuminate\Database\Eloquent\Model;
+use Illuminate\Database\Eloquent\Relations\BelongsTo;
+use Illuminate\Database\Eloquent\Relations\HasOne;
 use Illuminate\Http\Request;
-use Illuminate\Database\Eloquent\Relations\BelongsTo; 
 
 class Product extends Model
 {
@@ -24,9 +22,9 @@ class Product extends Model
      * $this->attributes['photo'] - string - contains the route of the product photo
      * $this->attributes['category'] - string - contains the product category
      * $this->attributes['auctioned'] - bool - check if the product is auctioned
-     * $this->attributes['buyer'] - User - contains the buyer of the product
-     * $this->attributes['seller'] - User - contains the seller of the product
-     * $this->attributes['order'] - Order - contains the buyer of the product
+     * $this->buyer- User - contains the buyer of the product
+     * $this->seller - User - contains the seller of the product
+     * $this->order- Order - contains the buyer of the product
      */
     protected $fillable = ['name', 'price', 'description', 'category', 'photo', 'sellerId'];
 
@@ -49,7 +47,7 @@ class Product extends Model
 
     public function buyer(): BelongsTo
     {
-        return $this->belongsTo(User::class, "buyerId");
+        return $this->belongsTo(User::class, 'buyerId');
     }
 
     public function getBuyer(): User
@@ -61,12 +59,12 @@ class Product extends Model
     {
         $this->buyer = $buyer;
     }
-   
+
     public function seller(): BelongsTo
     {
-        return $this->belongsTo(User::class, "sellerId");
+        return $this->belongsTo(User::class, 'sellerId');
     }
-   
+
     public function getSeller(): User
     {
         return $this->seller;
@@ -79,7 +77,7 @@ class Product extends Model
 
     public function order(): BelongsTo
     {
-        return $this->belongsTo(Order::class, "orderId");
+        return $this->belongsTo(Order::class, 'orderId');
     }
 
     public function getOrder(): Order
@@ -94,7 +92,7 @@ class Product extends Model
 
     public function auction(): HasOne
     {
-        return $this->hasOne(Auction::class, "auctionId"); 
+        return $this->hasOne(Auction::class, 'auctionId');
     }
 
     public function getId(): int

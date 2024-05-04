@@ -6,13 +6,12 @@
 
 namespace App\Http\Controllers;
 
-use App\Models\Product;
 use App\Models\Auction;
-use App\Models\User;
-use Illuminate\Http\Request;
-use Illuminate\View\View;
-use Illuminate\Support\Facades\Auth;
+use App\Models\Product;
 use Illuminate\Http\RedirectResponse;
+use Illuminate\Http\Request;
+use Illuminate\Support\Facades\Auth;
+use Illuminate\View\View;
 
 class AuctionController extends Controller
 {
@@ -60,7 +59,7 @@ class AuctionController extends Controller
         $product = Product::findOrFail($request->productId);
         $product->setAuctioned(true);
         $product->save();
-        
+
         return back();
     }
 }

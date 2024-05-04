@@ -5,11 +5,10 @@
  */
 
 namespace App\Models;
-use App\Models\Auction;
-use App\Models\User;
+
 use Illuminate\Database\Eloquent\Model;
-use Illuminate\Http\Request;
 use Illuminate\Database\Eloquent\Relations\BelongsTo;
+use Illuminate\Http\Request;
 
 class Offer extends Model
 {
@@ -17,8 +16,8 @@ class Offer extends Model
      * PRODUCT ATTRIBUTES
      * $this->attributes['id'] - int - contains the offer primary key (id)
      * $this->attributes['price'] - int - contains price of the offer
-     * $this->attributes['auction'] - Auction - contains the auction is being offered
-     * $this->attributes['user'] - User - contains the user who is making the offer
+     * $this->auction - Auction - contains the auction is being offered
+     * $this->user - User - contains the user who is making the offer
      */
     protected $fillable = ['price', 'userId', 'auctionId'];
 
@@ -33,7 +32,7 @@ class Offer extends Model
 
     public function auction(): BelongsTo
     {
-        return $this->belongsTo(Auction::class, "auctionId");
+        return $this->belongsTo(Auction::class, 'auctionId');
     }
 
     public function getAuction(): Auction
@@ -48,14 +47,14 @@ class Offer extends Model
 
     public function user(): BelongsTo
     {
-        return $this->belongsTo(User::class, "userId");
+        return $this->belongsTo(User::class, 'userId');
     }
 
     public function getUser(): User
     {
         return $this->user;
     }
-    
+
     public function setUser(User $user): void
     {
         $this->user = $user;
@@ -66,7 +65,7 @@ class Offer extends Model
         return $this->attributes['id'];
     }
 
-    public function setId($id): void
+    public function setId(int $id): void
     {
         $this->attributes['id'] = $id;
     }

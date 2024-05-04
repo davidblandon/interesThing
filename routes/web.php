@@ -34,6 +34,10 @@ Route::get('/profile/auctions', 'App\Http\Controllers\UserController@showAuction
 Route::get('/profile/offers', 'App\Http\Controllers\UserController@showOffers')->name('user.offers');
 Route::get('/profile/orders', 'App\Http\Controllers\UserController@showOrders')->name('user.orders');
 
+Route::get('/cart', 'App\Http\Controllers\CartController@index')->name('cart.index');
+Route::get('/cart/add/{id}', 'App\Http\Controllers\CartController@add')->name('cart.add');
+Route::get('/cart/removeAll/', 'App\Http\Controllers\CartController@removeAll')->name('cart.removeAll');
+
 Auth::routes();
 
 Route::get('/', [App\Http\Controllers\HomeController::class, 'index'])->name('home');

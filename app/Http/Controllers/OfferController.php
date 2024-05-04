@@ -7,11 +7,10 @@
 namespace App\Http\Controllers;
 
 use App\Models\Offer;
-use App\Models\User;
-use Illuminate\Http\Request;
-use Illuminate\View\View;
-use Illuminate\Support\Facades\Auth;
 use Illuminate\Http\RedirectResponse;
+use Illuminate\Http\Request;
+use Illuminate\Support\Facades\Auth;
+use Illuminate\View\View;
 
 class OfferController extends Controller
 {
@@ -33,7 +32,7 @@ class OfferController extends Controller
             'auctionId' => $auctionId,
             'userId' => $user->getId(),
         ]);
-        
+
         return back();
     }
 }
