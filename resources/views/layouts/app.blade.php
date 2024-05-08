@@ -1,66 +1,45 @@
-<!doctype html>
-<html lang="en">
+<!DOCTYPE html>
+<html lang="es">
 <head>
-  <meta charset="utf-8" />
-  <meta name="viewport" content="width=device-width, initial-scale=1" />
-  <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0-alpha1/dist/css/bootstrap.min.css" rel="stylesheet" crossorigin="anonymous" />
-  <link href="{{ asset('/css/app.css') }}" rel="stylesheet" />
-  <title>@yield('title', 'Online Store')</title>
+    <meta charset="UTF-8">
+    <!-- Bootstrap CSS -->
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0-alpha1/dist/css/bootstrap.min.css" rel="stylesheet" crossorigin="anonymous" />
+    <script src="https://kit.fontawesome.com/be50e46cfb.js" crossorigin="anonymous"></script>
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link href="{{ asset('css/app.css') }}" rel="stylesheet">
+    <title>Registro</title>
 </head>
 <body>
-  <!-- header -->
-  <nav class="navbar navbar-expand-lg navbar-dark bg-secondary py-4">
-    <div class="container">
-      <a class="navbar-brand" href="#">Online Store</a>
-      <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNavAltMarkup"
-        aria-controls="navbarNavAltMarkup" aria-expanded="false" aria-label="Toggle navigation">
-        <span class="navbar-toggler-icon"></span>
-      </button>
-      <div class="collapse navbar-collapse" id="navbarNavAltMarkup">
-        <div class="navbar-nav ms-auto">
-          <div class="vr bg-white mx-2 d-none d-lg-block"></div>
-          @guest
-          <a class="nav-link active" href="{{ route('login') }}">Login</a>
-          <a class="nav-link active" href="{{ route('register') }}">Register</a>
-          @else
-          <a class="nav-link active" href="#">Home</a>
-          <a class="nav-link active" href="#">About</a>
-          <form id="logout" action="{{ route('logout') }}" method="POST">
-          <a role="button" class="nav-link active"
-          onclick="document.getElementById('logout').submit();">Logout</a>
-          @csrf
-          </form>
-          @endguest 
-        </div>
-      </div>
-    </div>
-  </nav>
+<nav class="navbar navbar-expand-lg bg-body-tertiary login">
 
-  <header class="masthead bg-primary text-white text-center py-4">
-    <div class="container d-flex align-items-center flex-column">
-      <h2>@yield('subtitle', 'A Laravel EAFIT App')</h2>
-    </div>
-  </header>
-  <!-- header -->
-
-  <div class="container my-4">
-    @yield('content')
-  </div>
-
-  <!-- footer -->
-  <div class="copyright py-4 text-center text-white">
-    <div class="container">
-      <small>
-        Copyright - <a class="text-reset fw-bold text-decoration-none" target="_blank"
-          href="https://twitter.com/danielgarax">
-          Daniel Correa
-        </a>
-      </small>
+  <div class="container-fluid login">
+  <form class="d-flex">
+                 <input type="search" class="form-control" placeholder="Search" aria-label="Buscar" >
+                 <button class="btn btn-outline-success"  type="submit">Search </button>
+              </form>
+              <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNavDropdown" aria-controls="navbarNavDropdown" aria-expanded="false" aria-label="Toggle navigation">
+              <span class="navbar-toggler-icon"></span>
+              </button>
+    <img src="{{ url('/images/logoInteresThing.png') }}" alt="" class="navbar-image">
+    <div class="collapse navbar-collapse" id="navbarNavDropdown">
+    <ul class="navbar-nav ms-auto mb-2 mb-lg-0">
+        <li class="nav-item">
+          <a class="nav-link active" aria-current="page" href="#">Home</a>
+        </li>
+        <li class="nav-item">
+          <a class="nav-link" href="#">Login</a>
+        </li>
+        <li class="nav-item">
+          <a class="nav-link" href="#">Register</a>
+        </li>
+      </ul>
     </div>
   </div>
-  <!-- footer -->
-
-  <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0-alpha1/dist/js/bootstrap.bundle.min.js" crossorigin="anonymous">
-  </script>
+</nav>
+<div>
+  @yield('content')
+</div>
+    <!-- Bootstrap JS -->
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0-alpha1/dist/js/bootstrap.bundle.min.js" crossorigin="anonymous"></script>
 </body>
 </html>

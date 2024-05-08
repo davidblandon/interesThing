@@ -1,0 +1,27 @@
+body {
+    margin: 0;
+    padding: 0;
+    height: 100vh;
+    background: linear-gradient(to bottom right, #A1E006, #F9DE96);
+}
+
+.navbar {
+    background-color: #71A06C !important; 
+}
+
+.navbar-image {
+    width: 120px;
+    height: 120px;
+    position: absolute; 
+            left: 50%; 
+            transform: translateX(-50%); 
+}
+
+.nav-item{
+    cursor: pointer;
+    color: #E0DF6D;
+}
+
+.nav-link {
+    color: #ffffff;
+}
