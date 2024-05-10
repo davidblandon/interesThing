@@ -111,3 +111,19 @@
     <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0-alpha1/dist/js/bootstrap.bundle.min.js" crossorigin="anonymous"></script>
 </body>
 </html>
+<footer class="footer mt-auto py-3" style="background-color: #71A06C; color: white;">
+  <div class="container">
+    <div class="row">
+        <div class="col">
+            <span style="white-space: nowrap;">Trabaja con nosotros</span>
+        </div>
+        <div class="col text-end">
+            <a href="#"><i class="fab fa-facebook-f fa-lg me-3" style="color: white;"></i></a>
+            <a href="#"><i class="fab fa-twitter fa-lg me-3" style="color: white;"></i></a>
+            <a href="#"><i class="fab fa-instagram fa-lg me-3" style="color: white;"></i></a>
+            <a href="#"><i class="fab fa-linkedin-in fa-lg me-3" style="color: white;"></i></a>
+        </div>
+    </div>
+  </div>
+</footer>
+</html>
