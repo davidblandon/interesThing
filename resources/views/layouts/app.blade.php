@@ -32,6 +32,9 @@
             <li class="nav-item">
                 <a class="nav-link" href="#">Register</a>
             </li>
+            <li class="nav-item">
+                <a class="nav-link" href="#">Carrito de compras</a>
+            </li>
         </ul>
     </div>
   </div>
@@ -47,7 +50,7 @@
     </head>
     <body>
         <header  class="color-header">
-            <h1>"Dale otra oportunidad y una segunda vida 💚"</h1>
+            <h1>Give it a second chance 💚</h1>
         </header>
         <div class="container">
             <div class="row">
