@@ -44,37 +44,63 @@
         <meta name="viewport" content="width=device-width, initial-scale=1.0">
         <title>Catálogo de Productos</title>
         <link rel="stylesheet" href="styles.css">
-        <style>
-            .color-header h1 {
-                font-size: 1.5rem; /* Tamaño de fuente ajustado */
-            }
-        </style>
     </head>
     <body>
         <header  class="color-header">
             <h1>"Dale otra oportunidad y una segunda vida 💚"</h1>
         </header>
         <div class="container">
-            <div class="product">
-                <img src="product1.jpg" alt="Producto 1">
-                <h2>Producto 1</h2>
-                <p>Descripción del producto 1.</p>
-                <span>$50.00</span>
-                <button>Agregar al carrito</button>
+            <div class="row">
+                <div class="col">
+                    <div class="product">
+                        <img src="{{ url('/images/ropaTopicos.jpeg') }}" alt="Clothes">
+                        <h2>Clothes</h2>
+                        <p>Here, you can see second hand clothes shop.</p>
+                        <button>Ver más</button>
+                    </div>
+                </div>
+                <div class="col">
+                    <div class="product">
+                        <img src="{{ url('/images/ropaTopicos.jpeg') }}" alt="Auctions">
+                        <h2>Auctions</h2>
+                        <p>Here, you can see exclusive products.</p>
+                        <button>Ver más</button>
+                    </div>
+                </div>
+                <div class="col">
+                    <div class="product">
+                        <img src="{{ url('/images/ropaTopicos.jpeg') }}" alt="Electronics">
+                        <h2>Electronics</h2>
+                        <p>Here you can see vintage electronics.</p>
+                        <button>Ver más</button>
+                    </div>
+                </div>
             </div>
-            <div class="product">
-                <img src="product2.jpg" alt="Producto 2">
-                <h2>Producto 2</h2>
-                <p>Descripción del producto 2.</p>
-                <span>$40.00</span>
-                <button>Agregar al carrito</button>
-            </div>
-            <div class="product">
-                <img src="product3.jpg" alt="Producto 3">
-                <h2>Producto 3</h2>
-                <p>Descripción del producto 3.</p>
-                <span>$60.00</span>
-                <button>Agregar al carrito</button>
+            <div class="row">
+                <div class="col">
+                    <div class="product">
+                        <img src="{{ url('/images/ropaTopicos.jpeg') }}" alt="Accesories">
+                        <h2>Accesories</h2>
+                        <p>Here you can see beautiful accessories.</p>
+                        <button>Ver más</button>
+                    </div>
+                </div>
+                <div class="col">
+                    <div class="product">
+                        <img src="{{ url('/images/ropaTopicos.jpeg') }}" alt="Videogames">
+                        <h2>Videogames</h2>
+                        <p>Here, you can shop incredible videogames.</p>
+                        <button>Ver más</button>
+                    </div>
+                </div>
+                <div class="col">
+                    <div class="product">
+                        <img src="{{ url('/images/ropaTopicos.jpeg') }}" alt="Music">
+                        <h2>Music</h2>
+                        <p>Here, you can shop delightful music vinyls.</p>
+                        <button>Ver más</button>
+                    </div>
+                </div>
             </div>
         </div>
     </div>
