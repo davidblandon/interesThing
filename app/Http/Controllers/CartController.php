@@ -10,9 +10,7 @@ class CartController extends Controller
 {
     public function index(Request $request): View
     {
-        $products =  Product::all();
         $cartProducts = [];
-
         $cartProductData = $request->session()->get('cart_product_data'); //we get the products stored in session
 
         if ($cartProductData) {
@@ -30,15 +28,11 @@ class CartController extends Controller
         }
 
         $viewData = [];
-
         $viewData['title'] = 'Cart - Online Store';
-
         $viewData['subtitle'] = 'Shopping Cart';
-
         $viewData['products'] = $products;
-
         $viewData['cartProducts'] = $cartProducts;
-
+        
         return view('cart.index')->with('viewData', $viewData);
 
     }
