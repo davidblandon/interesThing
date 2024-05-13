@@ -38,6 +38,9 @@ Route::get('/cart', 'App\Http\Controllers\CartController@index')->name('cart.ind
 Route::get('/cart/add/{id}', 'App\Http\Controllers\CartController@add')->name('cart.add');
 Route::get('/cart/removeAll/', 'App\Http\Controllers\CartController@removeAll')->name('cart.removeAll');
 
+Route::post('/order/create', 'App\Http\Controllers\OrderController@create')->name('order.create');
+Route::get('/order/{id}', 'App\Http\Controllers\OrderController@show')->name('order.show');
+
 Auth::routes();
 
 Route::get('/', 'App\Http\Controllers\HomeController@index')->name('home');

@@ -2,7 +2,6 @@
 
 @section("title", $viewData["title"])
 
-@section("subtitle", $viewData["subtitle"])
 
 @section('content')
 
@@ -12,25 +11,10 @@
 
 <div class="col-md-12">
 
-<h1>Available products</h1>
 
 <ul>
 
-@foreach($viewData["products"] as $key => $product)
 
-<li>
-
-Id: {{ $key }} -
-
-Name: {{ $product["name"] }} -
-
-Price: {{ $product["price"] }} -
-
-<a href="{{ route('cart.add', ['id'=> $key]) }}">Add to cart</a>
-
-</li>
-
-@endforeach
 
 </ul>
 
@@ -63,6 +47,10 @@ Price: {{ $product["price"] }}
 </ul>
 
 <a href="{{ route('cart.removeAll') }}">Remove all products from cart</a>
+<form action="{{ route('order.create') }}" method="POST">
+    @csrf
+    <button type="submit">Pay</button>
+</form>
 
 </div>
 

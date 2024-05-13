@@ -19,7 +19,7 @@ class ProductController extends Controller
         $viewData = [];
         $viewData['title'] = 'Products - InteresThing';
         $viewData['subtitle'] = 'List of products';
-        $viewData['products'] = Product::where('auctioned', false)->get();
+        $viewData['products'] = Product::where('auctioned', false)->whereNull('buyerId')->get();
 
         return view('product.available')->with('viewData', $viewData);
     }

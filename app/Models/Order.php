@@ -6,9 +6,8 @@
 
 namespace App\Models;
 
-// use Illuminate\Contracts\Auth\MustVerifyEmail;
-use app\Models\Product;
 use Illuminate\Database\Eloquent\Collection;
+use Illuminate\Database\Eloquent\Model;
 use Illuminate\Database\Eloquent\Relations\HasMany;
 
 class Order extends Model
@@ -20,6 +19,8 @@ class Order extends Model
      *  $this->user - User - contains the associated user to the order
      *  $this->products - Product[] - contains the associated products
      */
+    protected $fillable = ['total', 'userId'];
+
     public function user(): BelongsTo
     {
         return $this->belongsTo(User::class, 'userId');
@@ -27,7 +28,7 @@ class Order extends Model
 
     public function products(): HasMany
     {
-        return $this->hasMany(Product::class);
+        return $this->hasMany(Product::class, 'orderId');
     }
 
     public function getId(): int

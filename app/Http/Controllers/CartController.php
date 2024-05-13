@@ -1,7 +1,11 @@
 <?php
+/**
+ * Created by: Juan MArtín Espitia
+ */
 
 namespace App\Http\Controllers;
 
+use App\Models\Product;
 use Illuminate\Http\RedirectResponse;
 use Illuminate\Http\Request;
 use Illuminate\View\View;
@@ -10,16 +14,17 @@ class CartController extends Controller
 {
     public function index(Request $request): View
     {
+        $products = Product::where('auctioned', false)->get();
         $cartProducts = [];
-        $cartProductData = $request->session()->get('cart_product_data'); //we get the products stored in session
+        $cartProductData = $request->session()->get('cart_product_data');
 
         if ($cartProductData) {
 
-            foreach ($products as $key => $product) {
+            foreach ($products as $product) {
 
-                if (in_array($key, array_keys($cartProductData))) {
+                if (in_array($product->getId(), array_keys($cartProductData))) {
 
-                    $cartProducts[$key] = $product;
+                    $cartProducts[$product->getId()] = $product;
 
                 }
 
@@ -29,8 +34,6 @@ class CartController extends Controller
 
         $viewData = [];
         $viewData['title'] = 'Cart - Online Store';
-        $iewData['subtitle'] = 'Shopping Cart';
-        $viewData['products'] = $products;
         $viewData['cartProducts'] = $cartProducts;
 
         return view('cart.index')->with('viewData', $viewData);

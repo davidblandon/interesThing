@@ -55,9 +55,9 @@ class Product extends Model
         return $this->buyer;
     }
 
-    public function setBuyer(User $buyer): void
+    public function setBuyerId(int $id): void
     {
-        $this->buyer = $buyer;
+        $this->attributes['buyerId'] = $id;
     }
 
     public function seller(): BelongsTo
@@ -70,11 +70,6 @@ class Product extends Model
         return $this->seller;
     }
 
-    public function setSeller(User $seller): void
-    {
-        $this->seller = $seller;
-    }
-
     public function order(): BelongsTo
     {
         return $this->belongsTo(Order::class, 'orderId');
@@ -85,9 +80,9 @@ class Product extends Model
         return $this->order;
     }
 
-    public function setOrder(Order $order): void
+    public function setOrderId(int $id): void
     {
-        $this->order = $order;
+        $this->attributes['orderId'] = $id;
     }
 
     public function auction(): HasOne
@@ -120,7 +115,7 @@ class Product extends Model
         return $this->attributes['price'];
     }
 
-    public function setPrice($price): void
+    public function setPrice(int $price): void
     {
         $this->attributes['price'] = $price;
     }
