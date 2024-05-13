@@ -30,7 +30,7 @@ class CartController extends Controller
 
         $viewData = [];
         $viewData['title'] = 'Cart - Online Store';
-        $viewData['subtitle'] = 'Shopping Cart';
+        $iewData['subtitle'] = 'Shopping Cart';
         $viewData['products'] = $products;
         $viewData['cartProducts'] = $cartProducts;
         

@@ -40,4 +40,4 @@ Route::get('/cart/removeAll/', 'App\Http\Controllers\CartController@removeAll')-
 
 Auth::routes();
 
-Route::get('/', [App\Http\Controllers\HomeController::class, 'index'])->name('home');
+Route::get('/', 'App\Http\Controllers\HomeController@index')->name('home');
