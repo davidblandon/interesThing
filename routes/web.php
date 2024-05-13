@@ -40,6 +40,8 @@ Route::get('/cart/removeAll/', 'App\Http\Controllers\CartController@removeAll')-
 
 Route::post('/order/create', 'App\Http\Controllers\OrderController@create')->name('order.create');
 Route::get('/order/{id}', 'App\Http\Controllers\OrderController@show')->name('order.show');
+Route::post('/order/{id}/downloads', 'App\Http\Controllers\OrderController@download')->name('order.download');
+
 
 Auth::routes();
 
