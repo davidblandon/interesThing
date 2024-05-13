@@ -2,7 +2,6 @@
 
 namespace App\Http\Controllers;
 
-use App\Models\Product;
 use Illuminate\Http\RedirectResponse;
 use Illuminate\Http\Request;
 use Illuminate\View\View;
@@ -33,7 +32,7 @@ class CartController extends Controller
         $viewData['subtitle'] = 'Shopping Cart';
         $viewData['products'] = $products;
         $viewData['cartProducts'] = $cartProducts;
-        
+
         return view('cart.index')->with('viewData', $viewData);
 
     }
