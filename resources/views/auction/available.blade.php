@@ -11,6 +11,14 @@
       <h5 class="card-title">
       {{ $auction->getProduct()->getName() }}
       </h5>
+      <p>
+          The max offer is on: 
+          @if ($maxOffer = $auction->getMaxOffer())
+              {{ $maxOffer->getPrice() }}
+          @else
+              No offers available
+          @endif
+      </p>
         <a href="{{ route('auction.show', ['id'=> $auction["id"]]) }}"
           class="btn bg-primary text-white">See more</a>
       </div>

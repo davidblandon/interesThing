@@ -14,7 +14,15 @@
  </h5>
  <p class="card-text">{{ $viewData["auction"]->getLimitDate() }}</p>
  <p class="card-text">{{ $viewData["auction"]->getBasePrice() }}</p>
- <p class="card-text">{{ $viewData["auction"]->getOffers() }}</p>
+ @if ($viewData['auction']->getOffers()->isEmpty())
+    <p class="card-text">No offers available</p>
+@else
+    <ul class="card-text">
+        @foreach ($viewData['auction']->getOffers() as $offer)
+            <li>{{ $offer->getPrice() }}</li>
+        @endforeach
+    </ul>
+@endif
  <a href="{{ route('offer.create', ['auctionId'=> $viewData["auction"]->getId()]) }}"
           class="btn bg-primary text-white">Make an offer</a>
  </div>

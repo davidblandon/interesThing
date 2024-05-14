@@ -62,6 +62,20 @@ class Auction extends Model
         return $this->offers;
     }
 
+    public function getMaxOffer(): ?Offer
+    {
+        $offers = $this->getOffers(); // Esto debería devolver una colección de Eloquent.
+
+        if ($offers->isEmpty()) {
+            return null;
+        }
+    
+        // Usa el método `max` de la colección para obtener la oferta con el precio máximo.
+        $maxOffer = $offers->sortByDesc('price')->first();
+    
+        return $maxOffer;
+    }
+
     public function addOffer(Offer $offer): void
     {
         $this->offers->add($offer);
