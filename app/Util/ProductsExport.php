@@ -3,18 +3,18 @@
  * Created by: Juan Martín Espitia
  */
 
-
 namespace App\Util;
 
-use App\Models\Product;
 use Maatwebsite\Excel\Concerns\FromCollection;
 use Maatwebsite\Excel\Concerns\WithHeadings;
 
 class ProductsExport implements FromCollection, WithHeadings
 {
-    protected $products, $order;
+    protected $products;
 
-    public function __construct($products,$order)
+    protected $order;
+
+    public function __construct($products, $order)
     {
         $this->products = $products;
         $this->order = $order;
@@ -31,14 +31,13 @@ class ProductsExport implements FromCollection, WithHeadings
                 'Category' => $product->category,
                 'Price' => $product->price,
 
-
             ];
         });
 
         $collection->push([
             'Order ID' => $this->order->getId(),
             'Order Total' => $this->order->getTotal(),
- 
+
         ]);
 
         return $collection;

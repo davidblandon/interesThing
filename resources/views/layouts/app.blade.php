@@ -61,7 +61,7 @@
     <!--endContent-->
     <!--footer-->
 </html>
-<footer class="footer mt-auto py-3" style="background-color: #71A06C; color: white;">
+<footer class="footer mt-auto py-3" class="footer" style="background-color: #71A06C; color: white;">
   <div class="container">
     <div class="row">
         <div class="col">

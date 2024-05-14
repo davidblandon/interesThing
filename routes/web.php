@@ -42,7 +42,6 @@ Route::post('/order/create', 'App\Http\Controllers\OrderController@create')->nam
 Route::get('/order/{id}', 'App\Http\Controllers\OrderController@show')->name('order.show');
 Route::post('/order/{id}/downloads', 'App\Http\Controllers\OrderController@download')->name('order.download');
 
-
 Auth::routes();
 
 Route::get('/', 'App\Http\Controllers\HomeController@index')->name('home');

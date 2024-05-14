@@ -6,13 +6,12 @@
 
 namespace App\Http\Controllers;
 
+use App\Interfaces\OrderDownload;
 use App\Models\Order;
 use App\Models\Product;
-use App\Interfaces\OrderDownload;
 use Illuminate\Http\RedirectResponse;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
-use Symfony\Component\HttpFoundation\BinaryFileResponse;
 
 class OrderController extends Controller
 {
@@ -20,11 +19,10 @@ class OrderController extends Controller
     {
         $download = $request->get('download');
         $order = Order::findOrFail($id);
-        $downloadInterface = app(OrderDownload::class,['download' => $download]);
-        $downloadInterface->download($request,$order);
+        $downloadInterface = app(OrderDownload::class, ['download' => $download]);
+        $downloadInterface->download($request, $order);
 
     }
-
 
     public function show(int $id)
     {

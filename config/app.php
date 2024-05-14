@@ -188,6 +188,5 @@ return [
         'SnappyPdf' => Barryvdh\Snappy\Facades\SnappyPdf::class,
         'Excel' => Maatwebsite\Excel\Facades\Excel::class,
     ])->toArray(),
-    
 
 ];
