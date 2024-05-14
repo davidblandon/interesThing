@@ -4,7 +4,7 @@
 <div class="container-lg mt-5"> <!-- Cambié container por container-lg -->
     <div class="row justify-content-center">
         <div class="col-md-8">
-            <div class="card">
+            <div class="card" style="background-color: #F9DE96">
                 <div class="card-header">{{ __('Register') }}</div>
 
                 <div class="card-body">
@@ -77,7 +77,7 @@
 
                         <div class="mb-0 row">
                             <div class="col-md-6 offset-md-4">
-                                <button type="submit" class="btn btn-primary">
+                                <button type="submit" style="background-color: #71A06C" class="btn btn-primary">
                                     {{ __('Register') }}
                                 </button>
                             </div>

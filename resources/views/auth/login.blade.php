@@ -4,7 +4,7 @@
 <div class="container-lg mt-5"> <!-- Cambié container por container-lg -->
     <div class="row justify-content-center">
         <div class="col-lg-8"> <!-- Cambié col-lg-6 por col-lg-8 -->
-            <div class="card">
+            <div class="card" style="background-color: #F9DE96">
                 <div class="card-header">{{ __('Login') }}</div>
 
                 <div class="card-body">
@@ -37,14 +37,22 @@
                         </div>
 
                         <div class="d-grid">
-                            <button type="submit" class="btn btn-primary">{{ __('Login') }}</button>
+                            <button type="submit" style="background-color: #71A06C" class="btn btn-primary">{{ __('Login') }}</button>
 
                             @if (Route::has('password.request'))
-                                <a class="btn btn-link" href="{{ route('password.request') }}">{{ __('Forgot Your Password?') }}</a>
+                                <a class="btn btn-link" style="color: #71A06C" href="{{ route('password.request') }}">{{ __('Forgot Your Password?') }}</a>
                             @endif
                         </div>
                     </form>
                 </div>
+            </div>
+            <div class="mt-3">
+                @if(session()->has('success_msg'))
+                    <div class="alert alert-success" role="alert">
+                        {{ session()->get('success_msg') }}
+                    </div>
+                @endif
+                <p>You're already registered.</p>
             </div>
         </div>
     </div>

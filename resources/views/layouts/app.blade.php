@@ -45,7 +45,7 @@
     <html lang="es">
     <head>
         <meta charset="UTF-8">
-        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+        <meta name="viewport" content="width=device-width, initial-scale=1.5">
         <title>Catálogo de Productos</title>
         <link rel="stylesheet" href="styles.css">
     </head>
@@ -55,7 +55,7 @@
         </header> 
         <!--header-->
         <!--content-->
-        <div class="container my-4">
+        <div class="container my-12">
         @yield('content')
     </div>
     <!--endContent-->
