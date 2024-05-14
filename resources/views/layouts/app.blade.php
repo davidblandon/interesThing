@@ -7,6 +7,57 @@
     <script src="https://kit.fontawesome.com/be50e46cfb.js" crossorigin="anonymous"></script>
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <link href="{{ asset('css/app.css') }}" rel="stylesheet">
+    <style>
+        /* Estilos personalizados */
+        .navbar-nav .nav-link {
+            padding: 0.5rem 1rem;
+        }
+
+        .btn-search {
+            color: white; /* Cambiar el color del texto del botón */
+            border-color: white; /* Cambiar el color del borde del botón */
+        }
+
+        /* Estilos del sidebar */
+        .sidebar {
+            height: 100%;
+            width: 0;
+            position: fixed;
+            z-index: 1;
+            top: 0;
+            left: 0;
+            background-color: #a06e3f;
+            overflow-x: hidden;
+            transition: 0.5s;
+            padding-top: 60px;
+        }
+
+        .sidebar a {
+            padding: 10px 15px;
+            text-decoration: none;
+            font-size: 20px;
+            color: #ffffff;
+            display: block;
+            transition: 0.3s;
+        }
+
+        .sidebar a:hover {
+            color: #f1f1f1;
+        }
+
+        .sidebar .closebtn {
+            position: absolute;
+            top: 0;
+            right: 25px;
+            font-size: 36px;
+            margin-left: 50px;
+        }
+
+        @media screen and (max-height: 450px) {
+            .sidebar {padding-top: 15px;}
+            .sidebar a {font-size: 18px;}
+        }
+    </style>
     <title>@yield('title', 'Online Store')</title>
 </head>
 <body>   
@@ -15,10 +66,6 @@
   <div class="container-fluid login">
     <!-- Mover la imagen del logo arriba -->
     <img src="{{ url('/images/logoInteresThing.png') }}" alt="" class="navbar-image">
-    <form class="d-flex">
-        <input type="search" class="form-control" placeholder="Search" aria-label="Buscar" >
-        <button class="btn btn-outline-success"  type="submit">Search</button>
-    </form>
     <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNavDropdown" aria-controls="navbarNavDropdown" aria-expanded="false" aria-label="Toggle navigation">
         <span class="navbar-toggler-icon"></span>
     </button>
@@ -33,13 +80,24 @@
             <li class="nav-item">
                 <a class="nav-link" href="{{ route('register') }}">Register</a>
             </li>
+            <!-- Agregamos un enlace para abrir el sidebar -->
             <li class="nav-item">
-                <a class="nav-link" href="{{ route('cart.index') }}">Carrito de compras</a>
+                <a class="nav-link" href="javascript:void(0)" onclick="openSidebar()">☰</a>
             </li>
         </ul>
     </div>
   </div>
 </nav>
+<!-- Sidebar -->
+<div id="sidebar" class="sidebar">
+    <!-- Botón para cerrar el sidebar -->
+    <a href="javascript:void(0)" class="closebtn" onclick="closeSidebar()">×</a>
+    <!-- Enlaces del sidebar -->
+    <a href="{{ route('cart.index') }}">Carrito de compras</a>
+    <a href="{{}}">Create Product</a>
+    <a href="#">Auctions</a>
+</div>
+
 <div>
     <!DOCTYPE html>
     <html lang="es">
@@ -78,3 +136,15 @@
 </footer>
 </html>
 <!--endFooter-->
+
+<script>
+    function openSidebar() {
+        document.getElementById("sidebar").style.width = "250px";
+    }
+
+    function closeSidebar() {
+        document.getElementById("sidebar").style.width = "0";
+    }
+</script>
+</body>
+</html>

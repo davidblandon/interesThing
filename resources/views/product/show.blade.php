@@ -22,3 +22,4 @@
  </div>
 </div>
 @endsection
+<!--aquí van los containers con los productos-->

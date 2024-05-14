@@ -82,7 +82,7 @@ header {
 }
 
 .color-header{
-    background-color: #E0DF6D !important;
+    background-color: #a06e3f !important;
 }
 
 
@@ -100,3 +100,10 @@ header {
     width: 100%;
 }
 
+.btn-search {
+    color: white; /* Color del texto */
+    border-color: #ffffff; /* Color del borde */
+}
+
+
+          
