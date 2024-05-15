@@ -4,7 +4,7 @@
 <div class="container">
   <div class="row justify-content-center">
     <div class="col-md-8">
-      <div class="card">
+      <div class="card" style="background-color: #F9DE96">
         <div class="card-header">Create auction</div>
           <div class="card-body">
             @if($errors->any())
@@ -25,7 +25,7 @@
                     <option value="{{ $product->getId() }}">{{ $product->getName() }}</option>
                 @endforeach
               </select>
-              <input type="submit" class="btn btn-primary" value="Send" />
+              <input type="submit" class="btn btn-primary" style="background-color: #71A06C" value="Send" />
             </form>
           </div>
         </div>
