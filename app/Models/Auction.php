@@ -69,16 +69,11 @@ class Auction extends Model
         if ($offers->isEmpty()) {
             return null;
         }
-    
+
         // Usa el método `max` de la colección para obtener la oferta con el precio máximo.
         $maxOffer = $offers->sortByDesc('price')->first();
-    
-        return $maxOffer;
-    }
 
-    public function addOffer(Offer $offer): void
-    {
-        $this->offers->add($offer);
+        return $maxOffer;
     }
 
     public function getId(): int
@@ -117,6 +112,20 @@ class Auction extends Model
     {
 
         $this->attributes['basePrice'] = $basePrice;
+
+    }
+
+    public function getActive(): bool
+    {
+
+        return $this->attributes['active'];
+
+    }
+
+    public function setActive(bool $active): void
+    {
+
+        $this->attributes['active'] = $active;
 
     }
 }

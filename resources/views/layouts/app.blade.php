@@ -25,7 +25,7 @@
             position: fixed;
             z-index: 1;
             top: 0;
-            left: 0;
+            right: 0; /* Posicionar a la derecha */
             background-color: #a06e3f;
             overflow-x: hidden;
             transition: 0.5s;
@@ -48,9 +48,13 @@
         .sidebar .closebtn {
             position: absolute;
             top: 0;
-            right: 25px;
+            left: 25px;
             font-size: 36px;
-            margin-left: 50px;
+            margin-right: 50px; /* Ajustar margen derecho */
+        }
+
+        .sidebar .submenu {
+            padding-left: 20px; /* Ajustar el espacio de la sublista */
         }
 
         @media screen and (max-height: 450px) {
@@ -70,7 +74,7 @@
         <span class="navbar-toggler-icon"></span>
     </button>
     <div class="collapse navbar-collapse" id="navbarNavDropdown">
-        <ul class="navbar-nav ms-auto mb-2 mb-lg-0">
+        <ul class="navbar-nav me-auto mb-2 mb-lg-0"> <!-- Cambiado ms-auto a me-auto para alinear a la izquierda -->
             <li class="nav-item">
                 <a class="nav-link active" aria-current="page" href="{{ route('home') }}">Home</a>
             </li>
@@ -80,12 +84,10 @@
             <li class="nav-item">
                 <a class="nav-link" href="{{ route('register') }}">Register</a>
             </li>
-            <!-- Agregamos un enlace para abrir el sidebar -->
-            <li class="nav-item">
-                <a class="nav-link" href="javascript:void(0)" onclick="openSidebar()">☰</a>
-            </li>
         </ul>
     </div>
+    <!-- Agregamos un enlace para abrir el sidebar -->
+    <a class="nav-link" href="javascript:void(0)" onclick="openSidebar()">☰</a>
   </div>
 </nav>
 <!-- Sidebar -->
@@ -93,9 +95,21 @@
     <!-- Botón para cerrar el sidebar -->
     <a href="javascript:void(0)" class="closebtn" onclick="closeSidebar()">×</a>
     <!-- Enlaces del sidebar -->
-    <a href="{{ route('cart.index') }}">Carrito de compras</a>
-    <a href="{{}}">Create Product</a>
     <a href="#">Auctions</a>
+    <ul class="submenu">
+        <li><a href="{{ route('auction.available') }}">View Auctions</a></li>
+        <li><a href="{{ route( 'auction.available' ) }}">Create Auction</a></li>
+    </ul>
+    <a href="#">Cart</a>
+    <ul class="submenu">
+        <li><a href="{{ route('cart.index') }}">View Cart</a></li>
+        <li><a href="{{ route('cart.index') }}">Add Cart</a></li>
+    </ul>
+    <a href="#">Product</a>
+    <ul class="submenu">
+        <li><a href="{{ route('product.available') }}">View Products</a></li>
+        <li><a href="{{ route('product.create') }}">Add Product</a></li>
+    </ul>
 </div>
 
 <div>
@@ -123,13 +137,13 @@
   <div class="container">
     <div class="row">
         <div class="col">
-            <span style="white-space: nowrap;">Trabaja con nosotros</span>
+            <span style="white-space: nowrap;">Work with us now</span>
         </div>
         <div class="col text-end">
-            <a href="#"><i class="fab fa-facebook-f fa-lg me-3" style="color: white;"></i></a>
-            <a href="#"><i class="fab fa-twitter fa-lg me-3" style="color: white;"></i></a>
-            <a href="#"><i class="fab fa-instagram fa-lg me-3" style="color: white;"></i></a>
-            <a href="#"><i class="fab fa-linkedin-in fa-lg me-3" style="color: white;"></i></a>
+            <a href="#"><i class="fab fa-facebook-f fa-lg me-2" style="color: white;"></i></a>
+            <a href="#"><i class="fab fa-twitter fa-lg me-2" style="color: white;"></i></a>
+            <a href="#"><i class="fab fa-instagram fa-lg me-2" style="color: white;"></i></a>
+            <a href="#"><i class="fab fa-linkedin-in fa-lg me-2" style="color: white;"></i></a>
         </div>
     </div>
   </div>
