@@ -14,8 +14,8 @@
 <!-- Mostrar lista de productos asociados a la orden -->
 <form method="POST" action="{{ route('order.download', ['id' => $viewData['order']->getId()]) }}">
     @csrf <!-- Agrega esto si estás utilizando Laravel 7 o superior para proteger contra ataques CSRF -->
-    <button type="submit" name="download" style="background-color: #71A06C; color: #ffffff;" value="PDF">Descargar PDF</button>
-    <button type="submit" name="download" style="background-color: #71A06C; color: #ffffff;" value="Excel">Descargar Excel</button>
+    <button type="submit" name="download" style="background-color: #71A06C; color: #ffffff;" value="PDF">Download PDF</button>
+    <button type="submit" name="download" style="background-color: #71A06C; color: #ffffff;" value="Excel">Download Excel</button>
 </form>
 
 
