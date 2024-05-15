@@ -15,22 +15,19 @@
                         <ul style="list-style: none;">
                             @foreach($viewData["cartProducts"] as $product)
                                 <li>
-                                    <strong>Id:</strong> {{ $product -> getId() }} - 
-                                    <strong>Name:</strong> {{ $product -> getName() }} - 
-                                    <strong>Price:</strong> {{ $product -> getPrice() }} - 
+                                    <strong>Id:</strong> {{ $product->getId() }} - 
+                                    <strong>Name:</strong> {{ $product->getName() }} - 
+                                    <strong>Price:</strong> {{ $product->getPrice() }} - 
                                 </li>
                             @endforeach
                         </ul>
                         <div class="mt-3">
-                        @extends('layouts.app')
+                            <form  method="POST" action="{{ route('order.create') }}">
+                                @csrf
 
-                        <form  method="POST" action="{{ route('order.create') }}" >
-                         @csrf
-
-                         <!-- Botón para enviar el formulario -->
-                         <button type="submit">Pay {{ $viewData["total"]}}</button>
-                        </form>
-
+                                <!-- Botón para enviar el formulario -->
+                                <button style="background-color: #71A06C; color: #ffffff" type="submit">Pay {{ $viewData["total"] }}</button>
+                            </form>
                         </div>
                         <div class="mt-3">
                             <a href="{{ route('cart.removeAll') }}" class="btn btn-danger">Remove All Products from Cart</a>
@@ -39,7 +36,7 @@
                         <h1 class="card-title">Your cart is empty</h1>
                         <div class="text-center">
                             <div class="mt-3">
-                                <a href="{{ route('product.available') }}" style=" background-color: #71A06C " class="btn btn-primary">View products </a>
+                                <a href="{{ route('product.available') }}" style="background-color: #71A06C" class="btn btn-primary">View products</a>
                             </div>
                         </div>
                     @endif
