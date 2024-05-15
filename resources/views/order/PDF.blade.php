@@ -30,7 +30,6 @@
 <body>
     <h1>Order Details</h1>
     <p><strong>Order ID:</strong> {{ $order->getId() }}</p>
-    <p><strong>Total:</strong> {{ $order->getTotal() }}</p>
     <table>
         <thead>
             <tr>
@@ -47,5 +46,6 @@
             @endforeach
         </tbody>
     </table>
+    <p><strong>Total:</strong> {{ $order->getTotal() }}</p>
 </body>
 </html>

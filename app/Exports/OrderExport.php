@@ -3,20 +3,19 @@
  * Created by: Juan Martín Espitia
  */
 
-namespace App\Util;
-
+namespace App\Exports;
 use Maatwebsite\Excel\Concerns\FromCollection;
 use Maatwebsite\Excel\Concerns\WithHeadings;
 
-class ProductsExport implements FromCollection, WithHeadings
+class OrderExport implements FromCollection, WithHeadings
 {
     protected $products;
 
     protected $order;
 
-    public function __construct($products, $order)
+    public function __construct($order)
     {
-        $this->products = $products;
+        $this->products = $order->getProducts();
         $this->order = $order;
 
     }
@@ -35,10 +34,19 @@ class ProductsExport implements FromCollection, WithHeadings
         });
 
         $collection->push([
-            'Order ID' => $this->order->getId(),
+            'Order Total_Name' => 'Total',
             'Order Total' => $this->order->getTotal(),
 
         ]);
+
+
+        $collection->push([
+            'Order ID_Name' => 'Order ID',
+            'Order ID' => $this->order->getId(),
+
+
+        ]);
+
 
         return $collection;
     }
@@ -51,8 +59,6 @@ class ProductsExport implements FromCollection, WithHeadings
             'Description',
             'Category',
             'Price',
-            'Order ID',
-            'Order Total',
         ];
     }
 }

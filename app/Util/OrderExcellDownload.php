@@ -6,22 +6,21 @@
 namespace App\Util;
 
 use App\Interfaces\OrderDownload;
+use App\Exports\OrderExport;
 use App\Models\Order;
 use Illuminate\Http\Request;
 use Maatwebsite\Excel\Facades\Excel;
-use Symfony\Component\HttpFoundation\BinaryFileResponse;
+use Symfony\Component\HttpFoundation\Response;
 
 class OrderExcellDownload implements OrderDownload
 {
-    public function download(Request $request,array $viewData): BinaryFileResponse
+    public function download(Request $request,array $viewData): Response
     {
-        /**
-        *    $products = $order->getProducts();
-        *    $excel = Excel::download(new ProductsExport($products,$order), 'order.xlsx');
-        *    $response = new BinaryFileResponse($excel->getFile());
-        *    $response->headers->set('Content-Disposition', 'attachment; filename="order.xlsx"');
+        
+        $products = $viewData['order']->getProducts();
+        $excel = Excel::download(new OrderExport($viewData['order']), 'order.xlsx');
 
-        *    return $response;
-        */
+        return $excel;
+        
     }
 }

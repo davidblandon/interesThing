@@ -35,7 +35,6 @@ class OrderController extends Controller
         $viewData = array('order' => $order);
         $downloadInterface = app(OrderDownload::class, ['download' => $download]);
         return $downloadInterface->download($request, $viewData);
-
     }
 
 

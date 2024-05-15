@@ -19,7 +19,7 @@ class OrderServiceProvider extends ServiceProvider
             $download = $params['download'];
             if ($download == 'PDF') {
                 return new OrderPDFDownload;
-            } elseif ($download == 'Excell') {
+            } elseif ($download == 'Excel') {
                 return new OrderExcellDownload;
             }
 
