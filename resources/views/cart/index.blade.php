@@ -13,19 +13,24 @@
                     @if(count($viewData["cartProducts"]) > 0)
                         <h1 class="card-title" style="color: inherit;">Products in Cart</h1>
                         <ul style="list-style: none;">
-                            @foreach($viewData["cartProducts"] as $key => $product)
+                            @foreach($viewData["cartProducts"] as $product)
                                 <li>
-                                    <strong>Id:</strong> {{ $key }} - 
-                                    <strong>Name:</strong> {{ $product["name"] }} - 
-                                    <strong>Price:</strong> {{ $product["price"] }} - 
-                                    <strong>Quantity:</strong> {{ $viewData['producst']->getX }}
+                                    <strong>Id:</strong> {{ $product -> getId() }} - 
+                                    <strong>Name:</strong> {{ $product -> getName() }} - 
+                                    <strong>Price:</strong> {{ $product -> getPrice() }} - 
                                 </li>
                             @endforeach
                         </ul>
                         <div class="mt-3">
-                            <a href="{{ route('order.show') }}" class="btn btn-success">
-                                <p class="card-text"><b>Purchase</b> (total: ${{ $viewData["total"] }})</p>
-                            </a>
+                        @extends('layouts.app')
+
+                        <form  method="POST" action="{{ route('order.create') }}" >
+                         @csrf
+
+                         <!-- Botón para enviar el formulario -->
+                         <button type="submit">Pay {{ $viewData["total"]}}</button>
+                        </form>
+
                         </div>
                         <div class="mt-3">
                             <a href="{{ route('cart.removeAll') }}" class="btn btn-danger">Remove All Products from Cart</a>
