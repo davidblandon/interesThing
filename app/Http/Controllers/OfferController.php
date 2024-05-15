@@ -35,4 +35,5 @@ class OfferController extends Controller
 
         return back();
     }
+
 }

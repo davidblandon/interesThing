@@ -11,20 +11,35 @@ use App\Models\Order;
 use App\Models\Product;
 use Illuminate\Http\RedirectResponse;
 use Illuminate\Http\Request;
+use Illuminate\View\View;
 use Illuminate\Support\Facades\Auth;
+use Symfony\Component\HttpFoundation\Response;
 
 class OrderController extends Controller
 {
-    public function download(Request $request, int $id): void
+    public function download(Request $request, int $id): Response
     {
         $download = $request->get('download');
         $order = Order::findOrFail($id);
         $downloadInterface = app(OrderDownload::class, ['download' => $download]);
-        $downloadInterface->download($request, $order);
+        return $downloadInterface->download($request, $order);
 
     }
 
-    public function show(int $id)
+    public function pdf(int $id): View
+    {
+        $viewData = [];
+        $order = Order::findOrFail($id);
+        $viewData['order'] = $order;
+
+        return view('order.pdf')->with('viewData', $viewData);
+
+    }
+
+
+
+
+    public function show(int $id): View
     {
         $viewData = [];
         $order = Order::findOrFail($id);

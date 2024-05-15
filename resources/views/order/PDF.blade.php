@@ -29,8 +29,8 @@
 </head>
 <body>
     <h1>Order Details</h1>
-    <p><strong>Order ID:</strong> {{ $orderId }}</p>
-    <p><strong>Total:</strong> ${{ number_format($total, 2) }}</p>
+    <p><strong>Order ID:</strong> {{ $viewData['order']->getId() }}</p>
+    <p><strong>Total:</strong> {{ $viewData['order']->getTotal() }}</p>
     <table>
         <thead>
             <tr>
@@ -39,10 +39,10 @@
             </tr>
         </thead>
         <tbody>
-            @foreach($products as $product)
+            @foreach($viewData['order']->getProducts() as $product)
                 <tr>
-                    <td>{{ $product->name }}</td>
-                    <td>${{ number_format($product->price, 2) }}</td>
+                    <td>{{ $product->getName() }}</td>
+                    <td>{{ $product->getPrice() }}</td>
                 </tr>
             @endforeach
         </tbody>

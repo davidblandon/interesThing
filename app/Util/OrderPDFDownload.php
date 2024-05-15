@@ -4,29 +4,22 @@
  */
 
 namespace App\Util;
-
+use Barryvdh\DomPDF\Facade\Pdf;
 use App\Interfaces\OrderDownload;
 use App\Models\Order;
 use Illuminate\Http\Request;
-use Illuminate\Support\Facades\View;
-use Symfony\Component\HttpFoundation\BinaryFileResponse;
+use Symfony\Component\HttpFoundation\Response;
+
 
 class OrderPDFDownload implements OrderDownload
 {
-    public function download(Request $request, Order $order): BinaryFileResponse
+    public function download(Request $request, Order $order): Response
     {
-        /**
-        *    $products = $order->getProducts();
-        *    $html = view::make('order.PDF', [
-        *       'products' => $products,
-        *        'orderId' => $order->getId(),
-        *       'total' => $order->getTotal(),
-        *    ])->render();
+        $viewData = [];
+        $viewData['order'] = $order;
+        $pdf = Pdf::loadView('order.pdf',$viewData);
+        return $pdf->download();
 
-        *    $response = new BinaryFileResponse($pdf);
-        *    $response->headers->set('Content-Disposition', 'attachment; filename="order.pdf"');
 
-        *    return $response;
-        */
-    }
+   }
 }

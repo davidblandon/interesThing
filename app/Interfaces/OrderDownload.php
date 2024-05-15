@@ -4,9 +4,9 @@ namespace App\Interfaces;
 
 use App\Models\Order;
 use Illuminate\Http\Request;
-use Symfony\Component\HttpFoundation\BinaryFileResponse;
+use Symfony\Component\HttpFoundation\Response;
 
 interface OrderDownload
 {
-    public function download(Request $request, Order $order): BinaryFileResponse;
+    public function download(Request $request, Order $order): Response;
 }
