@@ -18,7 +18,7 @@
                                     <strong>Id:</strong> {{ $key }} - 
                                     <strong>Name:</strong> {{ $product["name"] }} - 
                                     <strong>Price:</strong> {{ $product["price"] }} - 
-                                    <strong>Quantity:</strong> {{ session('products')[$product->getId()] }}
+                                    <strong>Quantity:</strong> {{ $viewData['producst']->getX }}
                                 </li>
                             @endforeach
                         </ul>
