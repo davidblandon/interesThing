@@ -13,7 +13,7 @@ use Symfony\Component\HttpFoundation\BinaryFileResponse;
 
 class OrderExcellDownload implements OrderDownload
 {
-    public function download(Request $request, Order $order): BinaryFileResponse
+    public function download(Request $request,array $viewData): BinaryFileResponse
     {
         /**
         *    $products = $order->getProducts();

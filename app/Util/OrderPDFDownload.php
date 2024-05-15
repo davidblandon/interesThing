@@ -13,11 +13,10 @@ use Symfony\Component\HttpFoundation\Response;
 
 class OrderPDFDownload implements OrderDownload
 {
-    public function download(Request $request, Order $order): Response
+    public function download(Request $request, array $viewData): Response
     {
-        $viewData = [];
-        $viewData['order'] = $order;
-        $pdf = Pdf::loadView('order.pdf',$viewData);
+        $pdf = app('dompdf.wrapper');
+        $pdf = \Pdf::loadView('order.pdf',$viewData);
         return $pdf->download();
 
 

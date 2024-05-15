@@ -17,26 +17,26 @@ use Symfony\Component\HttpFoundation\Response;
 
 class OrderController extends Controller
 {
-    public function download(Request $request, int $id): Response
-    {
-        $download = $request->get('download');
-        $order = Order::findOrFail($id);
-        $downloadInterface = app(OrderDownload::class, ['download' => $download]);
-        return $downloadInterface->download($request, $order);
-
-    }
-
+    
     public function pdf(int $id): View
     {
         $viewData = [];
         $order = Order::findOrFail($id);
         $viewData['order'] = $order;
 
-        return view('order.pdf')->with('viewData', $viewData);
+        return view('order.pdf')->with('viewData', $order);
 
     }
 
+    public function download(Request $request, int $id): Response
+    {
+        $download = $request->get('download');
+        $order = Order::findOrFail($id);
+        $viewData = array('order' => $order);
+        $downloadInterface = app(OrderDownload::class, ['download' => $download]);
+        return $downloadInterface->download($request, $viewData);
 
+    }
 
 
     public function show(int $id): View
@@ -45,7 +45,6 @@ class OrderController extends Controller
         $order = Order::findOrFail($id);
         $viewData['title'] = ' Order - InteresThing';
         $viewData['order'] = $order;
-
         return view('order.show')->with('viewData', $viewData);
     }
 
