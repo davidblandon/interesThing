@@ -43,8 +43,6 @@ Route::get('/order/{id}', 'App\Http\Controllers\OrderController@show')->name('or
 Route::get('/order/{id}/pdf/', 'App\Http\Controllers\OrderController@pdf')->name('order.pdf');
 Route::post('/order/{id}/downloads/', 'App\Http\Controllers\OrderController@download')->name('order.download');
 
-
-
 Auth::routes();
 
 Route::get('/', 'App\Http\Controllers\HomeController@index')->name('home');

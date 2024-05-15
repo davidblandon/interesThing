@@ -22,6 +22,7 @@
               <input type="text" class="form-control mb-2" placeholder="Enter photo" name="photo" value="{{ old('photo') }}" />
               <input type="text" class="form-control mb-2" placeholder="Enter category" name="category" value="{{ old('category') }}" />
               <input type="text" class="form-control mb-2" placeholder="Enter price" name="price" value="{{ old('price') }}" />
+              <input type="text" class="form-control mb-2" placeholder="Enter id" name="id" value="{{ old('id') }}" />
               <input type="submit" class="btn btn-primary" value="Send" style=" background-color: #71A06C " />
             </form>
           </div>
