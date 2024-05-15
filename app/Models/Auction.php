@@ -62,9 +62,18 @@ class Auction extends Model
         return $this->offers;
     }
 
-    public function addOffer(Offer $offer): void
+    public function getMaxOffer(): ?Offer
     {
-        $this->offers->add($offer);
+        $offers = $this->getOffers(); // Esto debería devolver una colección de Eloquent.
+
+        if ($offers->isEmpty()) {
+            return null;
+        }
+    
+        // Usa el método `max` de la colección para obtener la oferta con el precio máximo.
+        $maxOffer = $offers->sortByDesc('price')->first();
+    
+        return $maxOffer;
     }
 
     public function getId(): int
@@ -105,4 +114,20 @@ class Auction extends Model
         $this->attributes['basePrice'] = $basePrice;
 
     }
+
+    public function getActive(): bool
+    {
+
+        return $this->attributes['active'];
+
+    }
+
+    public function setActive(bool $active): void
+    {
+
+        $this->attributes['active'] = $active;
+
+    }
+
+    
 }
