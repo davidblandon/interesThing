@@ -69,10 +69,10 @@ class Auction extends Model
         if ($offers->isEmpty()) {
             return null;
         }
-    
+
         // Usa el método `max` de la colección para obtener la oferta con el precio máximo.
         $maxOffer = $offers->sortByDesc('price')->first();
-    
+
         return $maxOffer;
     }
 
@@ -128,6 +128,4 @@ class Auction extends Model
         $this->attributes['active'] = $active;
 
     }
-
-    
 }

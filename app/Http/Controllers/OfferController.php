@@ -6,8 +6,8 @@
 
 namespace App\Http\Controllers;
 
-use App\Models\Offer;
 use App\Models\Auction;
+use App\Models\Offer;
 use App\Models\Order;
 use Illuminate\Http\RedirectResponse;
 use Illuminate\Http\Request;
@@ -39,7 +39,7 @@ class OfferController extends Controller
 
         // Validar que la nueva oferta sea mayor al precio máximo actual
         if ($request->price <= $maxPrice) {
-            return back()->withErrors(['price' => 'The offer should be higher than ' . $maxPrice . '.']);
+            return back()->withErrors(['price' => 'The offer should be higher than '.$maxPrice.'.']);
         }
         // Crea una nueva oferta
         $offer = new Offer([
@@ -49,7 +49,7 @@ class OfferController extends Controller
         ]);
 
         // Guarda la oferta en la base de datos
-        
+
         $offer->save();
         $auction->load('offers');
         // Comprueba si hay tres o más ofertas
