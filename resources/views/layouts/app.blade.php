@@ -98,12 +98,9 @@
     <a href="#">Auctions</a>
     <ul class="submenu">
         <li><a href="{{ route('auction.available') }}">View Auctions</a></li>
-        <li><a href="{{ route( 'auction.available' ) }}">Create Auction</a></li>
+        <li><a href="{{ route( 'auction.create' ) }}">Create Auction</a></li>
     </ul>
-    <a href="#">Cart</a>
-    <ul class="submenu">
-        <li><a href="{{ route('cart.index') }}">View Cart</a></li>
-        <li><a href="{{ route('cart.index') }}">Add Cart</a></li>
+    <a href="{{ route('cart.index') }}"> view Cart</a>
     </ul>
     <a href="#">Product</a>
     <ul class="submenu">

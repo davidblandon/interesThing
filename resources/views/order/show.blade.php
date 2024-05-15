@@ -4,7 +4,7 @@
 <div class="container mt-4">
     <!-- Mostrar información de la orden -->
     <div class="card mb-4">
-        <div class="card-body">
+        <div class="card-body" style="background-color: #F9DE96">
             <h5 class="card-title">Order Information</h5>
             <p class="card-text">Total: {{ $viewData['order']->getTotal() }}</p>
         </div>
@@ -14,8 +14,8 @@
 <!-- Mostrar lista de productos asociados a la orden -->
 <form method="POST" action="{{ route('order.download', ['id' => $viewData['order']->getId()]) }}">
     @csrf <!-- Agrega esto si estás utilizando Laravel 7 o superior para proteger contra ataques CSRF -->
-    <button type="submit" name="download" value="PDF">Descargar PDF</button>
-    <button type="submit" name="download" value="Excell">Descargar Excel</button>
+    <button type="submit" name="download" style="background-color: #71A06C; color: #ffffff;" value="PDF">Descargar PDF</button>
+    <button type="submit" name="download" style="background-color: #71A06C; color: #ffffff;" value="Excel">Descargar Excel</button>
 </form>
 
 

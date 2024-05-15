@@ -17,10 +17,13 @@ class CartController extends Controller
         $products = Product::where('auctioned', false)->get();
         $cartProducts = [];
         $cartProductData = $request->session()->get('cart_product_data');
+        $total = 0;
 
         if ($cartProductData) {
 
             foreach ($products as $product) {
+
+                $total = $total + $product -> getPrice();
 
                 if (in_array($product->getId(), array_keys($cartProductData))) {
 
@@ -32,9 +35,11 @@ class CartController extends Controller
 
         }
 
+
         $viewData = [];
         $viewData['title'] = 'Cart - Online Store';
         $viewData['cartProducts'] = $cartProducts;
+        $viewData['total'] = $total;
 
         return view('cart.index')->with('viewData', $viewData);
 
