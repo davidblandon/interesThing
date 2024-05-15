@@ -53,6 +53,10 @@
             margin-right: 50px; /* Ajustar margen derecho */
         }
 
+        .sidebar .submenu {
+            padding-left: 20px; /* Ajustar el espacio de la sublista */
+        }
+
         @media screen and (max-height: 450px) {
             .sidebar {padding-top: 15px;}
             .sidebar a {font-size: 18px;}
@@ -91,9 +95,21 @@
     <!-- Botón para cerrar el sidebar -->
     <a href="javascript:void(0)" class="closebtn" onclick="closeSidebar()">×</a>
     <!-- Enlaces del sidebar -->
-    <a href="{{ route('cart.index') }}">Cart</a>
-    <a href="{{ route('product.create') }}"> Product</a>
-    <a href="{{ route('auction.available')}}">Auctions</a>
+    <a href="#">Auctions</a>
+    <ul class="submenu">
+        <li><a href="#">View Auctions</a></li>
+        <li><a href="#">Create Auction</a></li>
+    </ul>
+    <a href="#">Cart</a>
+    <ul class="submenu">
+        <li><a href="{{ route('cart.index') }}">View Cart</a></li>
+        <li><a href="{{ route('cart.index') }}">Add Cart</a></li>
+    </ul>
+    <a href="#">Product</a>
+    <ul class="submenu">
+        <li><a href="{{ route('product.available') }}">View Products</a></li>
+        <li><a href="{{ route('product.create') }}">Add Product</a></li>
+    </ul>
 </div>
 
 <div>
