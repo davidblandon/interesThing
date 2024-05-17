@@ -120,7 +120,7 @@
     </head>
     <body>
         <header  class="color-header">
-            <h1>Give it a second chance 💚</h1>
+            <h1>Give it a second chance!</h1>
         </header> 
         <!--header-->
         <!--content-->

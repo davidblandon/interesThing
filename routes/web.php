@@ -43,6 +43,11 @@ Route::get('/order/{id}', 'App\Http\Controllers\OrderController@show')->name('or
 Route::get('/order/{id}/pdf/', 'App\Http\Controllers\OrderController@pdf')->name('order.pdf');
 Route::post('/order/{id}/downloads/', 'App\Http\Controllers\OrderController@download')->name('order.download');
 
+Route::get('open/admin', 'App\Http\Controllers\Admin\AdminHomeController@index')->name('admin.home.index');
+Route::get('/admin/products', 'App\Http\Controllers\Admin\AdminProductController@index')->name('admin.product.index');
+Route::post('/admin/products/store', 'App\Http\Controllers\Admin\AdminProductController@store')->name('admin.product.store');
+Route::post('/admin/auctions/store', 'App\Http\Controllers\Admin\AdminProductController@store')->name('admin.auctions.store');
+
 Auth::routes();
 
 Route::get('/', 'App\Http\Controllers\HomeController@index')->name('home');
