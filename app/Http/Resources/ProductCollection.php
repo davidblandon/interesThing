@@ -1,5 +1,9 @@
 <?php
 
+/**
+ * Created by: Juan MArtín Espitia
+ */
+
 namespace App\Http\Resources;
 use Illuminate\Http\Request;
 use Illuminate\Http\Resources\Json\ResourceCollection;

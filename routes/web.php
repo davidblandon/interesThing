@@ -18,7 +18,7 @@ Route::get('/products/create', 'App\Http\Controllers\ProductController@create')-
 Route::post('/products/save', 'App\Http\Controllers\ProductController@save')->name('product.save');
 Route::get('/products/{id}', 'App\Http\Controllers\ProductController@show')->name('product.show');
 
-Route::get('/auctions/available', 'App\Http\Controllers\AuctionController@available')->name('auction.available');
+Route::get('/auctions/avaliable', 'App\Http\Controllers\AuctionController@available')->name('auction.avaliable');
 Route::get('/auctions/create', 'App\Http\Controllers\AuctionController@create')->name('auction.create');
 Route::post('/auctions/save', 'App\Http\Controllers\AuctionController@save')->name('auction.save');
 Route::get('/auctions/{id}', 'App\Http\Controllers\AuctionController@show')->name('auction.show');
