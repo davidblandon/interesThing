@@ -14,7 +14,7 @@ use Illuminate\View\View;
 
 class ProductController extends Controller
 {
-    public function available(): View
+    public function avaliable(): View
     {
         $viewData = [];
         $viewData['title'] = 'Products - InteresThing';
