@@ -14,7 +14,7 @@ use Illuminate\View\View;
 
 class ProductController extends Controller
 {
-    public function available(Request $request): View
+    public function avaliable(Request $request): View
     {
         $search = $request->input('search');
 

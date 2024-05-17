@@ -3,7 +3,7 @@ extends('layouts.app')
 @section('title', $viewData["title"])
 @section('content')
 <div style="position: absolute; top: 2; right: 7px;">
-  <form action="{{ route('product.available') }}" method="GET">
+  <form action="{{ route('product.avaliable') }}" method="GET">
     <div class="input-group">
       <div class="form-outline" data-mdb-input-init>
         <input type="search" name="search" id="form1" class="form-control" placeholder="Search" value="{{ request()->input('search') }}" />

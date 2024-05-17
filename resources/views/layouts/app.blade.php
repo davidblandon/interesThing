@@ -102,12 +102,12 @@
     <a href="#">Auctions</a>
     <ul class="submenu">
         <li><a href="{{ route('auction.available') }}">View Auctions</a></li>
-        <li><a href="{{ route('auction.create') }}">Create Auction</a></li>
+        <li><a href="{{ route( 'auction.create' ) }}">Create Auction</a></li>
     </ul>
     <a href="{{ route('cart.index') }}">View Cart</a>
     <a href="#">Product</a>
     <ul class="submenu">
-        <li><a href="{{ route('product.available') }}">View Products</a></li>
+        <li><a href="{{ route('product.avaliable') }}">View Products</a></li>
         <li><a href="{{ route('product.create') }}">Add Product</a></li>
     </ul>
 </div>
