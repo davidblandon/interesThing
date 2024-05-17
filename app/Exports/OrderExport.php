@@ -4,6 +4,7 @@
  */
 
 namespace App\Exports;
+
 use Maatwebsite\Excel\Concerns\FromCollection;
 use Maatwebsite\Excel\Concerns\WithHeadings;
 
@@ -39,14 +40,11 @@ class OrderExport implements FromCollection, WithHeadings
 
         ]);
 
-
         $collection->push([
             'Order ID_Name' => 'Order ID',
             'Order ID' => $this->order->getId(),
 
-
         ]);
-
 
         return $collection;
     }

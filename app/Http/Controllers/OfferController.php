@@ -79,5 +79,4 @@ class OfferController extends Controller
         $product->setOrderId($order->getId());
         $product->save();
     }
-
 }

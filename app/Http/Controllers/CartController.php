@@ -23,7 +23,7 @@ class CartController extends Controller
 
             foreach ($products as $product) {
 
-                $total = $total + $product -> getPrice();
+                $total = $total + $product->getPrice();
 
                 if (in_array($product->getId(), array_keys($cartProductData))) {
 
@@ -34,7 +34,6 @@ class CartController extends Controller
             }
 
         }
-
 
         $viewData = [];
         $viewData['title'] = 'Cart - Online Store';

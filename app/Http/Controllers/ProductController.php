@@ -16,11 +16,19 @@ class ProductController extends Controller
 {
     public function avaliable(): View
     {
+        $search = $request->input('search');
+
+        $query = Product::where('auctioned', false)->whereNull('buyerId');
+    
+        if ($search) {
+            $query->where('name', 'like', '%' . $search . '%');
+        }
+    
         $viewData = [];
         $viewData['title'] = 'Products - InteresThing';
         $viewData['subtitle'] = 'List of products';
-        $viewData['products'] = Product::where('auctioned', false)->whereNull('buyerId')->get();
-
+        $viewData['products'] = $query->get();
+    
         return view('product.available')->with('viewData', $viewData);
     }
 
@@ -28,6 +36,7 @@ class ProductController extends Controller
     {
         $viewData = [];
         $viewData['title'] = 'Create product';
+        $viewData['categories'] = ['Clothing and Accessories', 'Electronics', 'Home', 'Entertainment', 'Jewelry', 'Art and Antiques'];
 
         return view('product.create')->with('viewData', $viewData);
     }
@@ -47,10 +56,12 @@ class ProductController extends Controller
     {
         $user = Auth::user();
         Product::validate($request);
+        $photoPath = $request->file('photo')->store('photos', 'public');
+
         Product::create([
             'name' => $request->name,
             'description' => $request->description,
-            'photo' => $request->photo,
+            'photo' => $photoPath,
             'price' => $request->price,
             'category' => $request->category,
             'sellerId' => $user->getId(),

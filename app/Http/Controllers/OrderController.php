@@ -11,13 +11,12 @@ use App\Models\Order;
 use App\Models\Product;
 use Illuminate\Http\RedirectResponse;
 use Illuminate\Http\Request;
-use Illuminate\View\View;
 use Illuminate\Support\Facades\Auth;
+use Illuminate\View\View;
 use Symfony\Component\HttpFoundation\Response;
 
 class OrderController extends Controller
 {
-    
     public function pdf(int $id): View
     {
         $viewData = [];
@@ -32,11 +31,11 @@ class OrderController extends Controller
     {
         $download = $request->get('download');
         $order = Order::findOrFail($id);
-        $viewData = array('order' => $order);
+        $viewData = ['order' => $order];
         $downloadInterface = app(OrderDownload::class, ['download' => $download]);
+
         return $downloadInterface->download($request, $viewData);
     }
-
 
     public function show(int $id): View
     {
@@ -44,6 +43,7 @@ class OrderController extends Controller
         $order = Order::findOrFail($id);
         $viewData['title'] = ' Order - InteresThing';
         $viewData['order'] = $order;
+
         return view('order.show')->with('viewData', $viewData);
     }
 

@@ -2,7 +2,6 @@
 
 namespace App\Interfaces;
 
-use App\Models\Order;
 use Illuminate\Http\Request;
 use Symfony\Component\HttpFoundation\Response;
 
