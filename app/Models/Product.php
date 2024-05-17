@@ -120,6 +120,16 @@ class Product extends Model
         $this->attributes['price'] = $price;
     }
 
+    public function getDescription(): string
+    {
+        return $this->attributes['description'];
+    }
+
+    public function setDescription(string $description): void
+    {
+        $this->attributes['description'] = $description;
+    }
+
     public function getPhoto(): string
     {
         return $this->attributes['photo'];

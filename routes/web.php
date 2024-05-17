@@ -46,8 +46,15 @@ Route::post('/order/{id}/downloads/', 'App\Http\Controllers\OrderController@down
 Route::get('open/admin', 'App\Http\Controllers\Admin\AdminHomeController@index')->name('admin.home.index');
 Route::get('/admin/products', 'App\Http\Controllers\Admin\AdminProductController@index')->name('admin.product.index');
 Route::post('/admin/products/store', 'App\Http\Controllers\Admin\AdminProductController@store')->name('admin.product.store');
+Route::delete('/admin/products/{id}/delete', 'App\Http\Controllers\Admin\AdminProductController@delete')->name('admin.product.delete');
+Route::get('/admin/products/{id}/edit', 'App\Http\Controllers\Admin\AdminProductController@edit')->name('admin.product.edit');
+Route::put('/admin/products/{id}/update', 'App\Http\Controllers\Admin\AdminProductController@update')->name('admin.product.update');
+Route::post('/admin/auctions', 'App\Http\Controllers\Admin\AdminProductController@index')->name('admin.auctions.index');
 Route::post('/admin/auctions/store', 'App\Http\Controllers\Admin\AdminProductController@store')->name('admin.auctions.store');
+Route::get('/admin/auctions/{id}/edit', 'App\Http\Controllers\Admin\AdminProductController@edit')->name('adminauction.edit');
+Route::put('/admin/auctions/{id}/update', 'App\Http\Controllers\Admin\AdminProductController@update')->name('admin.auction.update');
 
 Auth::routes();
+Route::post('logout', 'App\Http\Controllers\Auth\LoginController@logout')->name('logout');
 
 Route::get('/', 'App\Http\Controllers\HomeController@index')->name('home');

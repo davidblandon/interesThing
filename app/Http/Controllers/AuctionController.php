@@ -18,25 +18,24 @@ class AuctionController extends Controller
     public function available(Request $request): View
     {
         $search = $request->input('search');
-        
+
         $query = Auction::where('active', true);
-    
+
         if ($search) {
             $query->whereHas('product', function ($query) use ($search) {
-                $query->where('name', 'like', '%' . $search . '%');
+                $query->where('name', 'like', '%'.$search.'%');
             });
         }
-    
+
         $auctions = $query->get();
-    
+
         $viewData = [];
         $viewData['title'] = 'Auctions - InteresThing';
         $viewData['subtitle'] = 'List of Auctions';
         $viewData['auctions'] = $auctions;
-    
+
         return view('auction.available')->with('viewData', $viewData);
     }
-    
 
     public function create(): View
     {

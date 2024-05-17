@@ -1,4 +1,4 @@
-@extends('layouts.app')
+@extends('layouts.login')
 
 @section('content')
 <div class="container-lg mt-5"> <!-- Cambié container por container-lg -->

@@ -1,7 +1,7 @@
 <?php
 
 /**
- * Created by: Juan MArtín Espitia
+ * Created by: Juan Martín Espitia
  */
 
 namespace App\Http\Controllers;

@@ -1,4 +1,5 @@
-@extends('layouts.app')
+<!--Created By: Laura-->@
+extends('layouts.app')
 @section('title', $viewData["title"])
 @section('content')
 <div style="position: absolute; top: 2; right: 7px;">
@@ -18,7 +19,7 @@
         @foreach($viewData['products'] as $product)
             <div class="col">
                 <div class="product">
-                    <img src="{{ asset('storage/' . $product->getPhoto()) }}" class="card-img-top" alt="...">
+                    <img src="{{ asset('storage/app/public/' . $product->getPhoto()) }}" class="card-img-top" alt="...">
                     <h2>{{ $product->name }}</h2>
                     <!-- Suponiendo que 'description' sea un atributo en tu modelo -->
                     <p>{{ $product->description }}</p>

@@ -1,3 +1,9 @@
+<!--Created By: Laura-->
+
+<!-- $this->attributes['limitDate'] - date - contains the limit of the auction
+     * $this->attributes['basePrice'] - int - contains the base price of the auction
+     * $this->attributes['active'] - bool - checks if the auction is active
+     * $this->product - Product - contains the product associeted to the auction -->
 @extends('layouts.admin')
 
 @section('title', $viewData["title"])
@@ -16,38 +22,49 @@ Create Products
 @endforeach
 </ul>
 @endif
-<form method="POST" action="{{ route('admin.product.store') }}">
+<form method="POST" action="{{ route('admin.auction.store') }}">
 
 @csrf
 <div class="row">
 <div class="col">
 <div class="mb-3 row">
-<label class="col-lg-2 col-md-6 col-sm-12 col-form-label">Name:</label>
+<label class="col-lg-2 col-md-6 col-sm-12 col-form-label">Date:</label>
 <div class="col-lg-10 col-md-6 col-sm-12">
-<input name="name" value="{{ old('name') }}" type="text" class="form-control">
+<input name="limitDate" value="{{ old('limitDate') }}" type="date" class="form-control">
 </div>
 </div>
 </div>
 <div class="col">
 <div class="mb-3 row">
-<label class="col-lg-2 col-md-6 col-sm-12 col-form-label">Price:</label>
+<label class="col-lg-2 col-md-6 col-sm-12 col-form-label">Base Price:</label>
 <div class="col-lg-10 col-md-6 col-sm-12">
-<input name="price" value="{{ old('price') }}" type="number" class="form-control">
+<input name="basePrice" value="{{ old('basePrice') }}" type="number" class="form-control">
 </div>
 </div>
 </div>
 </div>
-<div class="mb-3">
-<label class="form-label">Description</label>
-<textarea class="form-control" name="description" rows="3">{{ old('description') }}</textarea>
+<div class="col">
+<div class="mb-3 row">
+<label class="col-lg-2 col-md-6 col-sm-12 col-form-label">Active:</label>
+<div class="col-lg-10 col-md-6 col-sm-12">
+<input name="active" value="{{ old('active') }}" type="bool" class="form-control">
 </div>
-<button type="submit" class="btn btn-primary">Submit</button>
-</form>
+<div class="col">
+<div class="mb-3 row">
+<label class="col-lg-2 col-md-6 col-sm-12 col-form-label">Active:</label>
+<div class="col-lg-10 col-md-6 col-sm-12">
+<input name="active" value="{{ old('active') }}" type="boolr" class="form-control">
 </div>
-</div>
-    <div class="card">
+<select class="form-control mb-2" name="productId">
+                <option value="">Enter the product you want to auct</option>
+     
+                    <option value="{{ $product->getId() }}">{{ $product->getName() }}</option>
+             
+              </select>
+
+              <div class="card">
         <div class="card-header">
-            Manage Products
+            Manage Auctions
         </div>
         <div class="card-body">
             <table class="table table-bordered table-striped">
@@ -60,12 +77,26 @@ Create Products
                     </tr>
                 </thead>
                 <tbody>
-                    @foreach ($viewData["products"] as $product)
+                    @foreach ($viewData["auctions"] as $auctions)
                         <tr>
                             <td>{{ $product->getId() }}</td>
                             <td>{{ $product->getName() }}</td>
-                            <td>Edit</td>
-                            <td>Delete</td>
+                            <td>
+                        <a class="btn btn-primary" href="{{route('admin.auctions.edit', ['id'=> $product->getId()])}}">
+                            Edit
+                            <i class="bi-pencil"></i>
+                        </a> 
+                    </td>
+                            <td>
+                        <form action="{{ route('admin.auctions.delete', $product->getId())}}" method="POST" onsubmit="return confirm('Are you sure you want to delete this product?')">
+                            @csrf
+                            @method('DELETE')
+                            <button class="btn btn-danger">
+                                Delete
+                                <i class="bi-trash"></i>
+                            </button>
+                        </form> 
+                    </td>
                         </tr>
                     @endforeach
                 </tbody>
@@ -73,3 +104,4 @@ Create Products
         </div>
     </div>
 @endsection
+

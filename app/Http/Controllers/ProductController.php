@@ -19,16 +19,16 @@ class ProductController extends Controller
         $search = $request->input('search');
 
         $query = Product::where('auctioned', false)->whereNull('buyerId');
-    
+
         if ($search) {
-            $query->where('name', 'like', '%' . $search . '%');
+            $query->where('name', 'like', '%'.$search.'%');
         }
-    
+
         $viewData = [];
         $viewData['title'] = 'Products - InteresThing';
         $viewData['subtitle'] = 'List of products';
         $viewData['products'] = $query->get();
-    
+
         return view('product.available')->with('viewData', $viewData);
     }
 

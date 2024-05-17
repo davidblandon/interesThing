@@ -1,36 +1,87 @@
 <?php
+/**
+ * Created by: Laura
+ */
 
 namespace App\Http\Controllers\Admin;
 
 use App\Http\Controllers\Controller;
 use App\Models\Product;
+use Illuminate\Http\RedirectResponse;
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\Auth;
+use Illuminate\View\View;
 
-class AdminAuctionController extends Controller
+class AdminProductController extends Controller
 {
-    public function index()
+    /*** $this->attributes['limitDate'] - date - contains the limit of the auction
+     * $this->attributes['basePrice'] - int - contains the base price of the auction
+     * $this->attributes['active'] - bool - checks if the auction is active
+     * $this->product - Product - contains the product associeted to the auction */
+    public function index(Request $request): View
     {
         $viewData = [];
-        $viewData['title'] = 'Admin Page - Auctions - Online Store';
-        $viewData['auctions'] = Product::all();
+        $viewData['title'] = 'Auctions - InteresThing';
+        $viewData['subtitle'] = 'List of Auctions';
+        $viewData['auctions'] = $auctions;
 
-        return view('admin.auctions.index')->with('viewData', $viewData);
+        return view('admin.auction.index')->with('viewData', $viewData);
     }
 
-    public function store(Request $request)
+    public function store(Request $request): RedirectResponse
     {
-        $request->validate([
-            'name' => 'required|max:255',
-            'description' => 'required',
-            'price' => 'required|numeric|gt:0',
-            'image' => 'image',
+        Auction::validate($request);
+        $user = Auth::user();
+
+        Product::create([
+            'limitDate' => $request->limitDate,
+            'basePrice' => $request->basePrice,
+            'active' => $request->active,
+            'product' => $request->product,
         ]);
-        $newProduct = new Product();
-        $newProduct->setName($request->input('name'));
-        $newProduct->setDescription($request->input('description'));
-        $newProduct->setPrice($request->input('price'));
-        $newProduct->setImage('game.png');
-        $newProduct->save();
+
+        return back();
+    }
+
+    public function edit(int $id): View
+    {
+        $viewData = [];
+        $viewData['title'] = 'Auctions - InteresThing';
+        $viewData['subtitle'] = 'List of Auctions';
+        $viewData['auctions'] = $auctions;
+
+        return view('admin.auction.edit')->with('viewData', $viewData);
+    }
+
+    public function update(Request $request, $id): RedirectResponse
+    {
+        $product = Product::findOrFail($id);
+
+        if ($request->input('limitDate') != null) {
+            $product->setlimitDate($request->input('limitDate'));
+
+        }
+
+        if ($request->input('basePrice') != null) {
+            $product->setbasePrice($request->input('basePrice'));
+        }
+
+        if ($request->input('active') != null) {
+            $product->setActive($request->input('active'));
+        }
+
+        if ($request->input('product') != null) {
+            $product->setProduct($request->input('product'));
+        }
+
+        $product->save();
+
+        return redirect()->route('admin.auction.index');
+    }
+
+    public function delete($id): RedirectResponse
+    {
+        Product::destroy($id);
 
         return back();
     }
