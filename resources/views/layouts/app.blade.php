@@ -79,15 +79,17 @@
                 <li class="nav-item">
                     <a class="nav-link active" aria-current="page" href="{{ route('home') }}">Home</a>
                 </li>
-                <li class="nav-item">
-                    <a class="nav-link" href="{{ route('logout') }}" 
-                       onclick="event.preventDefault(); document.getElementById('logout-form').submit();">
-                        Logout
-                    </a>
-                    <form id="logout-form" action="{{ route('logout') }}" method="POST" style="display: none;">
-                        @csrf
-                    </form>
-                </li>
+                <div class="vr bg-white mx-2 d-none d-lg-block"></div> 
+          @guest 
+          <a class="nav-link active" href="{{ route('login') }}">Login</a> 
+          <a class="nav-link active" href="{{ route('register') }}">Register</a> 
+          @else 
+          <form id="logout" action="{{ route('logout') }}" method="POST"> 
+            <a role="button" class="nav-link active" 
+               onclick="document.getElementById('logout').submit();">Logout</a> 
+            @csrf 
+          </form> 
+          @endguest
             </ul>
         </div>
         <!-- Agregamos un enlace para abrir el sidebar -->

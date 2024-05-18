@@ -1,9 +1,5 @@
 <!--Created By: Laura-->
 
-<!-- $this->attributes['limitDate'] - date - contains the limit of the auction
-     * $this->attributes['basePrice'] - int - contains the base price of the auction
-     * $this->attributes['active'] - bool - checks if the auction is active
-     * $this->product - Product - contains the product associeted to the auction -->
 @extends('layouts.admin')
 @section('title', $viewData["title"])
 @section('content')

@@ -56,7 +56,6 @@ Route::put('/admin/auctions/{id}/update', 'App\Http\Controllers\Admin\AdminAucti
 Route::delete('/admin/auctions/{id}/delete', 'App\Http\Controllers\Admin\AdminAuctionController@delete')->name('admin.auction.delete');
 
 Auth::routes();
-Route::post('logout', 'App\Http\Controllers\Auth\LoginController@logout')->name('logout');
 
 Route::get('/', 'App\Http\Controllers\HomeController@index')->name('home');
 
