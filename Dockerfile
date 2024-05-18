@@ -38,7 +38,7 @@ RUN php artisan key:generate
 
 # Ejecuta migraciones y enlaces simbólicos
 RUN php artisan migrate
-RUN php storage:link
+RUN php artisan storage:link
 
 # Establece permisos adecuados y habilita módulos Apache necesarios
 RUN chmod -R 777 storage
