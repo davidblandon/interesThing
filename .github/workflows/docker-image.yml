@@ -1,0 +1,29 @@
+name: Docker Image CI
+
+on:
+  push:
+    branches: [ main ]
+  pull_request:
+    branches: [ main ]
+
+jobs:
+  build:
+    runs-on: ubuntu-latest
+
+    steps:
+      - uses: actions/checkout@v2
+
+      - name: Docker Login
+        env:
+          DOCKER_USER: ${{ secrets.DOCKERHUB_USER }}
+          DOCKER_PASS: ${{ secrets.DOCKERHUB_PASS }}
+        run: |
+          echo "$DOCKER_PASS" | docker login -u "$DOCKER_USER" --password-stdin
+
+      - name: Build the Docker image
+        run: |
+          docker build . --file Dockerfile --tag jmespitiag/laravel-interesthing:latest \
+          --build-arg OPENWEATHER_API_KEY=${{ secrets.OPENWEATHER_API_KEY }}
+
+      - name: Docker Push
+        run: docker push jmespitiag/laravel-interesthing
