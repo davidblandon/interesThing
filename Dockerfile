@@ -10,6 +10,8 @@ COPY . /var/www/html
 COPY ./public/.htaccess /var/www/html/.htaccess
 WORKDIR /var/www/html
 
+RUN cp .env.example .env
+
 RUN composer install \
     --ignore-platform-reqs \
     --no-interaction \
