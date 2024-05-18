@@ -18,3 +18,4 @@ RUN php storage:link
 RUN chmod -R 777 storage
 RUN a2enmod rewrite
 RUN service apache2 restart
+CMD ["apache2-foreground"]
