@@ -19,7 +19,7 @@
             <form method="POST" action="{{ route('auction.save') }}">
               @csrf
               <input type="date" class="form-control mb-2" placeholder="Enter limit date" name="limitDate" value="{{ old('limitDate') }}" />
-              <input type="text" class="form-control mb-2" placeholder="Enter base price" name="basePrice" value="{{ old('basePrice') }}" />
+        
               <select class="form-control mb-2" name="productId">
                 <option value="">Enter the product you want to auct</option>
                 @foreach($viewData['userProducts'] as $product)

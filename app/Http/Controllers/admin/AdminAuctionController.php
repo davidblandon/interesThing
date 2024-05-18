@@ -11,8 +11,9 @@ use Illuminate\Http\RedirectResponse;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
 use Illuminate\View\View;
+use App\Models\Auction;
 
-class AdminProductController extends Controller
+class AdminAuctionController extends Controller
 {
     /*** $this->attributes['limitDate'] - date - contains the limit of the auction
      * $this->attributes['basePrice'] - int - contains the base price of the auction
@@ -23,7 +24,13 @@ class AdminProductController extends Controller
         $viewData = [];
         $viewData['title'] = 'Auctions - InteresThing';
         $viewData['subtitle'] = 'List of Auctions';
+        $auctions = Auction::where('active', true)->get();
         $viewData['auctions'] = $auctions;
+        $products = Product::where('auctioned', false)
+        ->where('buyerId', NULL)
+        ->get();
+
+        $viewData['products'] = $products;
 
         return view('admin.auction.index')->with('viewData', $viewData);
     }
@@ -31,13 +38,13 @@ class AdminProductController extends Controller
     public function store(Request $request): RedirectResponse
     {
         Auction::validate($request);
-        $user = Auth::user();
 
-        Product::create([
+        $product= Product::findOrFail($request->productId);
+
+        Auction::create([
             'limitDate' => $request->limitDate,
-            'basePrice' => $request->basePrice,
-            'active' => $request->active,
-            'product' => $request->product,
+            'productId' => $request->productId,
+            'basePrice' => $product ->getPrice(),
         ]);
 
         return back();
@@ -48,33 +55,38 @@ class AdminProductController extends Controller
         $viewData = [];
         $viewData['title'] = 'Auctions - InteresThing';
         $viewData['subtitle'] = 'List of Auctions';
-        $viewData['auctions'] = $auctions;
+        $auction = Auction::findOrFail($id);
+        $viewData['auction'] = $auction;
+        $products = Product::where('auctioned', false)
+        ->where('buyerId', NULL)
+        ->get();
+        $viewData['products']=$products;
 
         return view('admin.auction.edit')->with('viewData', $viewData);
     }
 
-    public function update(Request $request, $id): RedirectResponse
+    public function update(Request $request,int $id): RedirectResponse
     {
-        $product = Product::findOrFail($id);
+        $auction = Auction::findOrFail($id);
 
-        if ($request->input('limitDate') != null) {
-            $product->setlimitDate($request->input('limitDate'));
+        if ($request->input('limitDate') != NULL) {
+            $auction->setlimitDate($request->input('limitDate'));
 
         }
 
-        if ($request->input('basePrice') != null) {
-            $product->setbasePrice($request->input('basePrice'));
+        if ($request->input('basePrice') != NULL) {
+            $auction->setbasePrice($request->input('basePrice'));
         }
 
-        if ($request->input('active') != null) {
-            $product->setActive($request->input('active'));
+        if ($request->input('active') != NULL) {
+            $auction->setActive($request->input('active'));
         }
 
-        if ($request->input('product') != null) {
-            $product->setProduct($request->input('product'));
+        if ($request->input('product') != NULL) {
+            $auction->setProduct($request->input('product'));
         }
 
-        $product->save();
+        $auction->save();
 
         return redirect()->route('admin.auction.index');
     }

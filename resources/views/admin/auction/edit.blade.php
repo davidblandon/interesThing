@@ -38,27 +38,30 @@
                     <div class="mb-3 row">
                         <label class="col-lg-2 col-md-6 col-sm-12 col-form-label">Base Price:</label>
                         <div class="col-lg-10 col-md-6 col-sm-12">
-                            <input name="basePrice" value="{{ $viewData['auctions']->getBasePrice() }}" type="number"
+                            <input name="basePrice" value="{{ $viewData['auction']->getBasePrice() }}" type="number"
                             class="form-control">
                         </div>
                     </div>
                 </div>
             </div>
             <div class="col">
-                    <div class="mb-3 row">
-                        <label class="col-lg-2 col-md-6 col-sm-12 col-form-label">Active</label>
-                        <div class="col-lg-10 col-md-6 col-sm-12">
-                            <input name="active" value="{{ $viewData['auctions']->active() }}" type="bool"
-                            class="form-control">
-                </div>
-            </div>
+    <div class="mb-3 row">
+        <label class="col-lg-2 col-md-6 col-sm-12 col-form-label">Active:</label>
+        <div class="col-lg-10 col-md-6 col-sm-12">
+            <select name="active" class="form-control">
+                <option value="1" >Active</option>
+                <option value="0" >Inactive</option>
+            </select>
+        </div>
+    </div>
+</div>
            
             <select class="form-control mb-2" name="productId">
-                <option value="">Enter the product you want to auct</option>
-     
-                    <option value="{{ $product->getId() }}">{{ $product->getName() }}</option>
-             
-              </select>
+                        <option value="">Select the product you want to auction</option>
+                        @foreach($viewData['products'] as $product)
+                            <option value="{{ $product->id }}">{{ $product->name }}</option>
+                        @endforeach
+                    </select>
        
             </div>
             <button type="submit" class="btn btn-primary">Submit</button>

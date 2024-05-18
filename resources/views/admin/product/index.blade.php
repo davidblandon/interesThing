@@ -79,7 +79,7 @@
                         <tr>
                             <td>{{ $product->getId() }}</td>
                             <td>{{ $product->getName() }}</td>
-                            <td>
+                            <td> {{ $product->getPrice() }}</td>
                         <a class="btn btn-primary" href="{{route('admin.product.edit', ['id'=> $product->getId()])}}">
                             Edit
                             <i class="bi-pencil"></i>

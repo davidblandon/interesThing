@@ -18,7 +18,6 @@ class AuctionController extends Controller
     public function available(Request $request): View
     {
         $search = $request->input('search');
-
         $query = Auction::where('active', true);
 
         if ($search) {
@@ -32,6 +31,7 @@ class AuctionController extends Controller
         $viewData = [];
         $viewData['title'] = 'Auctions - InteresThing';
         $viewData['subtitle'] = 'List of Auctions';
+
         $viewData['auctions'] = $auctions;
 
         return view('auction.available')->with('viewData', $viewData);
@@ -52,9 +52,9 @@ class AuctionController extends Controller
     {
         $viewData = [];
         $auction = Auction::findOrFail($id);
-        $viewData['title'] = $auction->getProduct()->getName().' - InteresThing';
-        $viewData['subtitle'] = $auction->getProduct()->getName().' - Auction information';
-        $viewData['auction'] = $auction;
+        $viewData['title'] = $auctions->getProduct()->getName().' - InteresThing';
+        $viewData['subtitle'] = $auctions->getProduct()->getName().' - Auction information';
+        $viewData['auction'] = $auctions;
 
         return view('auction.show')->with('viewData', $viewData);
     }
@@ -62,13 +62,15 @@ class AuctionController extends Controller
     public function save(Request $request): RedirectResponse
     {
         Auction::validate($request);
+        $product= Product::findOrFail($request->productId);
         Auction::create([
             'limitDate' => $request->limitDate,
-            'basePrice' => $request->basePrice,
             'productId' => $request->productId,
+            'basePrice' => $product ->getPrice(),
         ]);
 
         $product = Product::findOrFail($request->productId);
+        
         $product->setAuctioned(true);
         $product->save();
 

@@ -31,8 +31,9 @@ class Auction extends Model
         $request->validate([
 
             'limitDate' => 'required',
+            'productId' => 'required',
 
-            'basePrice' => 'required',
+
 
         ]);
     }

@@ -101,7 +101,7 @@
     <!-- Enlaces del sidebar -->
     <a href="#">Auctions</a>
     <ul class="submenu">
-        <li><a href="{{ route('auction.available') }}">View Auctions</a></li>
+        <li><a href="{{ route('auction.avaliable') }}">View Auctions</a></li>
         <li><a href="{{ route( 'auction.create' ) }}">Create Auction</a></li>
     </ul>
     <a href="{{ route('cart.index') }}">View Cart</a>
