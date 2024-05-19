@@ -66,7 +66,7 @@ class User extends Authenticatable
 
     public function orders(): HasMany
     {
-        return $this->hasMany(Order::class);
+        return $this->hasMany(Order::class, 'userId');
     }
 
     public function getOrders(): Collection
@@ -81,7 +81,7 @@ class User extends Authenticatable
 
     public function offers(): HasMany
     {
-        return $this->hasMany(Offer::class);
+        return $this->hasMany(Offer::class, 'userId');
     }
 
     public function getOffers(): Collection

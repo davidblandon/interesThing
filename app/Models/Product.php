@@ -50,7 +50,7 @@ class Product extends Model
         return $this->belongsTo(User::class, 'buyerId');
     }
 
-    public function getBuyer(): User
+    public function getBuyer(): ?User
     {
         return $this->buyer;
     }

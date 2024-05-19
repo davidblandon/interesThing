@@ -7,16 +7,18 @@
 namespace App\Http\Controllers;
 
 use App\Models\Product;
+use App\Models\Auction;
 use Illuminate\View\View;
+use Illuminate\Support\Facades\Auth;
 
-class ProductController extends Controller
+class UserController extends Controller
 {
     public function profile(): View
     {
         $viewData = [];
+        $user = Auth::user();
         $viewData['title'] = 'Products - interesthing';
-        $viewData['subtitle'] = 'List of products';
-        $viewData['products'] = Product::all();
+        $viewData['user'] = $user;
 
         return view('user.profile')->with('viewData', $viewData);
     }
@@ -29,7 +31,7 @@ class ProductController extends Controller
         $viewData['title'] = 'Products buyed - InteresThing';
         $viewData['products'] = $products;
 
-        return view('user.products.buyed')->with('viewData', $viewData);
+        return view('user.buyed')->with('viewData', $viewData);
     }
 
     public function showProductsSelled(): View
@@ -49,18 +51,18 @@ class ProductController extends Controller
         $viewData['title'] = 'Products selled - InteresThing';
         $viewData['products'] = $products;
 
-        return view('user.products.selled')->with('viewData', $viewData);
+        return view('user.selled')->with('viewData', $viewData);
     }
 
     public function showProductsOnSale(): View
     {
         $user = Auth::user();
         $viewData = [];
-        $products = $user->getProductsSelled;
+        $products = $user->getProductsSelled();
 
         foreach ($products as $key => $product) {
 
-            if ($product->getBuyer() != null || $product->getAuctioned()) {
+            if ($product->getBuyer() != NULL || $product->getAuctioned()) {
                 unset($products[$key]);
             }
 
@@ -69,24 +71,23 @@ class ProductController extends Controller
         $viewData['title'] = 'You products yet to sell - InteresThing';
         $viewData['products'] = $products;
 
-        return view('user.products.toSell')->with('viewData', $viewData);
+        return view('user.toSell')->with('viewData', $viewData);
     }
 
     public function showAuctions(): View
     {
         $user = Auth::user();
         $viewData = [];
-        $products = $user->getProductsSelled;
-        $productIds = [];
+        $products = $user->getProductsSelled();
+        $productIds = []; // Corrección aquí
 
-        foreach ($products as $key => $product) {
-
+        foreach ($products as $product) {
             if ($product->getAuctioned()) {
-                $productIds[] = $product->getId();
+                $productIds[] = $product->getId(); // Corrección aquí
             }
         }
 
-        $auctions = Auction::whereIn('productId', $productsIds)->get();
+        $auctions = Auction::whereIn('productId', $productIds)->get(); // Corrección aquí
         $viewData['title'] = 'Your products yet to sell - InteresThing';
         $viewData['auctions'] = $auctions;
 

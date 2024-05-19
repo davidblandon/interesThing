@@ -1,4 +1,4 @@
-<!--Created By: Laura-->
+<!-- Created By: Laura -->
 @extends('layouts.app')
 @section('title', $viewData["title"])
 @section('subtitle', $viewData["subtitle"])
@@ -33,7 +33,7 @@
           @endif
       </p>
         <a href="{{ route('auction.show', ['id'=> $auction["id"]]) }}"
-          class="btn bg-primary text-white">See more</a>
+          class="btn custom-btn">See more</a>
       </div>
     </div>
   </div>

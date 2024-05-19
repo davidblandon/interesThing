@@ -1,8 +1,11 @@
 body {
     margin: 0;
     padding: 0;
-    height: 100vh;
+    min-height: 100vh;
     background: linear-gradient(to bottom right, #A1E006, #F9DE96);
+    background-attachment: fixed;
+    font-family: Arial, sans-serif;
+    color: #000;
 }
 
 .navbar {
@@ -13,11 +16,11 @@ body {
     width: 120px;
     height: 120px;
     position: absolute; 
-            left: 50%; 
-            transform: translateX(-50%); 
+    left: 50%; 
+    transform: translateX(-50%); 
 }
 
-.nav-item{
+.nav-item {
     cursor: pointer;
     color: #E0DF6D;
 }
@@ -26,17 +29,12 @@ body {
     color: #ffffff;
 }
 
-body {
-    font-family: Arial, sans-serif;
-    margin: 0;
-    padding: 0;
-}
-
 header {
-    background-color: #333;
+    background-color: #a06e3f;
     color: #fff;
     text-align: center;
-    padding: 20px;
+    font-size: 1.5rem;
+    padding: 0.5px;
 }
 
 .container {
@@ -81,16 +79,8 @@ header {
     background-color: #555;
 }
 
-.color-header{
-    background-color: #a06e3f !important;
-}
 
-
-.color-header h1 {
-    font-size: 1.5rem;
-}
-
-.background-color{
+.background-color {
     background-color: #71A06C;
 }
 
@@ -105,5 +95,94 @@ header {
     border-color: #ffffff; /* Color del borde */
 }
 
+/* Estilos personalizados */
+.navbar-nav .nav-link {
+    padding: 0.5rem 1rem;
+}
 
-          
+/* Estilos del sidebar */
+.sidebar {
+    height: 100%;
+    width: 0;
+    position: fixed;
+    z-index: 1;
+    top: 0;
+    right: 0; /* Posicionar a la derecha */
+    background-color: #a06e3f;
+    overflow-x: hidden;
+    transition: 0.5s;
+    padding-top: 60px;
+}
+
+.sidebar a {
+    padding: 10px 15px;
+    text-decoration: none;
+    font-size: 20px;
+    color: #ffffff;
+    display: block;
+    transition: 0.3s;
+}
+
+.sidebar a:hover {
+    color: #f1f1f1;
+}
+
+.sidebar .closebtn {
+    position: absolute;
+    top: 0;
+    left: 25px;
+    font-size: 36px;
+    margin-right: 50px; /* Ajustar margen derecho */
+}
+
+.sidebar .submenu {
+    padding-left: 20px; /* Ajustar el espacio de la sublista */
+}
+
+@media screen and (max-height: 450px) {
+    .sidebar {
+        padding-top: 15px;
+    }
+    .sidebar a {
+        font-size: 18px;
+    }
+}
+
+.profile-container {
+    display: flex;
+    gap: 20px;
+}
+.user-info, .menu {
+    background-color: #F9DE96;
+    padding: 20px;
+    border-radius: 5px;
+    width: 48%;
+}
+.menu ul {
+    list-style-type: none;
+    padding: 0;
+}
+.menu ul li {
+    margin: 10px 0;
+}
+.menu ul li a {
+    display: block;
+    width: 100%;
+    padding: 10px;
+    background-color: #71A06C;
+    color: white;
+    text-align: center;
+    text-decoration: none;
+    border-radius: 5px;
+}
+.menu ul li a:hover {
+    background-color: #71A06C;
+}
+.profile-content {
+    margin-top: 20px;
+}
+
+.custom-btn {
+    background-color: #71A06C !important;
+    color: white !important;
+}

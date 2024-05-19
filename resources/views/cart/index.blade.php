@@ -37,7 +37,7 @@
                         <h1 class="card-title">Your cart is empty</h1>
                         <div class="text-center">
                             <div class="mt-3">
-                                <a href="{{ route('product.available') }}" style="background-color: #71A06C" class="btn btn-primary">View products</a>
+                                <a href="{{ route('product.avaliable') }}" style="background-color: #71A06C" class="btn btn-primary">View products</a>
                             </div>
                         </div>
                     @endif
