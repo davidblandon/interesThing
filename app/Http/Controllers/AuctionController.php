@@ -1,9 +1,5 @@
 <?php
 
-/**
- * Created by: David Blandón Román
- */
-
 namespace App\Http\Controllers;
 
 use App\Models\Auction;
@@ -29,9 +25,8 @@ class AuctionController extends Controller
         $auctions = $query->get();
 
         $viewData = [];
-        $viewData['title'] = 'Auctions - InteresThing';
-        $viewData['subtitle'] = 'List of Auctions';
-
+        $viewData['title'] = __('AuctionController.auctions_title');
+        $viewData['subtitle'] = __('AuctionController.auctions_subtitle');
         $viewData['auctions'] = $auctions;
 
         return view('auction.available')->with('viewData', $viewData);
@@ -42,7 +37,7 @@ class AuctionController extends Controller
         $user = Auth::user();
         $userProducts = $user->productsSelled()->where('auctioned', false)->get();
         $viewData = [];
-        $viewData['title'] = 'Create auction';
+        $viewData['title'] = __('AuctionController.create_auction_title');
         $viewData['userProducts'] = $userProducts;
 
         return view('auction.create')->with('viewData', $viewData);
@@ -52,9 +47,10 @@ class AuctionController extends Controller
     {
         $viewData = [];
         $auction = Auction::findOrFail($id);
-        $viewData['title'] = $auctions->getProduct()->getName().' - InteresThing';
-        $viewData['subtitle'] = $auctions->getProduct()->getName().' - Auction information';
-        $viewData['auction'] = $auctions;
+        $productName = $auction->getProduct()->getName();
+        $viewData['title'] = __('AuctionController.auction_info_title', ['productName' => $productName]);
+        $viewData['subtitle'] = __('AuctionController.auction_info_subtitle', ['productName' => $productName]);
+        $viewData['auction'] = $auction;
 
         return view('auction.show')->with('viewData', $viewData);
     }
@@ -62,15 +58,14 @@ class AuctionController extends Controller
     public function save(Request $request): RedirectResponse
     {
         Auction::validate($request);
-        $product= Product::findOrFail($request->productId);
+        $product = Product::findOrFail($request->productId);
         Auction::create([
             'limitDate' => $request->limitDate,
             'productId' => $request->productId,
-            'basePrice' => $product ->getPrice(),
+            'basePrice' => $product->getPrice(),
         ]);
 
         $product = Product::findOrFail($request->productId);
-        
         $product->setAuctioned(true);
         $product->save();
 
