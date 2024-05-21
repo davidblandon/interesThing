@@ -12,7 +12,7 @@
             <div class="card" style="border: none; background-color: #F9DE96;">
                 <div class="card-body text-center">
                     @if(count($viewData["cartProducts"]) > 0)
-                        <h1 class="card-title" style="color: inherit;">Products in Cart</h1>
+                        <h1 class="card-title" style="color: inherit;">{{ __('Cart.cart_products') }}</h1>
                         <ul style="list-style: none;">
                             @foreach($viewData["cartProducts"] as $product)
                                 <li>
@@ -31,13 +31,13 @@
                             </form>
                         </div>
                         <div class="mt-3">
-                            <a href="{{ route('cart.removeAll') }}" class="btn btn-danger">Remove All Products from Cart</a>
+                            <a href="{{ route('cart.removeAll') }}" class="btn btn-danger">{{ __('Cart.cart_remove') }}</a>
                         </div>
                     @else
-                        <h1 class="card-title">Your cart is empty</h1>
+                        <h1 class="card-title">{{ __('Cart.cart_empty') }}</h1>
                         <div class="text-center">
                             <div class="mt-3">
-                                <a href="{{ route('product.avaliable') }}" style="background-color: #71A06C" class="btn btn-primary">View products</a>
+                                <a href="{{ route('product.avaliable') }}" style="background-color: #71A06C" class="btn btn-primary">{{ __('Cart.cart_view_products') }}</a>
                             </div>
                         </div>
                     @endif

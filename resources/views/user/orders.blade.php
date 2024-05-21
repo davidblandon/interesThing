@@ -11,7 +11,7 @@
             @endforeach
         </ul>
     @else
-        <p>No orders available.</p>
+        <p>{{ __('User.user_not_aviable') }}</p>
     @endif
 </div>
 @endsection

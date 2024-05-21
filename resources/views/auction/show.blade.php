@@ -6,7 +6,7 @@
 <div class="card mb-3">
  <div class="row g-0">
  <div class="col-md-4">
- <img src="https://laravel.com/img/logotype.min.svg" class="img-fluid rounded-start">
+ <img src="{{ asset('storage/' . $viewData['auction']->getProduct()->getPhoto()) }}" class="img-fluid rounded-start">
  </div>
  <div class="col-md-8">
  <div class="card-body">
@@ -16,7 +16,7 @@
  <p class="card-text">{{ $viewData["auction"]->getLimitDate() }}</p>
  <p class="card-text">{{ $viewData["auction"]->getBasePrice() }}</p>
  @if ($viewData['auction']->getOffers()->isEmpty())
-    <p class="card-text">No offers available</p>
+    <p class="card-text">{{ __('Auction.auctions_not_available') }}</p>
 @else
     <ul class="card-text">
         @foreach ($viewData['auction']->getOffers() as $offer)
@@ -24,8 +24,9 @@
         @endforeach
     </ul>
 @endif
- <a href="{{ route('offer.create', ['auctionId'=> $viewData["auction"]->getId()]) }}"
-          class="btn bg-primary text-white">Make an offer</a>
+<a href="{{ route('offer.create', ['auctionId'=> $viewData["auction"]->getId()]) }}" class="btn text-white" style="background-color: #71A06C;">
+                    {{ __('Auction.auction_offer') }}
+                </a>
  </div>
  </div>
  </div>

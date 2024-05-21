@@ -8,7 +8,7 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <link href="{{ asset('css/app.css') }}" rel="stylesheet">
     <link href="{{ asset('css/custom.css') }}" rel="stylesheet"> <!-- Enlace al CSS personalizado -->
-    <title>@yield('title', 'Online Store')</title>
+    <title>@yield('title', __('Apps.app_store'))</title> <!-- Corrección aquí -->
 </head>
 <body>
 <!--Header-->
@@ -22,19 +22,19 @@
         <div class="collapse navbar-collapse" id="navbarNavDropdown">
             <ul class="navbar-nav me-auto mb-2 mb-lg-0"> <!-- Cambiado ms-auto a me-auto para alinear a la izquierda -->
                 <li class="nav-item">
-                    <a class="nav-link active" aria-current="page" href="{{ route('home') }}">Home</a>
+                    <a class="nav-link active" aria-current="page" href="{{ route('home') }}">{{ __('Apps.app_home') }}</a>
                 </li>
                 <div class="vr bg-white mx-2 d-none d-lg-block"></div> 
                 @guest 
-                <a class="nav-link active" href="{{ route('login') }}">Login</a> 
-                <a class="nav-link active" href="{{ route('register') }}">Register</a> 
+                <a class="nav-link active" href="{{ route('login') }}">{{ __('Apps.app_login') }}</a> 
+                <a class="nav-link active" href="{{ route('register') }}">{{ __('Apps.app_register') }}</a> 
                 @else 
                 <form id="logout" action="{{ route('logout') }}" method="POST"> 
                     <a role="button" class="nav-link active" 
-                    onclick="document.getElementById('logout').submit();">Logout</a> 
+                    onclick="document.getElementById('logout').submit();">{{ __('Apps.app_logout') }}</a> 
                     @csrf 
                 </form> 
-                <a role="button" class="nav-link active" href="{{ route('user.profile') }}">Profile</a>
+                <a role="button" class="nav-link active" href="{{ route('user.profile') }}">{{ __('Apps.app_profile') }}</a>
                  @endguest
             </ul>
         </div>
@@ -45,7 +45,7 @@
 
 <!-- Nuevo encabezado -->
 <header class="header">
-    <h1 class="text-center my-4">Give it a second chance!</h1>
+    <h1 class="text-center my-4">{{ __('Apps.app_header') }}</h1>
 </header>
 
 <!-- Sidebar -->
@@ -53,16 +53,16 @@
     <!-- Botón para cerrar el sidebar -->
     <a href="javascript:void(0)" class="closebtn" onclick="closeSidebar()">×</a>
     <!-- Enlaces del sidebar -->
-    <a href="#">Auctions</a>
+    <a href="#">{{ __('Apps.app_auction') }}</a>
     <ul class="submenu">
-        <li><a href="{{ route('auction.avaliable') }}">View Auctions</a></li>
-        <li><a href="{{ route('auction.create') }}">Create Auction</a></li>
+        <li><a href="{{ route('auction.avaliable') }}">{{ __('Apps.app_view_auction') }}</a></li>
+        <li><a href="{{ route('auction.create') }}">{{ __('Apps.app_create_auction') }}</a></li>
     </ul>
-    <a href="{{ route('cart.index') }}">View Cart</a>
-    <a href="#">Product</a>
+    <a href="{{ route('cart.index') }}">{{ __('Apps.app_cart') }}</a>
+    <a href="#">{{ __('Apps.app_product') }}</a>
     <ul class="submenu">
-        <li><a href="{{ route('product.avaliable') }}">View Products</a></li>
-        <li><a href="{{ route('product.create') }}">Add Product</a></li>
+        <li><a href="{{ route('product.avaliable') }}">{{ __('Apps.app_view_product') }}</a></li>
+        <li><a href="{{ route('product.create') }}">{{ __('Apps.app_create_product') }}</a></li>
     </ul>
 </div>
 
@@ -76,7 +76,7 @@
     <div class="container">
         <div class="row">
             <div class="col">
-                <span style="white-space: nowrap;">Work with us now: Pass context team </span>
+                <span style="white-space: nowrap;">{{ __('Apps.app_footer') }}</span>
             </div>
         </div>
     </div>

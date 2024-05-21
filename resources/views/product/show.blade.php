@@ -11,7 +11,7 @@
     <p class="card-text">{{ $viewData["product"]["category"] }}</p>
     <p class="card-text">{{ $viewData["product"]["price"] }}</p>
     <p class="card-text">{{ $viewData["product"]->getSeller()->getName() }}</p>
-    <a href="{{ route('product.avaliable') }}" style="background-color: #71A06C" class="btn btn-primary">Go back</a>
+    <a href="{{ route('product.avaliable') }}" style="background-color: #71A06C" class="btn btn-primary">{{ __('Product.product_back') }}</a>
   </div>
 </div>
 @endsection

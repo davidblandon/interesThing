@@ -2,7 +2,7 @@
 
 @section('title', $viewData['title'])
 @section('profile-content')
-<h2>Products Selled</h2>
+<h2>{{ __('User.user_selled') }}</h2>
 <div class="row">
     @foreach ($viewData['products'] as $product)
     <div class="col-md-4 col-lg-3 mb-2">
