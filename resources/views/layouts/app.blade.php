@@ -31,9 +31,14 @@
                 @else 
                 <form id="logout" action="{{ route('logout') }}" method="POST"> 
                     <a role="button" class="nav-link active" 
-                    onclick="document.getElementById('logout').submit();">Logout</a> 
-                    @csrf 
-                </form> 
+                    onclick="document.getElementById('logout').submit();">Logout</a>
+                    @csrf
+                </form>  
+                    @if(auth()->user()->getAdmin())
+                        <a href="/open/admin" class="nav-link active" style="color: black">Admin Page</a>
+                    @endif
+ 
+
                 <a role="button" class="nav-link active" href="{{ route('user.profile') }}">Profile</a>
                  @endguest
             </ul>
