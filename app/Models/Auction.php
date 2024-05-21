@@ -63,12 +63,11 @@ class Auction extends Model
 
     public function getMaxOffer(): ?Offer
     {
-        $offers = $this->getOffers(); 
+        $offers = $this->getOffers();
 
         if ($offers->isEmpty()) {
             return null;
         }
-
 
         $maxOffer = $offers->sortByDesc('price')->first();
 

@@ -119,6 +119,11 @@ class User extends Authenticatable
         $this->attributes['id'] = $id;
     }
 
+    public function getAdmin(): bool
+    {
+        return $this->attributes['admin'];
+    }
+
     public function getName(): string
     {
         return $this->attributes['name'];

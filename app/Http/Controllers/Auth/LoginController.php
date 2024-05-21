@@ -36,4 +36,19 @@ class LoginController extends Controller
     {
         $this->middleware('guest')->except('logout');
     }
+
+    /**
+     * Get the post register / login redirect path.
+     *
+     * @return string
+     */
+    public function redirectTo()
+    {
+        // Check user role
+        if (auth()->user()->getAdmin()) {
+            return '/ruta-admin';
+        } else {
+            return '/open/admin';
+        }
+    }
 }
