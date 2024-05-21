@@ -45,24 +45,24 @@ Generate the application key to secure sessions and encrypted data:
 php artisan key:generate
 ```
 
-## Paso 3: Install Dependencies
+## Step 3: Install Dependencies
 Install the project dependencies using Composer:
 ```
 composer install
 ```
 
-## Paso 4: Migrations
+## Step 4: Migrations
 Run the migrations to create the database tables:
 ```
 php artisan migrate
 ```
 
-## Start the Development Server
+## Step 5: Start the Development Server
 Start the Laravel development server:
 
 ```
 php artisan serve
 ```
 
-## Access and Development
+## Step 6: Access and Development
 Visit http://localhost:8000 in your browser to see the application running.
