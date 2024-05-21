@@ -46,9 +46,9 @@ class LoginController extends Controller
     {
         // Check user role
         if (auth()->user()->getAdmin()) {
-            return '/ruta-admin';
-        } else {
             return '/open/admin';
+        } else {
+            return '/';
         }
     }
 }
