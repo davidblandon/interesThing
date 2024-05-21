@@ -58,4 +58,3 @@ Route::delete('/admin/auctions/{id}/delete', 'App\Http\Controllers\Admin\AdminAu
 Auth::routes();
 
 Route::get('/', 'App\Http\Controllers\HomeController@index')->name('home');
-

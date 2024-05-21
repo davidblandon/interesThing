@@ -33,8 +33,6 @@ class Auction extends Model
             'limitDate' => 'required',
             'productId' => 'required',
 
-
-
         ]);
     }
 

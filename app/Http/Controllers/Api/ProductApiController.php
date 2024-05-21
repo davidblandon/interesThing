@@ -12,27 +12,22 @@ use App\Models\Product;
 use Illuminate\Http\JsonResponse;
 
 class ProductApiController extends Controller
-
 {
+    public function index(): JsonResponse
+    {
 
-public function index(): JsonResponse
+        $products = new ProductCollection(Product::all());
 
-{
+        return response()->json($products, 200);
 
-$products = new ProductCollection(Product::all());
+    }
 
-return response()->json($products, 200);
+    public function show(string $id): JsonResponse
+    {
 
-}
+        $product = Product::findOrFail($id);
 
-public function show(string $id): JsonResponse
+        return response()->json($product, 200);
 
-{
-
-$product = Product::findOrFail($id);
-
-return response()->json($product, 200);
-
-}
-
+    }
 }

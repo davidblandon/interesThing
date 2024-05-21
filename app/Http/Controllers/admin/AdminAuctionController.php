@@ -6,12 +6,11 @@
 namespace App\Http\Controllers\Admin;
 
 use App\Http\Controllers\Controller;
+use App\Models\Auction;
 use App\Models\Product;
 use Illuminate\Http\RedirectResponse;
 use Illuminate\Http\Request;
-use Illuminate\Support\Facades\Auth;
 use Illuminate\View\View;
-use App\Models\Auction;
 
 class AdminAuctionController extends Controller
 {
@@ -27,8 +26,8 @@ class AdminAuctionController extends Controller
         $auctions = Auction::where('active', true)->get();
         $viewData['auctions'] = $auctions;
         $products = Product::where('auctioned', false)
-        ->where('buyerId', NULL)
-        ->get();
+            ->where('buyerId', null)
+            ->get();
 
         $viewData['products'] = $products;
 
@@ -39,12 +38,12 @@ class AdminAuctionController extends Controller
     {
         Auction::validate($request);
 
-        $product= Product::findOrFail($request->productId);
+        $product = Product::findOrFail($request->productId);
 
         Auction::create([
             'limitDate' => $request->limitDate,
             'productId' => $request->productId,
-            'basePrice' => $product ->getPrice(),
+            'basePrice' => $product->getPrice(),
         ]);
 
         return back();
@@ -58,31 +57,31 @@ class AdminAuctionController extends Controller
         $auction = Auction::findOrFail($id);
         $viewData['auction'] = $auction;
         $products = Product::where('auctioned', false)
-        ->where('buyerId', NULL)
-        ->get();
-        $viewData['products']=$products;
+            ->where('buyerId', null)
+            ->get();
+        $viewData['products'] = $products;
 
         return view('admin.auction.edit')->with('viewData', $viewData);
     }
 
-    public function update(Request $request,int $id): RedirectResponse
+    public function update(Request $request, int $id): RedirectResponse
     {
         $auction = Auction::findOrFail($id);
 
-        if ($request->input('limitDate') != NULL) {
+        if ($request->input('limitDate') != null) {
             $auction->setlimitDate($request->input('limitDate'));
 
         }
 
-        if ($request->input('basePrice') != NULL) {
+        if ($request->input('basePrice') != null) {
             $auction->setbasePrice($request->input('basePrice'));
         }
 
-        if ($request->input('active') != NULL) {
+        if ($request->input('active') != null) {
             $auction->setActive($request->input('active'));
         }
 
-        if ($request->input('product') != NULL) {
+        if ($request->input('product') != null) {
             $auction->setProduct($request->input('product'));
         }
 

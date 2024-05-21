@@ -2,7 +2,6 @@
 
 namespace Tests\Unit;
 
-use App\Http\Controllers\OrderController;
 use App\Models\Order;
 use App\Models\Product;
 use App\Models\User;
@@ -28,17 +27,16 @@ class OrderTest extends TestCase
                 $products[0]->id => 1,
                 $products[1]->id => 2,
                 $products[2]->id => 3,
-            ]
+            ],
         ];
 
         $response = $this->withSession($sessionData)->post('/order/create');
 
-
         $this->assertCount(1, Order::all());
         $order = Order::first();
-    
+
         $this->assertEquals($user->id, $order->userId);
-        $this->assertEquals(300, $order->total); 
+        $this->assertEquals(300, $order->total);
         $this->assertEquals(200, $user->fresh()->balance);
         $this->assertNull(session('cart_product_data'));
     }

@@ -3,10 +3,10 @@
 /**
  * Created by: Juan Martín Espitia
  */
+
 namespace Tests\Unit;
 
 use App\Http\Controllers\ProductController;
-use App\Models\Product;
 use App\Models\User;
 use Illuminate\Http\RedirectResponse;
 use Illuminate\Http\Request;
@@ -46,6 +46,6 @@ class ProductTest extends TestCase
             'sellerId' => $user->getId(),
         ]);
 
-        Storage::disk('public')->assertExists('photos/' . $photo->hashName());
+        Storage::disk('public')->assertExists('photos/'.$photo->hashName());
     }
 }

@@ -6,10 +6,9 @@
 
 namespace App\Http\Controllers;
 
-use App\Models\Product;
 use App\Models\Auction;
-use Illuminate\View\View;
 use Illuminate\Support\Facades\Auth;
+use Illuminate\View\View;
 
 class UserController extends Controller
 {
@@ -95,7 +94,7 @@ class UserController extends Controller
         $user = Auth::user();
         $viewData = [];
         $offers = $user->getOffers();
-        # dd($offers);
+        // dd($offers);
         $viewData['title'] = __('User.offers_title');
         $viewData['offers'] = $offers;
 

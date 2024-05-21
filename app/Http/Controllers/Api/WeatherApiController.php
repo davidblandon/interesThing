@@ -4,14 +4,16 @@
  */
 
 namespace App\Http\Controllers\Api;
-use App\Services\WeatherService;
+
 use App\Http\Controllers\Controller;
+use App\Services\WeatherService;
 use Illuminate\Http\Request;
 use Illuminate\View\View;
 
 class WeatherApiController extends Controller
 {
     protected $weatherService;
+
     /**
      * Create a new controller instance.
      *
@@ -29,7 +31,7 @@ class WeatherApiController extends Controller
      */
     public function index(Request $request): View
     {
-        $lat = $request->input('lat', '4.6097'); 
+        $lat = $request->input('lat', '4.6097');
         $lon = $request->input('lon', '-74.0817');
 
         $weatherResponse = $this->weatherService->getWeather($lat, $lon);
