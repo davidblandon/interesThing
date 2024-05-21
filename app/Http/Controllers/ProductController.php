@@ -25,8 +25,8 @@ class ProductController extends Controller
         }
 
         $viewData = [];
-        $viewData['title'] = 'Products - InteresThing';
-        $viewData['subtitle'] = 'List of products';
+        $viewData['title'] = __('Product.products_title');
+        $viewData['subtitle'] = __('Product.products_subtitle');
         $viewData['products'] = $query->get();
 
         return view('product.available')->with('viewData', $viewData);
@@ -35,8 +35,8 @@ class ProductController extends Controller
     public function create(): View
     {
         $viewData = [];
-        $viewData['title'] = 'Create product';
-        $viewData['categories'] = ['Clothing and Accessories', 'Electronics', 'Home', 'Entertainment', 'Jewelry', 'Art and Antiques'];
+        $viewData['title'] = __('Product.create_product_title');
+        $viewData['categories'] = __('Product.categories');
 
         return view('product.create')->with('viewData', $viewData);
     }
@@ -45,8 +45,9 @@ class ProductController extends Controller
     {
         $viewData = [];
         $product = Product::findOrFail($id);
-        $viewData['title'] = $product->getName().' - InteresThing';
-        $viewData['subtitle'] = $product->getName().' - Product information';
+        $productName = $product->getName();
+        $viewData['title'] = __('Product.product_info_title', ['productName' => $productName]);
+        $viewData['subtitle'] = __('Product.product_info_subtitle', ['productName' => $productName]);
         $viewData['product'] = $product;
 
         return view('product.show')->with('viewData', $viewData);
@@ -67,6 +68,6 @@ class ProductController extends Controller
             'sellerId' => $user->getId(),
         ]);
 
-        return back();
+        return back()->with('success', __('Product.product_created_success'));
     }
 }

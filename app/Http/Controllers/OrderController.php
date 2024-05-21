@@ -24,7 +24,6 @@ class OrderController extends Controller
         $viewData['order'] = $order;
 
         return view('order.pdf')->with('viewData', $order);
-
     }
 
     public function download(Request $request, int $id): Response
@@ -41,7 +40,7 @@ class OrderController extends Controller
     {
         $viewData = [];
         $order = Order::findOrFail($id);
-        $viewData['title'] = ' Order - InteresThing';
+        $viewData['title'] = __('Order.order_title');
         $viewData['order'] = $order;
 
         return view('order.show')->with('viewData', $viewData);
@@ -55,17 +54,11 @@ class OrderController extends Controller
         $cartProductData = $request->session()->get('cart_product_data');
 
         if ($cartProductData) {
-
             foreach ($products as $product) {
-
                 if (in_array($product->getId(), array_keys($cartProductData))) {
-
                     $cartProducts[$product->getId()] = $product;
-
                 }
-
             }
-
         }
 
         $total = $this->calculateTotal($cartProducts);
@@ -75,13 +68,12 @@ class OrderController extends Controller
         ]);
 
         $order->save();
-        $this->asignProducts($cartProducts, $order->getId());
+        $this->assignProducts($cartProducts, $order->getId());
         $user->setBalance($user->getBalance() - $total);
         $user->save();
         $request->session()->forget('cart_product_data');
 
         return redirect()->route('order.show', ['id' => $order->getId()]);
-
     }
 
     public function calculateTotal(array $products): int
@@ -89,14 +81,13 @@ class OrderController extends Controller
         $total = 0;
 
         foreach ($products as $product) {
-            $total = $total + $product->getPrice();
+            $total += $product->getPrice();
         }
 
         return $total;
-
     }
 
-    public function asignProducts(array $products, int $id): void
+    public function assignProducts(array $products, int $id): void
     {
         $user = Auth::user();
 
@@ -104,7 +95,6 @@ class OrderController extends Controller
             $product->setOrderId($id);
             $product->setBuyerId($user->getId());
             $product->save();
-
         }
     }
 }

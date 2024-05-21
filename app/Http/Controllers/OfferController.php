@@ -19,7 +19,7 @@ class OfferController extends Controller
     public function create(int $auctionId): View
     {
         $viewData = [];
-        $viewData['title'] = 'Create offer';
+        $viewData['title'] = __('Offer.create_offer_title');
         $viewData['auctionId'] = $auctionId;
 
         return view('offer.create')->with('viewData', $viewData);
@@ -39,8 +39,9 @@ class OfferController extends Controller
 
         // Validar que la nueva oferta sea mayor al precio máximo actual
         if ($request->price <= $maxPrice) {
-            return back()->withErrors(['price' => 'The offer should be higher than '.$maxPrice.'.']);
+            return back()->withErrors(['price' => __('Offer.offer_error', ['maxPrice' => $maxPrice])]);
         }
+
         // Crea una nueva oferta
         $offer = new Offer([
             'price' => $request->price,
@@ -49,9 +50,9 @@ class OfferController extends Controller
         ]);
 
         // Guarda la oferta en la base de datos
-
         $offer->save();
         $auction->load('offers');
+
         // Comprueba si hay tres o más ofertas
         if ($auction->offers()->count() >= 3) {
             // Desactiva la subasta
@@ -62,7 +63,7 @@ class OfferController extends Controller
             $this->createOrder($auction);
         }
 
-        return back()->with('success', 'Oferta agregada exitosamente.');
+        return back()->with('success', __('Offer.offer_success'));
     }
 
     private function createOrder(Auction $auction): void
