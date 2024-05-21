@@ -23,8 +23,8 @@
                     <h2>{{ $product->name }}</h2>
                     <!-- Suponiendo que 'description' sea un atributo en tu modelo -->
                     <p>{{ $product->description }}</p>
-                    <a  href="{{ route('product.show', ['id'=> $product->getId()]) }}">  <button style="background-color: #71A06C">Quick look</button>
-                    <a  href="{{ route('cart.add', ['id'=> $product->getId()]) }}"> <button style="background-color: #71A06C">Add to cart</button></a>
+                    <a  href="{{ route('product.show', ['id'=> $product->getId()]) }}">  <button style="background-color: #71A06C">{{ __('Product.product_look') }}</button>
+                    <a  href="{{ route('cart.add', ['id'=> $product->getId()]) }}"> <button style="background-color: #71A06C">{{ __('Product.product_cart') }}</button></a>
                 </div>
             </div>
         @endforeach  

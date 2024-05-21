@@ -15,4 +15,7 @@ return [
         'Jewelry',
         'Art and Antiques',
     ],
+    'product_look' => 'Quick Look',
+    'product_cart' => 'Add to cart',
+    'product_back' => 'Go back',
 ];

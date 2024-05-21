@@ -15,4 +15,7 @@ return [
         'Joyería',
         'Arte y antigüedades',
     ],
+    'product_look' => 'Vista rápida',
+    'product_cart' => 'Añadir al carrito',
+    'product_back' => 'Volver',
 ];

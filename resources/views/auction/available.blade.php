@@ -29,11 +29,11 @@
           @if ($maxOffer = $auction->getMaxOffer())
               {{ $maxOffer->getPrice() }}
           @else
-              No offers available
+          {{ __('Auction.auctions_not_available') }}
           @endif
       </p>
         <a href="{{ route('auction.show', ['id'=> $auction["id"]]) }}"
-          class="btn custom-btn">See more</a>
+          class="btn custom-btn">{{ __('Auction.auctions_avilable') }}</a>
       </div>
     </div>
   </div>
