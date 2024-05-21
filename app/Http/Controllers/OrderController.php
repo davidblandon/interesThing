@@ -40,7 +40,7 @@ class OrderController extends Controller
     {
         $viewData = [];
         $order = Order::findOrFail($id);
-        $viewData['title'] = __('OrderController.order_title');
+        $viewData['title'] = __('Order.order_title');
         $viewData['order'] = $order;
 
         return view('order.show')->with('viewData', $viewData);

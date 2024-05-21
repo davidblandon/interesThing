@@ -31,7 +31,7 @@ class CartController extends Controller
         }
 
         $viewData = [];
-        $viewData['title'] = __('CartController.cart_title');
+        $viewData['title'] = __('Cart.cart_title');
         $viewData['cartProducts'] = $cartProducts;
         $viewData['total'] = $total;
 

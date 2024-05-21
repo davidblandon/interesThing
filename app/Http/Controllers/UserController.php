@@ -17,7 +17,7 @@ class UserController extends Controller
     {
         $viewData = [];
         $user = Auth::user();
-        $viewData['title'] = __('UserController.profile_title');
+        $viewData['title'] = __('User.profile_title');
         $viewData['user'] = $user;
 
         return view('user.profile')->with('viewData', $viewData);
@@ -28,7 +28,7 @@ class UserController extends Controller
         $user = Auth::user();
         $viewData = [];
         $products = $user->getProductsBuyed();
-        $viewData['title'] = __('UserController.products_buyed_title');
+        $viewData['title'] = __('User.products_buyed_title');
         $viewData['products'] = $products;
 
         return view('user.buyed')->with('viewData', $viewData);
@@ -46,7 +46,7 @@ class UserController extends Controller
             }
         }
 
-        $viewData['title'] = __('UserController.products_selled_title');
+        $viewData['title'] = __('User.products_selled_title');
         $viewData['products'] = $products;
 
         return view('user.selled')->with('viewData', $viewData);
@@ -96,7 +96,7 @@ class UserController extends Controller
         $viewData = [];
         $offers = $user->getOffers();
         # dd($offers);
-        $viewData['title'] = __('UserController.offers_title');
+        $viewData['title'] = __('User.offers_title');
         $viewData['offers'] = $offers;
 
         return view('user.offers')->with('viewData', $viewData);
@@ -107,7 +107,7 @@ class UserController extends Controller
         $user = Auth::user();
         $viewData = [];
         $orders = $user->getOrders();
-        $viewData['title'] = __('UserController.orders_title');
+        $viewData['title'] = __('User.orders_title');
         $viewData['orders'] = $orders;
 
         return view('user.orders')->with('viewData', $viewData);

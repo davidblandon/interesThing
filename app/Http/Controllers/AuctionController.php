@@ -25,8 +25,8 @@ class AuctionController extends Controller
         $auctions = $query->get();
 
         $viewData = [];
-        $viewData['title'] = __('AuctionController.auctions_title');
-        $viewData['subtitle'] = __('AuctionController.auctions_subtitle');
+        $viewData['title'] = __('Auction.auctions_title');
+        $viewData['subtitle'] = __('Auction.auctions_subtitle');
         $viewData['auctions'] = $auctions;
 
         return view('auction.available')->with('viewData', $viewData);
@@ -37,7 +37,7 @@ class AuctionController extends Controller
         $user = Auth::user();
         $userProducts = $user->productsSelled()->where('auctioned', false)->get();
         $viewData = [];
-        $viewData['title'] = __('AuctionController.create_auction_title');
+        $viewData['title'] = __('Auction.create_auction_title');
         $viewData['userProducts'] = $userProducts;
 
         return view('auction.create')->with('viewData', $viewData);
@@ -48,8 +48,8 @@ class AuctionController extends Controller
         $viewData = [];
         $auction = Auction::findOrFail($id);
         $productName = $auction->getProduct()->getName();
-        $viewData['title'] = __('AuctionController.auction_info_title', ['productName' => $productName]);
-        $viewData['subtitle'] = __('AuctionController.auction_info_subtitle', ['productName' => $productName]);
+        $viewData['title'] = __('Auction.auction_info_title', ['productName' => $productName]);
+        $viewData['subtitle'] = __('Auction.auction_info_subtitle', ['productName' => $productName]);
         $viewData['auction'] = $auction;
 
         return view('auction.show')->with('viewData', $viewData);
@@ -69,6 +69,6 @@ class AuctionController extends Controller
         $product->setAuctioned(true);
         $product->save();
 
-        return back();
+        return back()->with('success', __('Auction.auction_created_success'));
     }
 }
