@@ -38,7 +38,7 @@ class Auction extends Model
 
     public function product(): BelongsTo
     {
-        return $this->belongsTo(Product::class, 'productId')->onDelete('cascade');
+        return $this->belongsTo(Product::class, 'productId');
     }
 
     public function getProduct(): Product
