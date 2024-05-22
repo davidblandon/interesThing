@@ -66,3 +66,6 @@ php artisan serve
 
 ## Step 6: Access and Development
 Visit http://localhost:8000 in your browser to see the application running.
+
+
+Thanks pal! 
