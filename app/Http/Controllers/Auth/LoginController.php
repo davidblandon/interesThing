@@ -25,7 +25,7 @@ class LoginController extends Controller
      *
      * @var string
      */
-    protected $redirectTo = '/';
+     protected $redirectTo = '/';
 
     /**
      * Create a new controller instance.
@@ -42,13 +42,5 @@ class LoginController extends Controller
      *
      * @return string
      */
-    public function redirectTo()
-    {
-        // Check user role
-        if (auth()->user()->getAdmin()) {
-            return '/open/admin';
-        } else {
-            return '/';
-        }
-    }
+
 }

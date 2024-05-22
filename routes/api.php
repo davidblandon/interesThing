@@ -22,3 +22,5 @@ Route::get('/products/avaliable', 'App\Http\Controllers\Api\ProductApiController
 Route::get('/products/avaliable/{id}', 'App\Http\Controllers\Api\ProductApiController@show')->name('api.product.show');
 
 Route::get('/weather', 'App\Http\Controllers\Api\WeatherApiController@index')->name('api.weather');
+
+Route::get('/timeTravel', 'App\Http\Controllers\Api\TimeTravelApiController@index')->name('api.timeTravel');
