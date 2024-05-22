@@ -30,36 +30,33 @@ class OfferController extends Controller
         $user = Auth::user();
         Offer::validate($request);
 
-        // Obtén la instancia de Auction
+
         $auction = Auction::findOrFail($auctionId);
 
-        // Obtén la oferta máxima actual
         $maxOffer = $auction->getMaxOffer();
         $maxPrice = $maxOffer ? $maxOffer->price : $auction->getBasePrice();
 
-        // Validar que la nueva oferta sea mayor al precio máximo actual
+ 
         if ($request->price <= $maxPrice) {
             return back()->withErrors(['price' => __('Offer.offer_error', ['maxPrice' => $maxPrice])]);
         }
 
-        // Crea una nueva oferta
         $offer = new Offer([
             'price' => $request->price,
             'auctionId' => $auctionId,
             'userId' => $user->getId(),
         ]);
 
-        // Guarda la oferta en la base de datos
+
         $offer->save();
         $auction->load('offers');
 
-        // Comprueba si hay tres o más ofertas
+       
         if ($auction->offers()->count() >= 3) {
-            // Desactiva la subasta
+      
             $auction->active = false;
             $auction->save();
 
-            // Crea la orden
             $this->createOrder($auction);
         }
 
@@ -73,10 +70,10 @@ class OfferController extends Controller
 
         $order = new Order();
         $order->total = $maxOffer->getPrice();
-        $order->userId = $maxOffer->getUser()->getId(); // Asumiendo que Offer tiene un campo userId
+        $order->userId = $maxOffer->getUser()->getId(); 
         $order->save();
 
-        // Asocia el producto a la orden
+
         $product->setOrderId($order->getId());
         $product->save();
     }

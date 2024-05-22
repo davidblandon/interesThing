@@ -14,10 +14,7 @@ use Illuminate\View\View;
 
 class AdminAuctionController extends Controller
 {
-    /*** $this->attributes['limitDate'] - date - contains the limit of the auction
-     * $this->attributes['basePrice'] - int - contains the base price of the auction
-     * $this->attributes['active'] - bool - checks if the auction is active
-     * $this->product - Product - contains the product associeted to the auction */
+
     public function index(Request $request): View
     {
         $viewData = [];
@@ -90,7 +87,7 @@ class AdminAuctionController extends Controller
         return redirect()->route('admin.auction.index');
     }
 
-    public function delete($id): RedirectResponse
+    public function delete(int $id): RedirectResponse
     {
         Product::destroy($id);
 

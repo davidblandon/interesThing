@@ -64,7 +64,6 @@ class UserController extends Controller
         }
 
         $viewData['title'] = __('UserController.products_to_sell_title');
-        dump($products);
         $viewData['products'] = $products;
 
         return view('user.toSell')->with('viewData', $viewData);
@@ -95,7 +94,6 @@ class UserController extends Controller
         $user = Auth::user();
         $viewData = [];
         $offers = $user->getOffers();
-        // dd($offers);
         $viewData['title'] = __('User.offers_title');
         $viewData['offers'] = $offers;
 

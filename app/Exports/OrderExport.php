@@ -7,6 +7,7 @@ namespace App\Exports;
 
 use Maatwebsite\Excel\Concerns\FromCollection;
 use Maatwebsite\Excel\Concerns\WithHeadings;
+use Illuminate\Support\Collection;
 
 class OrderExport implements FromCollection, WithHeadings
 {
@@ -21,7 +22,7 @@ class OrderExport implements FromCollection, WithHeadings
 
     }
 
-    public function collection()
+    public function collection(): Collection
     {
         $collection = $this->products->map(function ($product) {
             return [

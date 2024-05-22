@@ -6,7 +6,7 @@ use Illuminate\Support\Facades\Http;
 
 class WeatherService
 {
-    public function getWeather($lat, $lon): array
+    public function getWeather(string $lat, string $lon): array
     {
         $apiKey = env('OPENWEATHER_API_KEY');
         $apiUrl = "https://api.openweathermap.org/data/2.5/weather?lat={$lat}&lon={$lon}&appid={$apiKey}";

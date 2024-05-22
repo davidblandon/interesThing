@@ -17,7 +17,7 @@ use Tests\TestCase;
 
 class ProductTest extends TestCase
 {
-    public function testSaveProduct()
+    public function testSaveProduct(): void
     {
         Storage::fake('public');
         $request = new Request();

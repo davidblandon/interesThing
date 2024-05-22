@@ -16,7 +16,7 @@ class OrderTest extends TestCase
 {
     use RefreshDatabase;
 
-    public function testCreateOrder()
+    public function testCreateOrder(): void
     {
 
         $user = User::factory()->create();
