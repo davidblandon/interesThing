@@ -14,7 +14,6 @@ use Illuminate\View\View;
 
 class AdminAuctionController extends Controller
 {
-
     public function index(Request $request): View
     {
         $viewData = [];
@@ -92,7 +91,7 @@ class AdminAuctionController extends Controller
 
     public function delete(int $id): RedirectResponse
     {
-        Product::destroy($id);
+        Auction::destroy($id);
 
         return back();
     }

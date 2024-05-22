@@ -2,6 +2,7 @@
 /**
  * Created by: Juan Martín Espitia
  */
+
 namespace Tests\Unit;
 
 use App\Models\Order;

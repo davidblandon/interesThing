@@ -2,6 +2,7 @@
 /**
  * Created by: David Blandón Román
  */
+
 namespace App\Http\Controllers;
 
 use App\Models\Auction;
@@ -38,8 +39,8 @@ class AuctionController extends Controller
     {
         $user = Auth::user();
         $userProducts = $user->productsSelled()->where('auctioned', false)
-        ->where('buyerId', null)
-        ->get();
+            ->where('buyerId', null)
+            ->get();
         $viewData = [];
         $viewData['title'] = __('Auction.create_auction_title');
         $viewData['userProducts'] = $userProducts;

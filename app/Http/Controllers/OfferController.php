@@ -30,13 +30,11 @@ class OfferController extends Controller
         $user = Auth::user();
         Offer::validate($request);
 
-
         $auction = Auction::findOrFail($auctionId);
 
         $maxOffer = $auction->getMaxOffer();
         $maxPrice = $maxOffer ? $maxOffer->price : $auction->getBasePrice();
 
- 
         if ($request->price <= $maxPrice) {
             return back()->withErrors(['price' => __('Offer.offer_error', ['maxPrice' => $maxPrice])]);
         }
@@ -47,13 +45,11 @@ class OfferController extends Controller
             'userId' => $user->getId(),
         ]);
 
-
         $offer->save();
         $auction->load('offers');
 
-       
         if ($auction->offers()->count() >= 3) {
-      
+
             $auction->active = false;
             $auction->save();
 
@@ -70,9 +66,8 @@ class OfferController extends Controller
 
         $order = new Order();
         $order->total = $maxOffer->getPrice();
-        $order->userId = $maxOffer->getUser()->getId(); 
+        $order->userId = $maxOffer->getUser()->getId();
         $order->save();
-
 
         $product->setOrderId($order->getId());
         $product->save();

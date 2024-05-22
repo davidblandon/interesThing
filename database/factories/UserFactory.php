@@ -33,7 +33,7 @@ class UserFactory extends Factory
             'balance' => 500,
             'email_verified_at' => now(),
             'password' => static::$password ??= Hash::make('password'),
-            'admin' => false,   
+            'admin' => false,
             'remember_token' => Str::random(10),
 
         ];

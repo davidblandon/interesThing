@@ -78,7 +78,7 @@
                             </a>
                         </td>
                         <td>
-                            <form action="{{ route('admin.auction.delete', ['id' => $auction->id]) }}" method="POST" onsubmit="return confirm('Are you sure you want to delete this auction?')">
+                            <form action="{{ route('admin.auction.delete', ['id' => $auction->getId()]) }}" method="POST" onsubmit="return confirm('Are you sure you want to delete this auction?')">
                                 @csrf
                                 @method('DELETE')
                                 <button class="btn btn-danger">
