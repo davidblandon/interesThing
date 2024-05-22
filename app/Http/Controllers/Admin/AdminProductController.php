@@ -24,7 +24,7 @@ class AdminProductController extends Controller
         return view('admin.product.index')->with('viewData', $viewData);
     }
 
-    public function store(Request $request): RedirectResponse
+    public function save(Request $request): RedirectResponse
     {
         Product::validate($request);
         $photoPath = $request->file('photo')->store('photos', 'public');
