@@ -16,5 +16,10 @@ return[
     'app_view_product' => 'Ver Productos',
     'app_create_product' => 'Crear Productos',
     'app_footer' => 'Trabaja con nosotros: Equipo Pass Context_DML 🤍',
-
+    'app_page' => 'Página del administrador',
+    'app_api' => 'APIs',
+    'app_v_api' => 'Ver APIs',
+    'app_cli' => 'API del clima',
+    'app_tt' => 'API viajes del tiempo',
+    
 ];

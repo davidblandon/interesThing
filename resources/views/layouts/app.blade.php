@@ -36,7 +36,7 @@
                 </form> 
                 <a role="button" class="nav-link active" href="{{ route('user.profile') }}">{{ __('Apps.app_profile') }}</a>
                 @if(auth()->user()->getAdmin())
-                        <a href="/open/admin" class="nav-link active" style="color: black">Admin Page</a>
+                        <a href="/open/admin" class="nav-link active" style="color: black">{{ __('Apps.app_page') }}</a>
                     @endif
                  @endguest
             </ul>
@@ -66,6 +66,12 @@
     <ul class="submenu">
         <li><a href="{{ route('product.avaliable') }}">{{ __('Apps.app_view_product') }}</a></li>
         <li><a href="{{ route('product.create') }}">{{ __('Apps.app_create_product') }}</a></li>
+    </ul>
+    <a href="#">{{ __('Apps.app_api') }}</a>
+    <ul class="submenu">
+        <li><a href="{{ route('api.product.index') }}">{{ __('Apps.app_v_api') }}</a></li>
+        <li><a href="{{ route('api.weather') }}">{{ __('Apps.app_cli') }}</a></li>
+        <li><a href="{{ route('api.timeTravel') }}">{{ __('Apps.app_tt') }}</a></li>
     </ul>
 </div>
 

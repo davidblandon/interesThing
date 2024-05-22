@@ -16,8 +16,13 @@ return[
     'app_view_product' => 'View Products',
     'app_create_product' => 'Create Products',
     'app_footer' => 'Work with us: Pass Context Team_DML 🤍',
+    'app_page' => 'Admin page',
+    'app_api' => 'APIs',
+    'app_v_api' => 'View APIs',
+    'app_cli' => 'Weather API',
+    'app_tt' => 'Time travel API'
 
 
-    
+
 
 ];
