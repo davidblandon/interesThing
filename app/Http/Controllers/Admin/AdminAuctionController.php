@@ -43,6 +43,9 @@ class AdminAuctionController extends Controller
             'basePrice' => $product->getPrice(),
         ]);
 
+        $product->setAuctioned(true);
+        $product->save();
+
         return back();
     }
 
