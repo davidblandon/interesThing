@@ -1,6 +1,6 @@
 <?php
 
-return[
+return [
     'app_store' => 'Tienda en línea',
     'app_home' => 'Inicio',
     'app_login' => 'Ingresa',
@@ -21,5 +21,5 @@ return[
     'app_v_api' => 'Ver APIs',
     'app_cli' => 'API del clima',
     'app_tt' => 'API viajes del tiempo',
-    
+
 ];

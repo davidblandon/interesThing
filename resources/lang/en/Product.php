@@ -20,7 +20,7 @@ return [
     'product_back' => 'Go back',
 
     'product_desc' => 'Description:',
-    'product_cat' => 'Category',
-    'product_pri' => 'Price',
-    'product_sell' => 'Seller name:'
+    'product_cat' => 'Category:',
+    'product_pri' => 'Price:',
+    'product_sell' => 'Seller name:',
 ];

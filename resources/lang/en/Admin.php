@@ -1,6 +1,6 @@
 <?php
 
-return[
+return [
     'admin_title' => 'Admin - online store',
     'admin_title_product' => 'Admin - products',
     'admin_title_auction' => 'Admin - auctions',

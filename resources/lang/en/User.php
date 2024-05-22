@@ -29,8 +29,4 @@ return [
     'user_y_aucions' => 'Your Auctions',
     'user_y_offers' => 'Your Offers',
 
-
-
-
-
 ];
