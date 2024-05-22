@@ -2,7 +2,7 @@
 
 @section('title', $viewData['title'])
 
-@section('profile-content')
+@section('content')
 <h2>{{ __('User.user_y_aucions') }}</h2>
 <div class="row">
     @foreach ($viewData['auctions'] as $auction)
@@ -11,7 +11,7 @@
             <img src="{{ asset('storage/' . $auction->getProduct()->getPhoto()) }}" class="card-img-top img-card">
             <div class="card-body text-center">
                 <h5 class="card-title">{{ $auction->getProduct()->getName() }}</h5>
-                <p>Current Bid: ${{ $auction->getMaxOffer()->getPrice() ?? 'No bids yet' }}</p>
+                <p>Current Bid: ${{ $auction->getMaxOffer() ? $auction->getMaxOffer()->getPrice() : 'No hay ofertas' }}</p>
                 <a href="{{ route('auction.show', ['id' => $auction->getId()]) }}" class="btn custom-btn">{{ __('user.user_more') }}</a>
             </div>
         </div>

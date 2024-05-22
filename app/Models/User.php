@@ -41,6 +41,7 @@ class User extends Authenticatable
         'email',
         'phone',
         'password',
+
     ];
 
     /**
@@ -52,6 +53,7 @@ class User extends Authenticatable
         'password',
         'remember_token',
         'balance',
+        'admin',
     ];
 
     /**

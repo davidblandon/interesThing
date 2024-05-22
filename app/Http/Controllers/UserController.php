@@ -64,6 +64,7 @@ class UserController extends Controller
         }
 
         $viewData['title'] = __('UserController.products_to_sell_title');
+        dump($products);
         $viewData['products'] = $products;
 
         return view('user.toSell')->with('viewData', $viewData);

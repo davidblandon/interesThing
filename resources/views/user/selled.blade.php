@@ -1,7 +1,7 @@
 @extends('layouts.app')
 
 @section('title', $viewData['title'])
-@section('profile-content')
+@section('content')
 <h2>{{ __('User.user_selled') }}</h2>
 <div class="row">
     @foreach ($viewData['products'] as $product)
