@@ -36,7 +36,7 @@
                 </form> 
                 <a role="button" class="nav-link active" href="{{ route('user.profile') }}">{{ __('Apps.app_profile') }}</a>
                 @if(auth()->user()->getAdmin())
-                        <a href="/open/admin" class="nav-link active" style="color: black">{{ __('Apps.app_page') }}</a>
+                        <a href="{{ route('admin.home.index') }}" class="nav-link active" style="color: black">{{ __('Apps.app_page') }}</a>
                     @endif
                  @endguest
             </ul>
