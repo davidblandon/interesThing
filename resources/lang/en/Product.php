@@ -18,4 +18,9 @@ return [
     'product_look' => 'Quick Look',
     'product_cart' => 'Add to cart',
     'product_back' => 'Go back',
+
+    'product_desc' => 'Description:',
+    'product_cat' => 'Category:',
+    'product_pri' => 'Price:',
+    'product_sell' => 'Seller name:',
 ];

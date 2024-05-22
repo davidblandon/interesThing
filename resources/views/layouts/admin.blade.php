@@ -20,8 +20,8 @@
                 <li><a href="{{ route('admin.product.index') }}" class="nav-link text-white">{{ __('Admin.admin_title_product') }}</a></li>
                 <li><a href="{{ route('admin.auction.index') }}" class="nav-link text-white"> {{ __('Admin.admin_title_auction') }}</a></li>
                 <li>
-                    <a href="{{ route('home') }}" class="mt-2 btn bg-primary text-white">{{ __('Admin.admin_home') }}</a>
-                </li>
+        <!--head-->
+                    <a href="{{ route('admin.home.index') }}" class="mt-2 btn bg-primary text-white">'Home'</a>
             </ul>
         </div>
         <!-- sidebar -->

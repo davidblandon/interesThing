@@ -16,9 +16,9 @@
     <div class="container">
         <div class="profile-container">
             <div class="user-info">
-                <h2>User Information</h2>
+                <h2>{{ __('User.user_info') }}</h2>
                 <p><strong>{{ __('User.user_name') }}</strong> {{ $viewData['user']->getName() }}</p>
-                <p><strong>{{ __('User.user_mail') }}</strong> {{ $viewData['user']->getEmail() }}</p>
+                 <p><strong>{{ __('User.user_mail') }}</strong> {{ $viewData['user']->getEmail() }}</p>
                 <p><strong>{{ __('User.user_phone') }}:</strong> {{ $viewData['user']->getPhone() }}</p>
                 <p><strong>{{ __('User.user_balance') }}:</strong> ${{ $viewData['user']->getBalance() }}</p>
             </div>

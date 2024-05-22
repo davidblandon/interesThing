@@ -4,10 +4,9 @@
  */
 
 namespace App\Http\Controllers\Api;
+
 use App\Http\Controllers\Controller;
 use App\Services\TimeTravelService;
-use Illuminate\Http\Request;
-use Illuminate\View\View;
 use Illuminate\Http\JsonResponse;
 
 class TimeTravelApiController extends Controller
@@ -23,8 +22,6 @@ class TimeTravelApiController extends Controller
     {
         $this->timeTravelService = $timeTravelService;
     }
-
-
 
     public function index(): JsonResponse
     {

@@ -10,4 +10,8 @@ return [
     'auctions_avilable' => 'See more',
     'auctions_not_available' => 'Not offers available',
     'auction_offer' => 'Make an offer',
+    'auction_limit_date' => 'Limit date:',
+    'auction_base' => 'Base price:',
+    'auction_off' => 'Offers:',
+
 ];

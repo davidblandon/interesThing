@@ -13,6 +13,7 @@ return [
     'user_price' => 'Offered price:',
     'user_not_aviable' => 'No orders available.',
 
+    'user_info' => 'User information',
     'user_name' => 'Name:',
     'user_mail' => 'Email:',
     'user_phone' => 'Phone:',
@@ -27,9 +28,5 @@ return [
     'user_orders' => 'Orders',
     'user_y_aucions' => 'Your Auctions',
     'user_y_offers' => 'Your Offers',
-
-
-
-
 
 ];

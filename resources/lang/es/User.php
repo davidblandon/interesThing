@@ -9,11 +9,11 @@ return [
     'offers_title' => 'Tus ofertas - InteresThing',
     'orders_title' => 'Tus pedidos - InteresThing',
 
-
     'user_more' => 'Ver más',
     'user_price' => 'Precio ofertado:',
     'user_not_aviable' => 'No hay ordenes.',
 
+    'user_info' => 'Información de usuario',
     'user_name' => 'Nombre:',
     'user_mail' => 'Correo:',
     'user_phone' => 'Celular:',
