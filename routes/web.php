@@ -48,15 +48,15 @@ Auth::routes();
 Route::get('/', 'App\Http\Controllers\HomeController@index')->name('home');
 
 Route::group(['middleware' => ['admin']], function () {
-    Route::get('/open/admin', 'App\Http\Controllers\Admin\AdminHomeController@index')->name('admin.home.index');
-    Route::get('/admin/products', 'App\Http\Controllers\Admin\AdminProductController@index')->name('admin.product.index');
-    Route::post('/admin/products/store', 'App\Http\Controllers\Admin\AdminProductController@store')->name('admin.product.store');
-    Route::delete('/admin/products/{id}/delete', 'App\Http\Controllers\Admin\AdminProductController@delete')->name('admin.product.delete');
-    Route::get('/admin/products/{id}/edit', 'App\Http\Controllers\Admin\AdminProductController@edit')->name('admin.product.edit');
-    Route::put('/admin/products/{id}/update', 'App\Http\Controllers\Admin\AdminProductController@update')->name('admin.product.update');
-    Route::get('/admin/auctions', 'App\Http\Controllers\Admin\AdminAuctionController@index')->name('admin.auction.index');
-    Route::post('/admin/auctions/store', 'App\Http\Controllers\Admin\AdminAuctionController@store')->name('admin.auction.store');
-    Route::get('/admin/auctions/{id}/edit', 'App\Http\Controllers\Admin\AdminAuctionController@edit')->name('admin.auction.edit');
-    Route::put('/admin/auctions/{id}/update', 'App\Http\Controllers\Admin\AdminAuctionController@update')->name('admin.auction.update');
-    Route::delete('/admin/auctions/{id}/delete', 'App\Http\Controllers\Admin\AdminAuctionController@delete')->name('admin.auction.delete');
+    Route::get('public/open/admin', 'App\Http\Controllers\Admin\AdminHomeController@index')->name('admin.home.index');
+    Route::get('public/admin/products', 'App\Http\Controllers\Admin\AdminProductController@index')->name('admin.product.index');
+    Route::post('public/admin/products/store', 'App\Http\Controllers\Admin\AdminProductController@store')->name('admin.product.store');
+    Route::delete('public/admin/products/{id}/delete', 'App\Http\Controllers\Admin\AdminProductController@delete')->name('admin.product.delete');
+    Route::get('public/admin/products/{id}/edit', 'App\Http\Controllers\Admin\AdminProductController@edit')->name('admin.product.edit');
+    Route::put('public/admin/products/{id}/update', 'App\Http\Controllers\Admin\AdminProductController@update')->name('admin.product.update');
+    Route::get('public/admin/auctions', 'App\Http\Controllers\Admin\AdminAuctionController@index')->name('admin.auction.index');
+    Route::post('public/admin/auctions/store', 'App\Http\Controllers\Admin\AdminAuctionController@store')->name('admin.auction.store');
+    Route::get('public/admin/auctions/{id}/edit', 'App\Http\Controllers\Admin\AdminAuctionController@edit')->name('admin.auction.edit');
+    Route::put('public/admin/auctions/{id}/update', 'App\Http\Controllers\Admin\AdminAuctionController@update')->name('admin.auction.update');
+    Route::delete('public/admin/auctions/{id}/delete', 'App\Http\Controllers\Admin\AdminAuctionController@delete')->name('admin.auction.delete');
 });
